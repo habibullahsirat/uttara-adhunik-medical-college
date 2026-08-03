@@ -22,6 +22,7 @@ import FindDepartment from "@/components/homepage/FindDepartment";
 import AdmissionCTA from "@/components/homepage/AdmissionCTA";
 import OurFacilities from "@/components/homepage/OurFacilities";
 import PrincipalMessage from "@/components/homepage/PrincipalMessage";
+import CampusLife from "@/components/homepage/CampusLife";
 
 const GREEN = "#018837";
 const YELLOW = "#FECD2F";
@@ -689,39 +690,39 @@ function PhotoPlaceholder({ label, className = "" }) {
 /* ------------------------------------------------------------------ */
 /*  10. Campus life                                                   */
 /* ------------------------------------------------------------------ */
-function CampusLife() {
-  const items = ["Student Life", "Arts & Culture", "Recreation & Wellness"];
-  return (
-    <section
-      className="flex flex-col items-center gap-16 px-6 md:px-20 py-20"
-      style={{ backgroundColor: GREEN }}
-    >
-      <div className="flex flex-col items-center gap-4 text-center max-w-xl">
-        <p className="font-body text-white/90">
-          Building a vibrant community of creative and accomplished people from
-          around the world
-        </p>
-        <h2 className="font-display text-5xl md:text-7xl text-white text-right w-full">
-          Campus Life
-        </h2>
-      </div>
+// function CampusLife() {
+//   const items = ["Student Life", "Arts & Culture", "Recreation & Wellness"];
+//   return (
+//     <section
+//       className="flex flex-col items-center gap-16 px-6 md:px-20 py-20"
+//       style={{ backgroundColor: GREEN }}
+//     >
+//       <div className="flex flex-col items-center gap-4 text-center max-w-xl">
+//         <p className="font-body text-white/90">
+//           Building a vibrant community of creative and accomplished people from
+//           around the world
+//         </p>
+//         <h2 className="font-display text-5xl md:text-7xl text-white text-right w-full">
+//           Campus Life
+//         </h2>
+//       </div>
 
-      <div className="grid w-full max-w-6xl grid-cols-1 sm:grid-cols-3 gap-9">
-        {items.map((item) => (
-          <div key={item} className="flex flex-col gap-8">
-            <PhotoPlaceholder label={item} className="h-[300px] w-full" />
-            <a
-              href="#"
-              className="flex items-center gap-3 font-display text-xl text-white"
-            >
-              {item} ↗
-            </a>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
+//       <div className="grid w-full max-w-6xl grid-cols-1 sm:grid-cols-3 gap-9">
+//         {items.map((item) => (
+//           <div key={item} className="flex flex-col gap-8">
+//             <PhotoPlaceholder label={item} className="h-[300px] w-full" />
+//             <a
+//               href="#"
+//               className="flex items-center gap-3 font-display text-xl text-white"
+//             >
+//               {item} ↗
+//             </a>
+//           </div>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }
 
 /* ------------------------------------------------------------------ */
 /*  11. Alumni events                                                 */

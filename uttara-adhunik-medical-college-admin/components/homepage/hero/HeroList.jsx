@@ -39,7 +39,7 @@ export default function HeroList({ hero, onEdit, onDelete, isDeleting }) {
             {!imageErrors[hero._id] ? (
               <Image
                 src={hero.image}
-                alt={hero.title}
+                alt={hero.title_One}
                 fill
                 className="object-cover"
                 onError={() => handleImageError(hero._id)}

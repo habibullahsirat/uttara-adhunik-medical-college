@@ -51,8 +51,8 @@ export default function HeroManager() {
     setIsSubmitting(true);
     try {
       const url = editingHero
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/hero/${editingHero._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/hero`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/hero/${editingHero._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/hero`;
 
       const method = editingHero ? "PATCH" : "POST";
 

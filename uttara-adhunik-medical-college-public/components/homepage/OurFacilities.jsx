@@ -1,5 +1,18 @@
 "use client";
 import { useState } from "react";
+import { ArrowRight } from "lucide-react";
+
+function PhotoPlaceholder({ label, className = "" }) {
+  return (
+    <div
+      className={`relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0a3d1f] to-[#018837] ${className}`}
+    >
+      <span className="font-body text-[11px] uppercase tracking-widest text-white/60 text-center px-4">
+        {label}
+      </span>
+    </div>
+  );
+}
 
 export default function OurFacilities() {
   const items = [

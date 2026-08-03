@@ -1,220 +1,348 @@
 "use client";
+
 import { useState } from "react";
 import PhotoUpload from "@/components/ui/PhotoUpload";
 
 export default function HeroForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     title_One: initialData?.title_One || "",
+    title_One_Subtitle: initialData?.title_One_Subtitle || "",
     title_Two: initialData?.title_Two || "",
     title_Two_Field: initialData?.title_Two_Field || "",
     title_Two_Description: initialData?.title_Two_Description || "",
-    title_One_Subtitle: initialData?.title_One_Subtitle || "",
+
     image: initialData?.image || "",
+
     cta: {
       text: initialData?.cta?.text || "",
       href: initialData?.cta?.href || "",
     },
+
+    programHeading: initialData?.programHeading || "",
+
+    programs:
+      initialData?.programs?.length > 0
+        ? initialData.programs
+        : [{ title: "", href: "" }],
   });
 
   const [errors, setErrors] = useState({});
 
+  // ============================
+  // Normal Fields
+  // ============================
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     if (name.startsWith("cta.")) {
-      const ctaField = name.split(".")[1];
+      const field = name.split(".")[1];
+
       setFormData((prev) => ({
         ...prev,
         cta: {
           ...prev.cta,
-          [ctaField]: value,
+          [field]: value,
         },
       }));
     } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
     }
-    // Clear error for this field
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+    }));
   };
 
-  const handleImageChange = (imageUrl) => {
-    setFormData((prev) => ({ ...prev, image: imageUrl }));
-    if (errors.image) {
-      setErrors((prev) => ({ ...prev, image: "" }));
-    }
+  // ============================
+  // Image
+  // ============================
+
+  const handleImageChange = (image) => {
+    setFormData((prev) => ({
+      ...prev,
+      image,
+    }));
+
+    setErrors((prev) => ({
+      ...prev,
+      image: "",
+    }));
   };
+
+  // ============================
+  // Programs
+  // ============================
+
+  const handleProgramChange = (index, field, value) => {
+    const updated = [...formData.programs];
+
+    updated[index][field] = value;
+
+    setFormData((prev) => ({
+      ...prev,
+      programs: updated,
+    }));
+  };
+
+  const addProgram = () => {
+    setFormData((prev) => ({
+      ...prev,
+      programs: [
+        ...prev.programs,
+        {
+          title: "",
+          href: "",
+        },
+      ],
+    }));
+  };
+
+  const removeProgram = (index) => {
+    const updated = formData.programs.filter((_, i) => i !== index);
+
+    setFormData((prev) => ({
+      ...prev,
+      programs: updated.length ? updated : [{ title: "", href: "" }],
+    }));
+  };
+
+  // ============================
+  // Validation
+  // ============================
 
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.title.trim()) {
-      newErrors.title = "Title is required";
-    }
-    if (!formData.description.trim()) {
-      newErrors.description = "Description is required";
-    }
-    if (!formData.image) {
-      newErrors.image = "Image is required";
-    }
+    if (!formData.title_One.trim()) newErrors.title_One = "Required";
+
+    if (!formData.title_One_Subtitle.trim())
+      newErrors.title_One_Subtitle = "Required";
+
+    if (!formData.title_Two.trim()) newErrors.title_Two = "Required";
+
+    if (!formData.title_Two_Field.trim())
+      newErrors.title_Two_Field = "Required";
+
+    if (!formData.title_Two_Description.trim())
+      newErrors.title_Two_Description = "Required";
+
+    if (!formData.programHeading.trim()) newErrors.programHeading = "Required";
+
+    if (!formData.image) newErrors.image = "Image is required";
+
+    formData.programs.forEach((item, index) => {
+      if (!item.title.trim()) {
+        newErrors[`program_${index}`] = "Program title is required";
+      }
+    });
 
     setErrors(newErrors);
+
     return Object.keys(newErrors).length === 0;
   };
+
+  // ============================
+  // Submit
+  // ============================
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (validateForm()) {
-      onSubmit(formData);
-    }
+    if (!validateForm()) return;
+
+    onSubmit(formData);
   };
+
+  // ============================
+  // UI
+  // ============================
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Title Field */}
-      <div>
-        <label
-          htmlFor="title"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Title <span className="text-red-600">*</span>
-        </label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-          className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-            errors.title ? "border-red-500" : "border-gray-300"
-          }`}
-          placeholder="Enter hero title"
-        />
-        {errors.title && (
-          <p className="mt-1 text-sm text-red-600">{errors.title}</p>
-        )}
-      </div>
+      {/* Subtitle */}
 
-      {/* Subtitle field */}
-      <div>
-        <label
-          htmlFor="Subtitle"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Sub Title <span className="text-red-600">*</span>
-        </label>
-        <input
-          type="text"
-          id="subtitle"
-          name="subtitle"
-          value={formData.subtitle}
-          onChange={handleChange}
-          className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-            errors.subtitle ? "border-red-500" : "border-gray-300"
-          }`}
-          placeholder="Enter hero subtitle"
-        />
-        {errors.subtitle && (
-          <p className="mt-1 text-sm text-red-600">{errors.subtitle}</p>
-        )}
-      </div>
+      <Input
+        label="Subtitle"
+        name="title_One_Subtitle"
+        value={formData.title_One_Subtitle}
+        onChange={handleChange}
+        error={errors.title_One_Subtitle}
+      />
 
-      {/* Description Field */}
-      <div>
-        <label
-          htmlFor="description"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Description <span className="text-red-600">*</span>
-        </label>
-        <textarea
-          id="description"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          rows={3}
-          className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-            errors.description ? "border-red-500" : "border-gray-300"
-          }`}
-          placeholder="Enter hero description"
-        />
-        {errors.description && (
-          <p className="mt-1 text-sm text-red-600">{errors.description}</p>
-        )}
-      </div>
+      {/* First Title */}
 
-      {/* Image Upload - Using your PhotoUpload component */}
+      <Input
+        label="Title"
+        name="title_One"
+        value={formData.title_One}
+        onChange={handleChange}
+        error={errors.title_One}
+      />
+
+      {/* Main Title */}
+
+      <Input
+        label="Main Title"
+        name="title_Two"
+        value={formData.title_Two}
+        onChange={handleChange}
+        error={errors.title_Two}
+      />
+
+      {/* Highlight */}
+
+      <Input
+        label="Highlighted Word"
+        name="title_Two_Field"
+        value={formData.title_Two_Field}
+        onChange={handleChange}
+        error={errors.title_Two_Field}
+      />
+
+      {/* Title End */}
+
+      <Input
+        label="Title Ending"
+        name="title_Two_Description"
+        value={formData.title_Two_Description}
+        onChange={handleChange}
+        error={errors.title_Two_Description}
+      />
+
+      {/* Image */}
+
       <PhotoUpload
         name="image"
         label="Hero Image"
-        required={true}
+        required
         value={formData.image}
         onChange={handleImageChange}
         error={errors.image}
       />
 
-      {/* CTA Section */}
-      <div className="border-t border-gray-200 pt-4">
-        <h3 className="text-lg font-medium text-gray-900 mb-3">
-          Call to Action (CTA)
-        </h3>
+      {/* CTA */}
 
-        <div className="space-y-4">
-          <div>
-            <label
-              htmlFor="cta.text"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              CTA Text
-            </label>
-            <input
-              type="text"
-              id="cta.text"
-              name="cta.text"
-              value={formData.cta.text}
-              onChange={handleChange}
-              placeholder="e.g., View Factory"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+      <div className="border-t pt-6">
+        <h2 className="font-semibold mb-4">CTA Button</h2>
 
-          <div>
-            <label
-              htmlFor="cta.href"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              CTA Link
-            </label>
-            <input
-              type="text"
-              id="cta.href"
-              name="cta.href"
-              value={formData.cta.href}
-              onChange={handleChange}
-              placeholder="e.g., /factory-machinery"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+        <Input
+          label="Button Text"
+          name="cta.text"
+          value={formData.cta.text}
+          onChange={handleChange}
+        />
+
+        <div className="mt-4">
+          <Input
+            label="Button Link"
+            name="cta.href"
+            value={formData.cta.href}
+            onChange={handleChange}
+          />
         </div>
       </div>
 
-      {/* Form Actions */}
-      <div className="flex justify-end gap-3 pt-4 border-t">
+      {/* Program Heading */}
+
+      <div className="border-t pt-6">
+        <Input
+          label="Program Heading"
+          name="programHeading"
+          value={formData.programHeading}
+          onChange={handleChange}
+          error={errors.programHeading}
+        />
+      </div>
+
+      {/* Programs */}
+
+      <div className="border rounded-lg p-5">
+        <div className="flex justify-between items-center mb-5">
+          <h2 className="font-semibold">Programs</h2>
+
+          <button
+            type="button"
+            onClick={addProgram}
+            className="bg-blue-600 text-white px-3 py-2 rounded"
+          >
+            + Add Program
+          </button>
+        </div>
+
+        {formData.programs.map((program, index) => (
+          <div key={index} className="border rounded-lg p-4 mb-4">
+            <Input
+              label={`Program ${index + 1} Title`}
+              value={program.title}
+              onChange={(e) =>
+                handleProgramChange(index, "title", e.target.value)
+              }
+              error={errors[`program_${index}`]}
+            />
+
+            <div className="mt-4">
+              <Input
+                label="Program Link"
+                value={program.href}
+                onChange={(e) =>
+                  handleProgramChange(index, "href", e.target.value)
+                }
+              />
+            </div>
+
+            <button
+              type="button"
+              onClick={() => removeProgram(index)}
+              className="mt-4 text-red-600 hover:text-red-700"
+            >
+              Remove
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {/* Buttons */}
+
+      <div className="flex justify-end gap-3 pt-6 border-t">
         <button
           type="button"
           onClick={onCancel}
-          className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+          className="px-4 py-2 border rounded-md"
         >
           Cancel
         </button>
+
         <button
           type="submit"
-          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+          className="px-4 py-2 bg-blue-600 text-white rounded-md"
         >
           {initialData ? "Update" : "Create"} Hero
         </button>
       </div>
     </form>
+  );
+}
+
+// =========================================
+
+function Input({ label, error, ...props }) {
+  return (
+    <div>
+      <label className="block text-sm font-medium mb-1">{label}</label>
+
+      <input
+        {...props}
+        className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+          error ? "border-red-500" : "border-gray-300"
+        }`}
+      />
+
+      {error && <p className="text-sm text-red-600 mt-1">{error}</p>}
+    </div>
   );
 }

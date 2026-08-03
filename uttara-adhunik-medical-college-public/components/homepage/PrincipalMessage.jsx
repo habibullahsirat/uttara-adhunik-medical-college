@@ -1,3 +1,5 @@
+import { ArrowRight } from "lucide-react";
+
 function PhotoPlaceholder({ label, className = "" }) {
   return (
     <div

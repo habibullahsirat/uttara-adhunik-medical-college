@@ -98,7 +98,8 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
       programs: [
         ...prev.programs,
         {
-          title: "",
+          programTitle: "",
+          programDescription: "",
           href: "",
         },
       ],
@@ -110,7 +111,15 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
 
     setFormData((prev) => ({
       ...prev,
-      programs: updated.length ? updated : [{ title: "", href: "" }],
+      programs: updated.length
+        ? updated
+        : [
+            {
+              programTitle: "",
+              programDescription: "",
+              href: "",
+            },
+          ],
     }));
   };
 
@@ -121,26 +130,22 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.title_One.trim()) newErrors.title_One = "Required";
+    if (!formData.title.trim()) newErrors.title = "Title is required";
 
-    if (!formData.title_One_Subtitle.trim())
-      newErrors.title_One_Subtitle = "Required";
-
-    if (!formData.title_Two.trim()) newErrors.title_Two = "Required";
-
-    if (!formData.title_Two_Field.trim())
-      newErrors.title_Two_Field = "Required";
-
-    if (!formData.title_Two_Description.trim())
-      newErrors.title_Two_Description = "Required";
+    if (!formData.subtitle.trim()) newErrors.subtitle = "Subtitle is required";
 
     if (!formData.programHeading.trim()) newErrors.programHeading = "Required";
 
     if (!formData.image) newErrors.image = "Image is required";
 
     formData.programs.forEach((item, index) => {
-      if (!item.title.trim()) {
-        newErrors[`program_${index}`] = "Program title is required";
+      if (!item.programTitle.trim()) {
+        newErrors[`programTitle_${index}`] = "Program title is required";
+      }
+
+      if (!item.programDescription.trim()) {
+        newErrors[`programDescription_${index}`] =
+          "Program description is required";
       }
     });
 
@@ -167,54 +172,20 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Subtitle */}
+      <Input
+        label="Title"
+        name="title"
+        value={formData.title}
+        onChange={handleChange}
+        error={errors.title}
+      />
 
       <Input
         label="Subtitle"
-        name="title_One_Subtitle"
-        value={formData.title_One_Subtitle}
+        name="subtitle"
+        value={formData.subtitle}
         onChange={handleChange}
-        error={errors.title_One_Subtitle}
-      />
-
-      {/* First Title */}
-
-      <Input
-        label="Title"
-        name="title_One"
-        value={formData.title_One}
-        onChange={handleChange}
-        error={errors.title_One}
-      />
-
-      {/* Main Title */}
-
-      <Input
-        label="Main Title"
-        name="title_Two"
-        value={formData.title_Two}
-        onChange={handleChange}
-        error={errors.title_Two}
-      />
-
-      {/* Highlight */}
-
-      <Input
-        label="Highlighted Word"
-        name="title_Two_Field"
-        value={formData.title_Two_Field}
-        onChange={handleChange}
-        error={errors.title_Two_Field}
-      />
-
-      {/* Title End */}
-
-      <Input
-        label="Title Ending"
-        name="title_Two_Description"
-        value={formData.title_Two_Description}
-        onChange={handleChange}
-        error={errors.title_Two_Description}
+        error={errors.subtitle}
       />
 
       {/* Image */}
@@ -281,12 +252,27 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
           <div key={index} className="border rounded-lg p-4 mb-4">
             <Input
               label={`Program ${index + 1} Title`}
-              value={program.title}
+              value={program.programTitle}
               onChange={(e) =>
-                handleProgramChange(index, "title", e.target.value)
+                handleProgramChange(index, "programTitle", e.target.value)
               }
-              error={errors[`program_${index}`]}
+              error={errors[`programTitle_${index}`]}
             />
+
+            <div className="mt-4">
+              <Input
+                label="Program Description"
+                value={program.programDescription}
+                onChange={(e) =>
+                  handleProgramChange(
+                    index,
+                    "programDescription",
+                    e.target.value,
+                  )
+                }
+                error={errors[`programDescription_${index}`]}
+              />
+            </div>
 
             <div className="mt-4">
               <Input

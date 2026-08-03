@@ -42,7 +42,7 @@ const heroSectionSchema = new Schema(
       trim: true,
     },
 
-    subtitle: {
+    title_One_Subtitle: {
       type: String,
       required: true,
       trim: true,

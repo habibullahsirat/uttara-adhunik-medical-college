@@ -2,6 +2,9 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 
+const GREEN = "#018837";
+const YELLOW = "#FECD2F";
+
 function PhotoPlaceholder({ label, className = "" }) {
   return (
     <div

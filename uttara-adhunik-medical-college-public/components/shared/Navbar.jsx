@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { AlignJustify, ChevronDown, Menu, Search, X } from "lucide-react";
 import TopBar from "./Topbar";
 
+const GREEN = "#018837";
+const YELLOW = "#FECD2F";
+
 function MainNav() {
   const [open, setOpen] = useState(false);
   const links = [

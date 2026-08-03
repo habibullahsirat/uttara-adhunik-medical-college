@@ -865,119 +865,119 @@ function FooterLinkList({ title, links }) {
   );
 }
 
-function Footer() {
-  return (
-    <footer className="bg-black px-6 md:px-20 pt-16 pb-6">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 pb-12 border-b border-[#242424]">
-        <div className="text-white text-2xl font-light">
-          Subscribe To Newsletter
-        </div>
-        <div className="flex w-full md:w-auto">
-          <input
-            type="email"
-            placeholder="Enter Your mail"
-            className="bg-transparent border py-4 px-5 text-white text-sm flex-1 md:w-72 focus:outline-none"
-            style={{ borderColor: GREEN }}
-          />
-          <button className="bg-white text-[#110C2D] font-medium px-8 py-4 text-sm flex items-center gap-2 shrink-0">
-            Submit Button <ArrowUpRight size={16} />
-          </button>
-        </div>
-      </div>
+// function Footer() {
+//   return (
+//     <footer className="bg-black px-6 md:px-20 pt-16 pb-6">
+//       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 pb-12 border-b border-[#242424]">
+//         <div className="text-white text-2xl font-light">
+//           Subscribe To Newsletter
+//         </div>
+//         <div className="flex w-full md:w-auto">
+//           <input
+//             type="email"
+//             placeholder="Enter Your mail"
+//             className="bg-transparent border py-4 px-5 text-white text-sm flex-1 md:w-72 focus:outline-none"
+//             style={{ borderColor: GREEN }}
+//           />
+//           <button className="bg-white text-[#110C2D] font-medium px-8 py-4 text-sm flex items-center gap-2 shrink-0">
+//             Submit Button <ArrowUpRight size={16} />
+//           </button>
+//         </div>
+//       </div>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 py-12">
-        <div>
-          <div className="flex items-center gap-2 mb-5">
-            <div
-              className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shrink-0"
-              style={{ background: GREEN }}
-            >
-              UA
-            </div>
-            <div className="text-white font-bold leading-tight">
-              Uttara Adhunik
-              <div className="text-xs font-normal text-[#737477]">
-                Medical College (UAMC)
-              </div>
-            </div>
-          </div>
-          <p className="text-[#737477] text-sm leading-relaxed mb-4">
-            We are passionate education dedicated to providing high-quality
-            resources learners all backgrounds.
-          </p>
-          <div className="flex items-center gap-2 text-[#737477] text-sm mb-2">
-            <MapPin size={14} /> Park, Melbourne, Australia
-          </div>
-          <div className="flex items-center gap-2 text-[#737477] text-sm">
-            <Phone size={14} /> 485-826-710
-          </div>
-        </div>
+//       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 py-12">
+//         <div>
+//           <div className="flex items-center gap-2 mb-5">
+//             <div
+//               className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shrink-0"
+//               style={{ background: GREEN }}
+//             >
+//               UA
+//             </div>
+//             <div className="text-white font-bold leading-tight">
+//               Uttara Adhunik
+//               <div className="text-xs font-normal text-[#737477]">
+//                 Medical College (UAMC)
+//               </div>
+//             </div>
+//           </div>
+//           <p className="text-[#737477] text-sm leading-relaxed mb-4">
+//             We are passionate education dedicated to providing high-quality
+//             resources learners all backgrounds.
+//           </p>
+//           <div className="flex items-center gap-2 text-[#737477] text-sm mb-2">
+//             <MapPin size={14} /> Park, Melbourne, Australia
+//           </div>
+//           <div className="flex items-center gap-2 text-[#737477] text-sm">
+//             <Phone size={14} /> 485-826-710
+//           </div>
+//         </div>
 
-        <FooterLinkList
-          title="Our Campus"
-          links={[
-            "Academics",
-            "Athletics",
-            "Campus life",
-            "Research",
-            "Academic Area",
-          ]}
-        />
-        <FooterLinkList
-          title="Our Pages"
-          links={["About", "Tuition Fee", "Faculty Staff", "Event"]}
-        />
+//         <FooterLinkList
+//           title="Our Campus"
+//           links={[
+//             "Academics",
+//             "Athletics",
+//             "Campus life",
+//             "Research",
+//             "Academic Area",
+//           ]}
+//         />
+//         <FooterLinkList
+//           title="Our Pages"
+//           links={["About", "Tuition Fee", "Faculty Staff", "Event"]}
+//         />
 
-        <div>
-          <div className="text-white font-medium text-lg underline mb-6">
-            Recent Posts
-          </div>
-          <div className="flex flex-col gap-5">
-            {RECENT_POSTS.map((post) => (
-              <div key={post.title} className="flex items-center gap-3">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-16 h-14 object-cover shrink-0"
-                />
-                <div>
-                  <div className="flex items-center gap-2 text-[#737477] text-xs mb-1">
-                    <Calendar size={12} /> {post.date}
-                  </div>
-                  <div className="text-white text-sm leading-snug">
-                    {post.title}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+//         <div>
+//           <div className="text-white font-medium text-lg underline mb-6">
+//             Recent Posts
+//           </div>
+//           <div className="flex flex-col gap-5">
+//             {RECENT_POSTS.map((post) => (
+//               <div key={post.title} className="flex items-center gap-3">
+//                 <img
+//                   src={post.image}
+//                   alt={post.title}
+//                   className="w-16 h-14 object-cover shrink-0"
+//                 />
+//                 <div>
+//                   <div className="flex items-center gap-2 text-[#737477] text-xs mb-1">
+//                     <Calendar size={12} /> {post.date}
+//                   </div>
+//                   <div className="text-white text-sm leading-snug">
+//                     {post.title}
+//                   </div>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       </div>
 
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-[#242424] text-sm text-[#737477]">
-        <div>Copyright @ 2024. All Rights Reserved by Univpix</div>
-        {/* <div className="flex items-center gap-4">
-          <Facebook
-            size={16}
-            className="text-[#737477] hover:text-white cursor-pointer"
-          />
-          <Youtube
-            size={16}
-            className="text-[#737477] hover:text-white cursor-pointer"
-          />
-          <Linkedin
-            size={16}
-            className="text-[#737477] hover:text-white cursor-pointer"
-          />
-          <Instagram
-            size={16}
-            className="text-[#737477] hover:text-white cursor-pointer"
-          />
-        </div> */}
-      </div>
-    </footer>
-  );
-}
+//       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-[#242424] text-sm text-[#737477]">
+//         <div>Copyright @ 2024. All Rights Reserved by Univpix</div>
+//         {/* <div className="flex items-center gap-4">
+//           <Facebook
+//             size={16}
+//             className="text-[#737477] hover:text-white cursor-pointer"
+//           />
+//           <Youtube
+//             size={16}
+//             className="text-[#737477] hover:text-white cursor-pointer"
+//           />
+//           <Linkedin
+//             size={16}
+//             className="text-[#737477] hover:text-white cursor-pointer"
+//           />
+//           <Instagram
+//             size={16}
+//             className="text-[#737477] hover:text-white cursor-pointer"
+//           />
+//         </div> */}
+//       </div>
+//     </footer>
+//   );
+// }
 
 /* ------------------------------------------------------------------ */
 /*  Page                                                               */
@@ -997,7 +997,7 @@ export default function Overview() {
       <PrincipalMessage />
       <AdmissionCTA />
       <TestimonialsSection />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

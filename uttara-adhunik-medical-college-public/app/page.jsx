@@ -16,6 +16,7 @@ import {
 
 import Hero from "@/components/homepage/Hero";
 import NoticeAndPublication from "@/components/homepage/NoticeAndPublication";
+import AboutUAMC from "@/components/homepage/AboutUAMC";
 
 const GREEN = "#018837";
 const YELLOW = "#FECD2F";

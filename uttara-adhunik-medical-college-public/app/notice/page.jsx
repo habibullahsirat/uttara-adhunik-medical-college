@@ -448,23 +448,23 @@ function EventGallery() {
 /* ------------------------------------------------------------------ */
 /* Footer                                                               */
 /* ------------------------------------------------------------------ */
-function FooterColumn({ title, items }) {
-  return (
-    <div className="flex flex-col gap-1">
-      <h5 className="text-white text-[18px] font-medium underline underline-offset-4 mb-3">
-        {title}
-      </h5>
-      {items.map((it) => (
-        <span
-          key={it}
-          className="text-[#737477] text-[15px] py-2 hover:text-white transition-colors cursor-pointer"
-        >
-          {it}
-        </span>
-      ))}
-    </div>
-  );
-}
+// function FooterColumn({ title, items }) {
+//   return (
+//     <div className="flex flex-col gap-1">
+//       <h5 className="text-white text-[18px] font-medium underline underline-offset-4 mb-3">
+//         {title}
+//       </h5>
+//       {items.map((it) => (
+//         <span
+//           key={it}
+//           className="text-[#737477] text-[15px] py-2 hover:text-white transition-colors cursor-pointer"
+//         >
+//           {it}
+//         </span>
+//       ))}
+//     </div>
+//   );
+// }
 
 // function Footer() {
 //   return (
@@ -577,14 +577,12 @@ function FooterColumn({ title, items }) {
 export default function News() {
   return (
     <div className="w-full min-h-screen bg-white font-sans">
-      {/* <Navbar /> */}
       <HeroBanner />
       <NewsSection />
       <NoticeBoard />
       <Publication />
       <AlumniEvent />
       <EventGallery />
-      {/* <Footer /> */}
     </div>
   );
 }

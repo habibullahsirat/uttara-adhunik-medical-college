@@ -1072,7 +1072,7 @@ export default function LandingPage() {
       <AlumniEvents />
       <NewsSection />
       <Testimonials />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

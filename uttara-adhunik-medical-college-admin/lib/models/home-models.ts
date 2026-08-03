@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-//Hero Section
+// CTA Button
 const ctaSchema = new Schema(
   {
     text: {
@@ -16,6 +16,24 @@ const ctaSchema = new Schema(
   { _id: false },
 );
 
+// Programs (Right Side List)
+const programSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    href: {
+      type: String,
+      trim: true,
+      default: "#",
+    },
+  },
+  { _id: false },
+);
+
+// Hero Section
 const heroSectionSchema = new Schema(
   {
     title_One: {
@@ -55,12 +73,32 @@ const heroSectionSchema = new Schema(
 
     cta: {
       type: ctaSchema,
+      required: true,
+    },
+
+    // Right Side Heading
+    programHeading: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    // Dynamic List
+    programs: {
+      type: [programSchema],
+      default: [],
     },
   },
   {
     timestamps: true,
   },
 );
+
+// delete mongoose.models.HeroSection;
+
+// export const HeroSection =
+//   mongoose.models.HeroSection ||
+//   mongoose.model("HeroSection", heroSectionSchema);
 
 // //Apart section
 // const ApartSchema = new mongoose.Schema(

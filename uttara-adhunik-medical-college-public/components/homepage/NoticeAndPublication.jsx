@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ArrowRight, Clock } from "lucide-react";
 
+const GREEN = "#018837";
+
 const noticeSample = Array.from({ length: 6 }).map((_, i) => ({
   day: "12",
   month: "Mar 25",

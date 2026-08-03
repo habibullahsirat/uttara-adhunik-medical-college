@@ -1,3 +1,5 @@
+const YELLOW = "#FECD2F";
+
 export default function StatStrip() {
   const stats = [
     { value: "90%", label: "Post-Graduation Success Rate" },

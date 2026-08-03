@@ -17,8 +17,7 @@ import {
 import Hero from "@/components/homepage/Hero";
 import NoticeAndPublication from "@/components/homepage/NoticeAndPublication";
 import AboutUAMC from "@/components/homepage/AboutUAMC";
-import StarStrip from "@/components/homepage/StarStrip";
-StarStrip;
+import StatStrip from "@/components/homepage/StatStrip";
 
 const GREEN = "#018837";
 const YELLOW = "#FECD2F";

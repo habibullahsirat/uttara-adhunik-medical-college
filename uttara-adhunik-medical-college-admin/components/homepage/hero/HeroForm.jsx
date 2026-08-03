@@ -4,9 +4,11 @@ import PhotoUpload from "@/components/ui/PhotoUpload";
 
 export default function HeroForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
-    title: initialData?.title || "",
-    subtitle: initialData?.subtitle || "",
-    description: initialData?.description || "",
+    title_One: initialData?.title_One || "",
+    title_Two: initialData?.title_Two || "",
+    title_Two_Field: initialData?.title_Two_Field || "",
+    title_Two_Description: initialData?.title_Two_Description || "",
+    title_One_Subtitle: initialData?.title_One_Subtitle || "",
     image: initialData?.image || "",
     cta: {
       text: initialData?.cta?.text || "",

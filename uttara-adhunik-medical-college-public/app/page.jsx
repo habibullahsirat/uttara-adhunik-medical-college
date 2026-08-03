@@ -25,7 +25,7 @@ import PrincipalMessage from "@/components/homepage/PrincipalMessage";
 import CampusLife from "@/components/homepage/CampusLife";
 import AlumniEvents from "@/components/homepage/AlumniEvents";
 import NewsSection from "@/components/homepage/NewsSection";
-import Testimonials from "@/components/homepage/Testimonials";Testimonials
+import Testimonials from "@/components/homepage/Testimonials";
 
 const GREEN = "#018837";
 const YELLOW = "#FECD2F";

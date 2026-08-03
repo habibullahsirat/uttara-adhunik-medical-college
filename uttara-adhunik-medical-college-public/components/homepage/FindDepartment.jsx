@@ -1,4 +1,18 @@
-function FindDepartment() {
+import { ArrowRight, Search } from "lucide-react";
+
+function PhotoPlaceholder({ label, className = "" }) {
+  return (
+    <div
+      className={`relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0a3d1f] to-[#018837] ${className}`}
+    >
+      <span className="font-body text-[11px] uppercase tracking-widest text-white/60 text-center px-4">
+        {label}
+      </span>
+    </div>
+  );
+}
+
+export default function FindDepartment() {
   return (
     <section className="flex flex-col lg:flex-row items-center gap-12 px-6 md:px-20 py-16 md:py-24 bg-gradient-to-b from-white to-[#f7f7f7]">
       <div className="flex w-full max-w-2xl flex-col gap-8">

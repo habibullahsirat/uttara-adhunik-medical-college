@@ -16,14 +16,21 @@ const ctaSchema = new Schema(
   { _id: false },
 );
 
-// Programs (Right Side List)
+// Program Item
 const programSchema = new Schema(
   {
-    title: {
+    programTitle: {
       type: String,
       required: true,
       trim: true,
     },
+
+    programDescription: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
     href: {
       type: String,
       trim: true,
@@ -36,31 +43,13 @@ const programSchema = new Schema(
 // Hero Section
 const heroSectionSchema = new Schema(
   {
-    title_One: {
+    title: {
       type: String,
       required: true,
       trim: true,
     },
 
-    title_Two: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-
-    title_Two_Field: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-
-    title_Two_Description: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-
-    title_One_Subtitle: {
+    subtitle: {
       type: String,
       required: true,
       trim: true,
@@ -83,10 +72,9 @@ const heroSectionSchema = new Schema(
       trim: true,
     },
 
-    // Dynamic List
+    // Dynamic Programs
     programs: {
       type: [programSchema],
-      default: [],
     },
   },
   {

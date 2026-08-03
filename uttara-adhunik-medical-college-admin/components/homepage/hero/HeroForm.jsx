@@ -5,11 +5,8 @@ import PhotoUpload from "@/components/ui/PhotoUpload";
 
 export default function HeroForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
-    title_One: initialData?.title_One || "",
-    title_One_Subtitle: initialData?.title_One_Subtitle || "",
-    title_Two: initialData?.title_Two || "",
-    title_Two_Field: initialData?.title_Two_Field || "",
-    title_Two_Description: initialData?.title_Two_Description || "",
+    title: initialData?.title || "",
+    subtitle: initialData?.subtitle || "",
 
     image: initialData?.image || "",
 
@@ -23,7 +20,13 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
     programs:
       initialData?.programs?.length > 0
         ? initialData.programs
-        : [{ title: "", href: "" }],
+        : [
+            {
+              programTitle: "",
+              programDescription: "",
+              href: "",
+            },
+          ],
   });
 
   const [errors, setErrors] = useState({});

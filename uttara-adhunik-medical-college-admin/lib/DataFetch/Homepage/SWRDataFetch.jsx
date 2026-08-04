@@ -59,3 +59,11 @@ export const useFeatureData = () => {
   );
   return { data, error, isLoading: !data && !error, mutate };
 };
+
+export const usePrincipleMessage = () => {
+  const { data, error, mutate } = useSWR(
+    `${API_URL}/api/homepage/principle-message`,
+    fetcher,
+  );
+  return { data, error, isLoading: !data && !error, mutate };
+};

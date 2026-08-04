@@ -269,128 +269,56 @@ const FeatureSchema = new mongoose.Schema(
   },
 );
 
-// //how we work section
-// const WeWorkSchema = new mongoose.Schema({
-//   title: {
-//     type: String,
-//     required: true,
-//     trim: true,
-//   },
-//   description: {
-//     type: String,
-//     required: true,
-//     trim: true,
-//   },
-//   image: {
-//     type: String,
-//     trim: true,
-//   },
-// });
-
-// // Buying House Services
-// const BuyingHouseSchema = new mongoose.Schema({
-//   title: {
-//     type: String,
-//     required: true,
-//     trim: true,
-//   },
-//   description: {
-//     type: String,
-//     required: true,
-//     trim: true,
-//   },
-//   image: {
-//     type: String,
-//     required: true,
-//     trim: true,
-//   },
-// });
-
-// // Catalog Section
-// const catalogCategorySchema = new Schema(
-//   {
-//     id: { type: Number, required: true },
-//     title: { type: String, required: true, trim: true },
-//     description: { type: String, required: true, trim: true },
-//     icon: { type: String, required: true, trim: true },
-//   },
-//   { _id: false },
-// );
-
-// const catalogSchema = new Schema(
-//   {
-//     label: {
-//       type: String,
-//       required: true,
-//       trim: true,
-//     },
-//     heading: {
-//       type: String,
-//       required: true,
-//       trim: true,
-//     },
-//     description: {
-//       type: String,
-//       required: true,
-//       trim: true,
-//     },
-//     cta: {
-//       type: ctaSchema,
-//     },
-//     image: {
-//       type: String,
-//       required: true,
-//       trim: true,
-//     },
-//     categories: [catalogCategorySchema],
-//   },
-//   {
-//     timestamps: true,
-//   },
-// );
-
-// // Services Section
-// const servicesFeatureSchema = new Schema(
-//   {
-//     title: { type: String, required: true, trim: true },
-//     description: { type: String, required: true, trim: true },
-//   },
-//   { _id: false },
-// );
-
-// const servicesSchema = new Schema(
-//   {
-//     title: {
-//       type: String,
-//       required: true,
-//       trim: true,
-//     },
-//     description: {
-//       type: String,
-//       required: true,
-//       trim: true,
-//     },
-//     image: {
-//       type: String,
-//       required: true,
-//       trim: true,
-//     },
-//     imageAlt: {
-//       type: String,
-//       required: false,
-//       trim: true,
-//     },
-//     imagePosition: {
-//       type: String,
-//       enum: ["left", "right"],
-//       default: "left",
-//     },
-//     features: [servicesFeatureSchema],
-//   },
-//   {
-//     timestamps: true,
-//   },
-// );
+// Principle Message
+const PrincipleMessageSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    subtitle: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    principleName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    designation: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    responsibility: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    image1: {
+      type: String,
+      required: true,
+    },
+    image2: {
+      type: String,
+      required: true,
+    },
+    cta: {
+      type: ctaSchema,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
 
 // Prevent mongoose from returning cached models with old schemas during Next.js HMR
 delete mongoose.models.HeroSection;
@@ -400,11 +328,7 @@ delete mongoose.models.AboutSchema;
 delete mongoose.models.FeatureSchema;
 delete mongoose.models.FindDepartmentSchemaLeft;
 delete mongoose.models.FindDepartmentSchemaRight;
-
-// delete mongoose.models.WeWork;
-// delete mongoose.models.BuyingHouse;
-// delete mongoose.models.Catalog;
-// delete mongoose.models.ServicesSection;
+delete mongoose.models.PrincipleMessageSchema;
 
 export const HeroSection =
   mongoose.models.HeroSection ||
@@ -432,13 +356,6 @@ export const FindDepartmentRight =
 export const Feature =
   mongoose.models.Feature || mongoose.model("Feature", FeatureSchema);
 
-// export const WeWork =
-//   mongoose.models.WeWork || mongoose.model("WeWork", WeWorkSchema);
-// export const BuyingHouse =
-//   mongoose.models.BuyingHouse ||
-//   mongoose.model("BuyingHouse", BuyingHouseSchema);
-// export const Catalog =
-//   mongoose.models.Catalog || mongoose.model("Catalog", catalogSchema);
-// export const ServicesSection =
-//   mongoose.models.ServicesSection ||
-//   mongoose.model("ServicesSection", servicesSchema);
+export const PrincipleMessage =
+  mongoose.models.PrincipleMessage ||
+  mongoose.model("PrincipleMessage", PrincipleMessageSchema);

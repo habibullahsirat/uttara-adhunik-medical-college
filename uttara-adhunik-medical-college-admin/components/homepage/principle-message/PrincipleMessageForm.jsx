@@ -219,7 +219,7 @@ export default function PrincipleMessageForm({
           type="submit"
           className="px-4 py-2 bg-blue-600 text-white rounded-md"
         >
-          {initialData ? "Update" : "Create"} Principle's Message
+          {initialData ? "Update" : "Create"} Principle&apos;s Message
         </button>
       </div>
     </form>

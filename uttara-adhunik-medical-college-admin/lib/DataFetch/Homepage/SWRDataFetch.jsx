@@ -35,3 +35,11 @@ export const useAboutData = () => {
   );
   return { data, error, isLoading: !data && !error, mutate };
 };
+
+export const useFeatureData = () => {
+  const { data, error, mutate } = useSWR(
+    `${API_URL}/api/homepage/feature`,
+    fetcher,
+  );
+  return { data, error, isLoading: !data && !error, mutate };
+};

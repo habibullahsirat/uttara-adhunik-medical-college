@@ -162,6 +162,51 @@ const AboutSchema = new Schema({
   },
 });
 
+const FeatureSchema = new mongoose.Schema(
+  {
+    featureName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    image: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    CTA: {
+      text: {
+        type: String,
+        required: true,
+        trim: true,
+      },
+
+      href: {
+        type: String,
+        required: true,
+        trim: true,
+      },
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 // //how we work section
 // const WeWorkSchema = new mongoose.Schema({
 //   title: {
@@ -290,6 +335,8 @@ delete mongoose.models.HeroSection;
 delete mongoose.models.NoticeSection;
 delete mongoose.models.PublicationSection;
 delete mongoose.models.AboutSchema;
+delete mongoose.models.FeatureSchema;
+
 // delete mongoose.models.WeWork;
 // delete mongoose.models.BuyingHouse;
 // delete mongoose.models.Catalog;
@@ -306,6 +353,9 @@ export const PublicationSection =
   mongoose.model("PublicationSection", PublicationSchema);
 export const AboutSection =
   mongoose.models.AboutSection || mongoose.model("AboutSection", AboutSchema);
+export const Feature =
+  mongoose.models.Feature || mongoose.model("Feature", FeatureSchema);
+
 // export const WeWork =
 //   mongoose.models.WeWork || mongoose.model("WeWork", WeWorkSchema);
 // export const BuyingHouse =

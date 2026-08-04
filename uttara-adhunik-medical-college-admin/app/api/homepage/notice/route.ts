@@ -1,5 +1,5 @@
 import { connectToDB } from "@/lib/connectToDB";
-import { NoticeSection } from "@/lib/models/home-models/NoticeSection";
+import { NoticeSection } from "@/lib/models/home-models";
 import { NextResponse } from "next/server";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";

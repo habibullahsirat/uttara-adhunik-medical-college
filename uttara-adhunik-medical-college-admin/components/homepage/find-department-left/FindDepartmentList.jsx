@@ -26,7 +26,7 @@ export default function FindDepartmentList({
     return (
       <div className="text-center py-12 bg-gray-50 rounded-lg">
         <p className="text-gray-500 text-lg">
-          No departmentes found. Add your first department!
+          No departments found. Add your first department!
         </p>
       </div>
     );

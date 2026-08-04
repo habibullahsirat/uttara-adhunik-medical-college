@@ -60,7 +60,7 @@ export const useFeatureData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
-export const usePrincipleMessage = () => {
+export const usePrincipleMessageData = () => {
   const { data, error, mutate } = useSWR(
     `${API_URL}/api/homepage/principle-message`,
     fetcher,

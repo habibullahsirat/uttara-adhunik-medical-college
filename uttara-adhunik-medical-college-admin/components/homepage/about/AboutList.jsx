@@ -2,14 +2,14 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export default function AboutList({ abouts, onEdit, onDelete, isDeleting }) {
+export default function AboutList({ about, onEdit, onDelete, isDeleting }) {
   const [imageErrors, setImageErrors] = useState({});
 
   const handleImageError = (aboutId) => {
     setImageErrors((prev) => ({ ...prev, [aboutId]: true }));
   };
 
-  if (!abouts) {
+  if (!about) {
     return (
       <div className="flex justify-center items-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
@@ -17,7 +17,7 @@ export default function AboutList({ abouts, onEdit, onDelete, isDeleting }) {
     );
   }
 
-  if (abouts.length === 0) {
+  if (about.length === 0) {
     return (
       <div className="text-center py-12 bg-gray-50 rounded-lg">
         <p className="text-gray-500 text-lg">
@@ -29,7 +29,7 @@ export default function AboutList({ abouts, onEdit, onDelete, isDeleting }) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {abouts.map((about) => (
+      {about.map((about) => (
         <div
           key={about._id}
           className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow"
@@ -65,7 +65,7 @@ export default function AboutList({ abouts, onEdit, onDelete, isDeleting }) {
             )}
 
             {/* Cloudinary Badge (optional) */}
-            {about.image?.includes("cloudinary") && (
+            {about.image1?.includes("cloudinary") && (
               <div className="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
                 Cloudinary
               </div>
@@ -103,7 +103,7 @@ export default function AboutList({ abouts, onEdit, onDelete, isDeleting }) {
             )}
 
             {/* Cloudinary Badge (optional) */}
-            {about.image?.includes("cloudinary") && (
+            {about.image2?.includes("cloudinary") && (
               <div className="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
                 Cloudinary
               </div>

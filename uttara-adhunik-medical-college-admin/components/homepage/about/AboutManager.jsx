@@ -7,7 +7,7 @@ import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
 export default function AboutManager() {
-  const { data: abouts, mutate, isLoading } = useAboutData();
+  const { data: about, mutate, isLoading } = useAboutData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingAbout, setEditingAbout] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -103,11 +103,11 @@ export default function AboutManager() {
           <h1 className="text-3xl font-bold text-gray-900">About Management</h1>
           <p className="text-gray-600 mt-1">
             Total About:{" "}
-            <span className="font-semibold">{abouts?.length || 0}</span>
+            <span className="font-semibold">{about?.length || 0}</span>
           </p>
         </div>
 
-        {abouts.length < 1 && (
+        {about.length < 1 && (
           <button
             onClick={handleAdd}
             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors flex items-center gap-2 shadow-sm"

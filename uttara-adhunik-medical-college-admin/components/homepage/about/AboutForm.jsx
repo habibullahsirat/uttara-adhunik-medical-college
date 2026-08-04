@@ -69,21 +69,6 @@ export default function AboutForm({ initialData, onSubmit, onCancel }) {
   };
 
   // ============================
-  // Programs
-  // ============================
-
-  const handleProgramChange = (index, field, value) => {
-    const updated = [...formData.programs];
-
-    updated[index][field] = value;
-
-    setFormData((prev) => ({
-      ...prev,
-      programs: updated,
-    }));
-  };
-
-  // ============================
   // Validation
   // ============================
 
@@ -169,7 +154,7 @@ export default function AboutForm({ initialData, onSubmit, onCancel }) {
 
       {/* Image */}
 
-      <PhotoUpload
+      {/* <PhotoUpload
         name="image1"
         label="Image 1"
         required
@@ -185,6 +170,37 @@ export default function AboutForm({ initialData, onSubmit, onCancel }) {
         value={formData.image2}
         onChange={handleImageChange}
         error={errors.image2}
+      /> */}
+      <PhotoUpload
+        name="image1"
+        value={formData.image1}
+        onChange={(image) => {
+          setFormData((prev) => ({
+            ...prev,
+            image1: image,
+          }));
+
+          setErrors((prev) => ({
+            ...prev,
+            image1: "",
+          }));
+        }}
+      />
+
+      <PhotoUpload
+        name="image2"
+        value={formData.image2}
+        onChange={(image) => {
+          setFormData((prev) => ({
+            ...prev,
+            image2: image,
+          }));
+
+          setErrors((prev) => ({
+            ...prev,
+            image2: "",
+          }));
+        }}
       />
 
       {/* CTA */}

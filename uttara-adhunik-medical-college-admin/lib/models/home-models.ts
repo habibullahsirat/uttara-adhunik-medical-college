@@ -156,7 +156,7 @@ const AboutSchema = new Schema({
     type: String,
     required: true,
   },
-  CTA: {
+  cta: {
     type: ctaSchema,
     required: true,
   },

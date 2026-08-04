@@ -135,7 +135,7 @@ export default function AboutForm({ initialData, onSubmit, onCancel }) {
         }}
       />
 
-      {/* CTA */}
+      {/* CTA
 
       <div className="border-t pt-6">
         <h2 className="font-semibold mb-4">CTA Button</h2>
@@ -155,7 +155,7 @@ export default function AboutForm({ initialData, onSubmit, onCancel }) {
             onChange={handleChange}
           />
         </div>
-      </div>
+      </div> */}
 
       {/* Buttons */}
 
@@ -172,7 +172,7 @@ export default function AboutForm({ initialData, onSubmit, onCancel }) {
           type="submit"
           className="px-4 py-2 bg-blue-600 text-white rounded-md"
         >
-          {initialData ? "Update" : "Create"} About
+          {initialData ? "Update" : "Create"} Department Right Section
         </button>
       </div>
     </form>

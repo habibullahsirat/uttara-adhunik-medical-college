@@ -16,6 +16,7 @@ const ctaSchema = new Schema(
   { _id: false },
 );
 
+//Hero Section
 // Program Item
 const programSchema = new Schema(
   {
@@ -82,35 +83,24 @@ const heroSectionSchema = new Schema(
   },
 );
 
-// delete mongoose.models.HeroSection;
-
-// export const HeroSection =
-//   mongoose.models.HeroSection ||
-//   mongoose.model("HeroSection", heroSectionSchema);
-
-// //Apart section
-// const ApartSchema = new mongoose.Schema(
-//   {
-//     image: {
-//       type: String,
-//       required: true,
-//       trim: true,
-//     },
-//     title: {
-//       type: String,
-//       required: true,
-//       trim: true,
-//     },
-//     description: {
-//       type: String,
-//       required: true,
-//       trim: true,
-//     },
-//   },
-//   {
-//     timestamps: true,
-//   },
-// );
+// Notice Section
+const NoticeSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    noticeType: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
 
 // //how we work section
 // const WeWorkSchema = new mongoose.Schema({
@@ -237,7 +227,7 @@ const heroSectionSchema = new Schema(
 
 // Prevent mongoose from returning cached models with old schemas during Next.js HMR
 delete mongoose.models.HeroSection;
-// delete mongoose.models.Apart;
+delete mongoose.models.NoticeSection;
 // delete mongoose.models.WeWork;
 // delete mongoose.models.BuyingHouse;
 // delete mongoose.models.Catalog;
@@ -246,8 +236,9 @@ delete mongoose.models.HeroSection;
 export const HeroSection =
   mongoose.models.HeroSection ||
   mongoose.model("HeroSection", heroSectionSchema);
-// export const Apart =
-//   mongoose.models.Apart || mongoose.model("Apart", ApartSchema);
+export const NoticeSection =
+  mongoose.models.NoticeSection ||
+  mongoose.model("NoticeSection", NoticeSchema);
 // export const WeWork =
 //   mongoose.models.WeWork || mongoose.model("WeWork", WeWorkSchema);
 // export const BuyingHouse =

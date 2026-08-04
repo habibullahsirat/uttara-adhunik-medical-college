@@ -102,6 +102,25 @@ const NoticeSchema = new mongoose.Schema(
   },
 );
 
+// Publication Section
+const PublicationSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    publicationType: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 // //how we work section
 // const WeWorkSchema = new mongoose.Schema({
 //   title: {
@@ -228,6 +247,7 @@ const NoticeSchema = new mongoose.Schema(
 // Prevent mongoose from returning cached models with old schemas during Next.js HMR
 delete mongoose.models.HeroSection;
 delete mongoose.models.NoticeSection;
+delete mongoose.models.PublicationSection;
 // delete mongoose.models.WeWork;
 // delete mongoose.models.BuyingHouse;
 // delete mongoose.models.Catalog;
@@ -239,6 +259,9 @@ export const HeroSection =
 export const NoticeSection =
   mongoose.models.NoticeSection ||
   mongoose.model("NoticeSection", NoticeSchema);
+export const PublicationSection =
+  mongoose.models.PublicationSection ||
+  mongoose.model("PublicationSection", PublicationSchema);
 // export const WeWork =
 //   mongoose.models.WeWork || mongoose.model("WeWork", WeWorkSchema);
 // export const BuyingHouse =

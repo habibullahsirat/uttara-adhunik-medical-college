@@ -1,35 +1,35 @@
 "use client";
 import { useState } from "react";
-import NoticeList from "./NoticeList";
-import { useNoticeData } from "@/lib/DataFetch/Homepage/SWRDataFetch";
-import NoticeForm from "./NoticeForm";
+import PublicationList from "./PublicationList";
+import { usePublicationData } from "@/lib/DataFetch/Homepage/SWRDataFetch";
+import PublicationForm from "./PublicationForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
-export default function NoticeManager() {
-  const { data: notices, mutate, isLoading } = useNoticeData();
+export default function PublicationManager() {
+  const { data: publications, mutate, isLoading } = usePublicationData();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingNotice, setEditingNotice] = useState(null);
+  const [editingPublication, setEditingPublication] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleAdd = () => {
-    setEditingNotice(null);
+    setEditingPublication(null);
     setIsModalOpen(true);
   };
 
-  const handleEdit = (notice) => {
-    setEditingNotice(notice);
+  const handleEdit = (publication) => {
+    setEditingPublication(publication);
     setIsModalOpen(true);
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this notice?")) return;
+    if (!confirm("Are you sure you want to delete this publication?")) return;
 
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/notice/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/publication/${id}`,
         {
           method: "DELETE",
         },
@@ -37,10 +37,10 @@ export default function NoticeManager() {
 
       if (!response.ok) throw new Error("Failed to delete");
 
-      toast.success("Notice deleted successfully!");
+      toast.success("Publication deleted successfully!");
       mutate(); // Refresh the data
     } catch (error) {
-      toast.error("Failed to delete notice");
+      toast.error("Failed to delete publication");
       console.error("Delete error:", error);
     } finally {
       setIsDeleting(false);
@@ -50,11 +50,11 @@ export default function NoticeManager() {
   const handleSubmit = async (formData) => {
     setIsSubmitting(true);
     try {
-      const url = editingNotice
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/notice/${editingNotice._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/notice`;
+      const url = editingPublication
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/publication/${editingPublication._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/publication`;
 
-      const method = editingNotice ? "PATCH" : "POST";
+      const method = editingPublication ? "PATCH" : "POST";
 
       const response = await fetch(url, {
         method,
@@ -70,14 +70,14 @@ export default function NoticeManager() {
       }
 
       toast.success(
-        editingNotice
-          ? "Notice updated successfully!"
-          : "Notice added successfully!",
+        editingPublication
+          ? "Publication updated successfully!"
+          : "Publication added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
     } catch (error) {
-      toast.error(error.message || "Failed to save notice");
+      toast.error(error.message || "Failed to save Publication");
       console.error("Save error:", error);
     } finally {
       setIsSubmitting(false);
@@ -89,7 +89,7 @@ export default function NoticeManager() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading notices...</p>
+          <p className="text-gray-600">Loading publications...</p>
         </div>
       </div>
     );
@@ -101,11 +101,11 @@ export default function NoticeManager() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">
-            Notice Management
+            Publication Management
           </h1>
           <p className="text-gray-600 mt-1">
-            Total Notices:{" "}
-            <span className="font-semibold">{notices?.length || 0}</span>
+            Total Publications:{" "}
+            <span className="font-semibold">{publications?.length || 0}</span>
           </p>
         </div>
 
@@ -126,13 +126,13 @@ export default function NoticeManager() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          Add New Notice
+          Add New Publication
         </button>
       </div>
 
-      {/* Notice List */}
-      <NoticeList
-        notices={notices}
+      {/* Publication List */}
+      <PublicationList
+        publications={publications}
         onEdit={handleEdit}
         onDelete={handleDelete}
         isDeleting={isDeleting}
@@ -142,10 +142,10 @@ export default function NoticeManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title={editingNotice ? "Edit Notice" : "Add New Notice"}
+        title={editingPublication ? "Edit Publication" : "Add New Publication"}
       >
-        <NoticeForm
-          initialData={editingNotice}
+        <PublicationForm
+          initialData={editingPublication}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}
         />

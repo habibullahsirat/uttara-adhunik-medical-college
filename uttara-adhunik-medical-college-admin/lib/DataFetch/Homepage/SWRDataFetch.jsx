@@ -19,3 +19,11 @@ export const useNoticeData = () => {
   );
   return { data, error, isLoading: !data && !error, mutate };
 };
+
+export const usePublicationData = () => {
+  const { data, error, mutate } = useSWR(
+    `${API_URL}/api/homepage/publication`,
+    fetcher,
+  );
+  return { data, error, isLoading: !data && !error, mutate };
+};

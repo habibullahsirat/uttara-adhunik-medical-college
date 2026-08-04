@@ -122,46 +122,118 @@ const PublicationSchema = new mongoose.Schema(
 );
 
 // About section
-const AboutSchema = new Schema({
-  title: {
-    type: String,
-    required: true,
-    trim: true,
+const AboutSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    subtitle: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    mission: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    vision: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    image1: {
+      type: String,
+      required: true,
+    },
+    image2: {
+      type: String,
+      required: true,
+    },
+    cta: {
+      type: ctaSchema,
+      required: true,
+    },
   },
-  subtitle: {
-    type: String,
-    required: true,
-    trim: true,
+  {
+    timestamps: true,
   },
-  description: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  mission: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  vision: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  image1: {
-    type: String,
-    required: true,
-  },
-  image2: {
-    type: String,
-    required: true,
-  },
-  cta: {
-    type: ctaSchema,
-    required: true,
-  },
-});
+);
 
+// Find Department section
+const FindDepartmentSchemaLeft = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    popularProgramTitle: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    popularSearchTitle: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    image: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    cta: {
+      type: ctaSchema,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
+const FindDepartmentSchemaRight = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    image1: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    image2: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
+// Features Section
 const FeatureSchema = new mongoose.Schema(
   {
     featureName: {
@@ -326,6 +398,8 @@ delete mongoose.models.NoticeSection;
 delete mongoose.models.PublicationSection;
 delete mongoose.models.AboutSchema;
 delete mongoose.models.FeatureSchema;
+delete mongoose.models.FindDepartmentSchemaLeft;
+delete mongoose.models.FindDepartmentSchemaRight;
 
 // delete mongoose.models.WeWork;
 // delete mongoose.models.BuyingHouse;
@@ -335,14 +409,26 @@ delete mongoose.models.FeatureSchema;
 export const HeroSection =
   mongoose.models.HeroSection ||
   mongoose.model("HeroSection", heroSectionSchema);
+
 export const NoticeSection =
   mongoose.models.NoticeSection ||
   mongoose.model("NoticeSection", NoticeSchema);
+
 export const PublicationSection =
   mongoose.models.PublicationSection ||
   mongoose.model("PublicationSection", PublicationSchema);
+
 export const AboutSection =
   mongoose.models.AboutSection || mongoose.model("AboutSection", AboutSchema);
+
+export const FindDepartmentLeft =
+  mongoose.models.FindDepartmentLeft ||
+  mongoose.model("FindDepartmentLeft", FindDepartmentSchemaLeft);
+
+export const FindDepartmentRight =
+  mongoose.models.FindDepartmentRight ||
+  mongoose.model("FindDepartmentRight", FindDepartmentSchemaRight);
+
 export const Feature =
   mongoose.models.Feature || mongoose.model("Feature", FeatureSchema);
 

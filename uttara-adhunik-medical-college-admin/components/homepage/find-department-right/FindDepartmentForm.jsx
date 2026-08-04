@@ -3,7 +3,11 @@
 import { useState } from "react";
 import PhotoUpload from "@/components/ui/PhotoUpload";
 
-export default function AboutForm({ initialData, onSubmit, onCancel }) {
+export default function FindDepartmentForm({
+  initialData,
+  onSubmit,
+  onCancel,
+}) {
   const [formData, setFormData] = useState({
     title: initialData?.title || "",
 

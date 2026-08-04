@@ -1,35 +1,35 @@
 "use client";
 import { useState } from "react";
-import MemberList from "./MemberList";
-import { useMemberData } from "@/lib/DataFetch/SWRDataFetch";
-import MemberForm from "./MemberForm";
+import NoticeList from "./NoticeList";
+import { useNoticeData } from "@/lib/DataFetch/Homepage/SWRDataFetch";
+import NoticeForm from "./MemberForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
-export default function MemberManager() {
-  const { data: member, mutate, isLoading } = useMemberData();
+export default function NoticeManager() {
+  const { data: notices, mutate, isLoading } = useNoticeData();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingMember, setEditingMember] = useState(null);
+  const [editingNotice, setEditingNotice] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleAdd = () => {
-    setEditingMember(null);
+    setEditingNotice(null);
     setIsModalOpen(true);
   };
 
-  const handleEdit = (member) => {
-    setEditingMember(member);
+  const handleEdit = (notice) => {
+    setEditingNotice(notice);
     setIsModalOpen(true);
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this member?")) return;
+    if (!confirm("Are you sure you want to delete this notice?")) return;
 
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/member/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/notice/${id}`,
         {
           method: "DELETE",
         },
@@ -37,10 +37,10 @@ export default function MemberManager() {
 
       if (!response.ok) throw new Error("Failed to delete");
 
-      toast.success("Member deleted successfully!");
+      toast.success("Notice deleted successfully!");
       mutate(); // Refresh the data
     } catch (error) {
-      toast.error("Failed to delete member");
+      toast.error("Failed to delete notice");
       console.error("Delete error:", error);
     } finally {
       setIsDeleting(false);
@@ -50,11 +50,11 @@ export default function MemberManager() {
   const handleSubmit = async (formData) => {
     setIsSubmitting(true);
     try {
-      const url = editingMember
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/member/${editingMember._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/member`;
+      const url = editingNotice
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/notice/${editingNotice._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/notice`;
 
-      const method = editingMember ? "PATCH" : "POST";
+      const method = editingNotice ? "PATCH" : "POST";
 
       const response = await fetch(url, {
         method,
@@ -70,14 +70,14 @@ export default function MemberManager() {
       }
 
       toast.success(
-        editingMember
-          ? "Member updated successfully!"
-          : "Member added successfully!",
+        editingNotice
+          ? "Notice updated successfully!"
+          : "Notice added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
     } catch (error) {
-      toast.error(error.message || "Failed to save member");
+      toast.error(error.message || "Failed to save notice");
       console.error("Save error:", error);
     } finally {
       setIsSubmitting(false);
@@ -89,7 +89,7 @@ export default function MemberManager() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading members...</p>
+          <p className="text-gray-600">Loading notices...</p>
         </div>
       </div>
     );
@@ -101,11 +101,11 @@ export default function MemberManager() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">
-            Member Management
+            Notice Management
           </h1>
           <p className="text-gray-600 mt-1">
-            Total Members:{" "}
-            <span className="font-semibold">{member?.length || 0}</span>
+            Total Notices:{" "}
+            <span className="font-semibold">{Notices?.length || 0}</span>
           </p>
         </div>
 
@@ -126,13 +126,13 @@ export default function MemberManager() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          Add New Member
+          Add New Notice
         </button>
       </div>
 
-      {/* Member List */}
-      <MemberList
-        member={member}
+      {/* Notice List */}
+      <NoticeList
+        notices={notices}
         onEdit={handleEdit}
         onDelete={handleDelete}
         isDeleting={isDeleting}
@@ -142,10 +142,10 @@ export default function MemberManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title={editingMember ? "Edit Member" : "Add New Member"}
+        title={editingNotice ? "Edit Notice" : "Add New Notice"}
       >
-        <MemberForm
-          initialData={editingMember}
+        <NoticeForm
+          initialData={editingNotice}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}
         />

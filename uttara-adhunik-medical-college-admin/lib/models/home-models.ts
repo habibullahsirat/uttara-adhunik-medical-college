@@ -188,18 +188,8 @@ const FeatureSchema = new mongoose.Schema(
       trim: true,
     },
 
-    CTA: {
-      text: {
-        type: String,
-        required: true,
-        trim: true,
-      },
-
-      href: {
-        type: String,
-        required: true,
-        trim: true,
-      },
+    cta: {
+      type: ctaSchema,
     },
   },
   {

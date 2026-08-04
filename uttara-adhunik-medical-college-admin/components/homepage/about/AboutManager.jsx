@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import AboutList from "@/components/homepage/hero/AboutList";
+import AboutList from "@/components/homepage/about/AboutList";
 import { useAboutData } from "@/lib/DataFetch/Homepage/SWRDataFetch";
-import AboutForm from "@/components/homepage/hero/AboutForm";
+import AboutForm from "@/components/homepage/about/AboutForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 

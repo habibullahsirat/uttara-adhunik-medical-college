@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
-import FindDepartmentList from "@/components/homepage/find-department-left/FindDepartmentList";
-import { useFindDepartmentLeftData } from "@/lib/DataFetch/Homepage/SWRDataFetch";
-import FindDepartmentForm from "@/components/homepage/find-department-left/FindDepartmentForm";
+import FindDepartmentList from "@/components/homepage/find-department-right/FindDepartmentList";
+import { useFindDepartmentRightData } from "@/lib/DataFetch/Homepage/SWRDataFetch";
+import FindDepartmentForm from "@/components/homepage/find-department-right/FindDepartmentForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
 export default function FindDepartmentManager() {
-  const { data: department, mutate, isLoading } = useFindDepartmentLeftData();
+  const { data: department, mutate, isLoading } = useFindDepartmentRightData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingDepartment, setEditingDepartment] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -29,7 +29,7 @@ export default function FindDepartmentManager() {
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/find-department-left/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/find-department-right/${id}`,
         {
           method: "DELETE",
         },
@@ -51,8 +51,8 @@ export default function FindDepartmentManager() {
     setIsSubmitting(true);
     try {
       const url = editingDepartment
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/find-department-left/${editingDepartment._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/find-department-left`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/find-department-right/${editingDepartment._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/find-department-right`;
 
       const method = editingDepartment ? "PATCH" : "POST";
 
@@ -89,7 +89,7 @@ export default function FindDepartmentManager() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading department left section...</p>
+          <p className="text-gray-600">Loading department right section...</p>
         </div>
       </div>
     );
@@ -101,10 +101,10 @@ export default function FindDepartmentManager() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">
-            Department Left Section Management
+            Department Right Section Management
           </h1>
           <p className="text-gray-600 mt-1">
-            Total Left Department Sections:{" "}
+            Total Right Department Sections:{" "}
             <span className="font-semibold">{department?.length || 0}</span>
           </p>
         </div>
@@ -126,7 +126,7 @@ export default function FindDepartmentManager() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          Add New Left Department Section
+          Add New Right Department Section
         </button>
       </div>
 

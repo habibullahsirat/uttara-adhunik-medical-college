@@ -27,3 +27,11 @@ export const usePublicationData = () => {
   );
   return { data, error, isLoading: !data && !error, mutate };
 };
+
+export const useAboutData = () => {
+  const { data, error, mutate } = useSWR(
+    `${API_URL}/api/homepage/about`,
+    fetcher,
+  );
+  return { data, error, isLoading: !data && !error, mutate };
+};

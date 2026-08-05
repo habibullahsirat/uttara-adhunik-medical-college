@@ -323,7 +323,7 @@ const PrincipleMessageSchema = new Schema(
 // Alumni Event Section
 const AlumniEventImageSchema = new mongoose.Schema(
   {
-    image1: {
+    image: {
       type: String,
       required: true,
       trim: true,

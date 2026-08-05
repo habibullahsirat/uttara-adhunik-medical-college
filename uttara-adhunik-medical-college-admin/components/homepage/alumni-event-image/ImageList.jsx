@@ -39,7 +39,7 @@ export default function ImageList({ image, onEdit, onDelete, isDeleting }) {
             {!imageErrors[image._id] ? (
               <Image
                 src={image.image}
-                alt={image.title}
+                alt={image._id}
                 fill
                 className="object-cover"
                 onError={() => handleImageError(image._id)}

@@ -83,3 +83,11 @@ export const useAlumniEventData = () => {
   );
   return { data, error, isLoading: !data && !error, mutate };
 };
+
+export const useNewsData = () => {
+  const { data, error, mutate } = useSWR(
+    `${API_URL}/api/homepage/news`,
+    fetcher,
+  );
+  return { data, error, isLoading: !data && !error, mutate };
+};

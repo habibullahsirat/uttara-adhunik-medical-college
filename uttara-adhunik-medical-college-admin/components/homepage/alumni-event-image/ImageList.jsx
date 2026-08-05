@@ -21,7 +21,7 @@ export default function ImageList({ image, onEdit, onDelete, isDeleting }) {
     return (
       <div className="text-center py-12 bg-gray-50 rounded-lg">
         <p className="text-gray-500 text-lg">
-          No imagees found. Add your first image!
+          No images found. Add your first image!
         </p>
       </div>
     );
@@ -74,35 +74,6 @@ export default function ImageList({ image, onEdit, onDelete, isDeleting }) {
 
           {/* Content Section */}
           <div className="p-4">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-1">
-              {image.title}
-            </h3>
-            <p className="text-gray-600 mb-4 line-clamp-2">
-              {image.description}
-            </p>
-
-            {/* CTA Display */}
-            {image.cta && (image.cta.text || image.cta.href) && (
-              <div className="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-100">
-                <p className="text-xs text-gray-500 mb-1">Call to Action:</p>
-                <div className="flex items-center gap-2 text-sm">
-                  {image.cta.text && (
-                    <span className="font-medium text-blue-600">
-                      {image.cta.text}
-                    </span>
-                  )}
-                  {image.cta.href && (
-                    <>
-                      <span className="text-gray-400">→</span>
-                      <span className="text-gray-600 font-mono text-xs">
-                        {image.cta.href}
-                      </span>
-                    </>
-                  )}
-                </div>
-              </div>
-            )}
-
             {/* Metadata */}
             <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
               <span>ID: {image._id.slice(-6)}</span>

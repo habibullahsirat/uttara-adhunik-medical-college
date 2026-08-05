@@ -84,6 +84,14 @@ export const usePrincipleMessageData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
+export const useCampusLifeData = () => {
+  const { data, error, mutate } = useSWR(
+    `${API_URL}/api/homepage/campus-life`,
+    fetcher,
+  );
+  return { data, error, isLoading: !data && !error, mutate };
+};
+
 export const useAlumniEventImageData = () => {
   const { data, error, mutate } = useSWR(
     `${API_URL}/api/homepage/event-image`,

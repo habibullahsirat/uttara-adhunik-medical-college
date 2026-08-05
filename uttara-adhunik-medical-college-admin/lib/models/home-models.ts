@@ -371,6 +371,20 @@ const PrincipleMessageSchema = new Schema(
   },
 );
 
+// Campus Life Section
+const CampusLifeSchema = new mongoose.Schema(
+  {
+    image: {
+      type: String,
+      required: true,
+    },
+    cta: ctaSchema,
+  },
+  {
+    timestamps: true,
+  },
+);
+
 // Alumni Event Section
 const AlumniEventImageSchema = new mongoose.Schema(
   {
@@ -403,6 +417,7 @@ const AlumniEventSchema = new mongoose.Schema(
   },
 );
 
+// News section
 const NewsSchema = new mongoose.Schema(
   {
     title: {
@@ -478,6 +493,7 @@ delete mongoose.models.FindDepartmentSchemaLeft;
 delete mongoose.models.FindDepartmentSchemaRight;
 delete mongoose.models.AdmissionSchema;
 delete mongoose.models.PrincipleMessageSchema;
+delete mongoose.models.CampusLifeSchema;
 delete mongoose.models.AlumniEventImageSchema;
 delete mongoose.models.AlumniEventSchema;
 delete mongoose.models.NewsSchema;
@@ -519,6 +535,10 @@ export const Feature =
 export const PrincipleMessage =
   mongoose.models.PrincipleMessage ||
   mongoose.model("PrincipleMessage", PrincipleMessageSchema);
+
+export const CampusLifeSection =
+  mongoose.models.CampusLifeSection ||
+  mongoose.model("CampusLifeSection", CampusLifeSchema);
 
 export const AlumniEventImage =
   mongoose.models.AlumniEventImage ||

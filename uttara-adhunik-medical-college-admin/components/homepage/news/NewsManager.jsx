@@ -1,35 +1,35 @@
 "use client";
 import { useState } from "react";
-import HeroList from "@/components/homepage/hero/HeroList";
-import { useHeroData } from "@/lib/DataFetch/Homepage/SWRDataFetch";
-import HeroForm from "@/components/homepage/hero/HeroForm";
+import NewsList from "@/components/homepage/news/NewsList";
+import { useNewsData } from "@/lib/DataFetch/Homepage/SWRDataFetch";
+import NewsForm from "@/components/homepage/news/NewsForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
-export default function HeroManager() {
-  const { data: hero, mutate, isLoading } = useHeroData();
+export default function NewsManager() {
+  const { data: news, mutate, isLoading } = useNewsData();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingHero, setEditingHero] = useState(null);
+  const [editingNews, setEditingNews] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleAdd = () => {
-    setEditingHero(null);
+    setEditingNews(null);
     setIsModalOpen(true);
   };
 
-  const handleEdit = (hero) => {
-    setEditingHero(hero);
+  const handleEdit = (news) => {
+    setEditingNews(news);
     setIsModalOpen(true);
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this hero?")) return;
+    if (!confirm("Are you sure you want to delete this news?")) return;
 
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/hero/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/news/${id}`,
         {
           method: "DELETE",
         },
@@ -37,10 +37,10 @@ export default function HeroManager() {
 
       if (!response.ok) throw new Error("Failed to delete");
 
-      toast.success("Hero deleted successfully!");
+      toast.success("news deleted successfully!");
       mutate(); // Refresh the data
     } catch (error) {
-      toast.error("Failed to delete hero");
+      toast.error("Failed to delete news");
       console.error("Delete error:", error);
     } finally {
       setIsDeleting(false);
@@ -50,11 +50,11 @@ export default function HeroManager() {
   const handleSubmit = async (formData) => {
     setIsSubmitting(true);
     try {
-      const url = editingHero
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/hero/${editingHero._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/hero`;
+      const url = editingNews
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/news/${editingNews._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/news`;
 
-      const method = editingHero ? "PATCH" : "POST";
+      const method = editingNews ? "PATCH" : "POST";
 
       const response = await fetch(url, {
         method,
@@ -70,12 +70,12 @@ export default function HeroManager() {
       }
 
       toast.success(
-        editingHero ? "Hero updated successfully!" : "Hero added successfully!",
+        editingNews ? "news updated successfully!" : "news added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
     } catch (error) {
-      toast.error(error.message || "Failed to save hero");
+      toast.error(error.message || "Failed to save news");
       console.error("Save error:", error);
     } finally {
       setIsSubmitting(false);
@@ -87,7 +87,7 @@ export default function HeroManager() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading heroes...</p>
+          <p className="text-gray-600">Loading Newses...</p>
         </div>
       </div>
     );
@@ -98,10 +98,10 @@ export default function HeroManager() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Hero Management</h1>
+          <h1 className="text-3xl font-bold text-gray-900">news Management</h1>
           <p className="text-gray-600 mt-1">
-            Total Heroes:{" "}
-            <span className="font-semibold">{hero?.length || 0}</span>
+            Total News:{" "}
+            <span className="font-semibold">{news?.length || 0}</span>
           </p>
         </div>
 
@@ -122,13 +122,13 @@ export default function HeroManager() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          Add New Hero
+          Add New News
         </button>
       </div>
 
-      {/* Hero List */}
-      <HeroList
-        hero={hero}
+      {/* news List */}
+      <NewsList
+        news={news}
         onEdit={handleEdit}
         onDelete={handleDelete}
         isDeleting={isDeleting}
@@ -138,10 +138,10 @@ export default function HeroManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title={editingHero ? "Edit Hero" : "Add New Hero"}
+        title={editingNews ? "Edit news" : "Add New News"}
       >
-        <HeroForm
-          initialData={editingHero}
+        <NewsForm
+          initialData={editingNews}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}
         />

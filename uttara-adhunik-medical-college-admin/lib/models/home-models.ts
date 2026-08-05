@@ -390,6 +390,7 @@ delete mongoose.models.FindDepartmentSchemaRight;
 delete mongoose.models.PrincipleMessageSchema;
 delete mongoose.models.AlumniEventImageSchema;
 delete mongoose.models.AlumniEventSchema;
+delete mongoose.models.NewsSchema;
 
 export const HeroSection =
   mongoose.models.HeroSection ||
@@ -428,3 +429,6 @@ export const AlumniEventImage =
 export const AlumniEvent =
   mongoose.models.AlumniEvent ||
   mongoose.model("AlumniEvent", AlumniEventSchema);
+
+export const NewsSection =
+  mongoose.models.NewsSection || mongoose.model("NewsSection", NewsSchema);

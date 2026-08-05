@@ -91,3 +91,11 @@ export const useNewsData = () => {
   );
   return { data, error, isLoading: !data && !error, mutate };
 };
+
+export const useFeedbackData = () => {
+  const { data, error, mutate } = useSWR(
+    `${API_URL}/api/homepage/feedback`,
+    fetcher,
+  );
+  return { data, error, isLoading: !data && !error, mutate };
+};

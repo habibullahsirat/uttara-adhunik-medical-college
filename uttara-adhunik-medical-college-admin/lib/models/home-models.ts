@@ -379,6 +379,43 @@ const NewsSchema = new mongoose.Schema(
   },
 );
 
+//Feedback Section
+const feedbackSectionSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    designation: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    review: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    rating: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5,
+    },
+
+    image: {
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 // Prevent mongoose from returning cached models with old schemas during Next.js HMR
 delete mongoose.models.HeroSection;
 delete mongoose.models.NoticeSection;
@@ -391,6 +428,7 @@ delete mongoose.models.PrincipleMessageSchema;
 delete mongoose.models.AlumniEventImageSchema;
 delete mongoose.models.AlumniEventSchema;
 delete mongoose.models.NewsSchema;
+delete mongoose.models.FeedbackSection;
 
 export const HeroSection =
   mongoose.models.HeroSection ||
@@ -432,3 +470,7 @@ export const AlumniEvent =
 
 export const NewsSection =
   mongoose.models.NewsSection || mongoose.model("NewsSection", NewsSchema);
+
+export const FeedbackSection =
+  mongoose.models.FeedbackSection ||
+  mongoose.model("FeedbackSection", feedbackSectionSchema);

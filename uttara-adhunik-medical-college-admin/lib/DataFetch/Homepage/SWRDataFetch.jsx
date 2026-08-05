@@ -36,6 +36,14 @@ export const useAboutData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
+export const useStatData = () => {
+  const { data, error, mutate } = useSWR(
+    `${API_URL}/api/homepage/stat`,
+    fetcher,
+  );
+  return { data, error, isLoading: !data && !error, mutate };
+};
+
 export const useFindDepartmentLeftData = () => {
   const { data, error, mutate } = useSWR(
     `${API_URL}/api/homepage/find-department-left`,

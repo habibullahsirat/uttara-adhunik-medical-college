@@ -167,6 +167,34 @@ const AboutSchema = new Schema(
   },
 );
 
+//Statistics Section
+const StatSchema = new mongoose.Schema(
+  {
+    stat1: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    stat2: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    stat3: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    image: {
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 // Find Department section
 const FindDepartmentSchemaLeft = new mongoose.Schema(
   {
@@ -421,6 +449,7 @@ delete mongoose.models.HeroSection;
 delete mongoose.models.NoticeSection;
 delete mongoose.models.PublicationSection;
 delete mongoose.models.AboutSchema;
+delete mongoose.models.StatSchema;
 delete mongoose.models.FeatureSchema;
 delete mongoose.models.FindDepartmentSchemaLeft;
 delete mongoose.models.FindDepartmentSchemaRight;
@@ -444,6 +473,9 @@ export const PublicationSection =
 
 export const AboutSection =
   mongoose.models.AboutSection || mongoose.model("AboutSection", AboutSchema);
+
+export const StatSection =
+  mongoose.models.StatSection || mongoose.model("StatSection", StatSchema);
 
 export const FindDepartmentLeft =
   mongoose.models.FindDepartmentLeft ||

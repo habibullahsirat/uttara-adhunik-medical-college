@@ -1,0 +1,154 @@
+"use client";
+
+import { useState } from "react";
+import PhotoUpload from "@/components/ui/PhotoUpload";
+
+export default function StatForm({ initialData, onSubmit, onCancel }) {
+  const [formData, setFormData] = useState({
+    stat1: initialData?.stat1 || "",
+    stat2: initialData?.stat2 || "",
+    stat3: initialData?.stat3 || "",
+    image: initialData?.image || "",
+  });
+
+  const [errors, setErrors] = useState({});
+
+  // ============================
+  // Normal Fields
+  // ============================
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+    }));
+  };
+
+  // ============================
+  // Image
+  // ============================
+
+  const handleImageChange = (image) => {
+    setFormData((prev) => ({
+      ...prev,
+      image,
+    }));
+
+    setErrors((prev) => ({
+      ...prev,
+      image: "",
+    }));
+  };
+
+  // ============================
+  // Validation
+  // ============================
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.stat1.trim()) newErrors.stat1 = "Stat 1 is required";
+    if (!formData.stat2.trim()) newErrors.stat2 = "Stat 2 is required";
+    if (!formData.stat3.trim()) newErrors.stat3 = "Stat 3 is required";
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // ============================
+  // Submit
+  // ============================
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+
+    onSubmit(formData);
+  };
+
+  // ============================
+  // UI
+  // ============================
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <Input
+        label="Stat 1"
+        name="stat1"
+        value={formData.stat1}
+        onChange={handleChange}
+        error={errors.title}
+      />
+
+      <Input
+        label="Stat 2"
+        name="stat2"
+        value={formData.stat2}
+        onChange={handleChange}
+        error={errors.title}
+      />
+
+      <Input
+        label="Stat 3"
+        name="stat3"
+        value={formData.stat3}
+        onChange={handleChange}
+        error={errors.title}
+      />
+
+      {/* Image */}
+
+      <PhotoUpload
+        name="image"
+        label="Stat background Image"
+        required
+        value={formData.image}
+        onChange={handleImageChange}
+        error={errors.image}
+      />
+
+      {/* Buttons */}
+
+      <div className="flex justify-end gap-3 pt-6 border-t">
+        <button
+          type="button"
+          onClick={onCancel}
+          className="px-4 py-2 border rounded-md"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          className="px-4 py-2 bg-blue-600 text-white rounded-md"
+        >
+          {initialData ? "Update" : "Create"} News
+        </button>
+      </div>
+    </form>
+  );
+}
+
+function Input({ label, error, ...props }) {
+  return (
+    <div>
+      <input
+        {...props}
+        className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+          error ? "border-red-500" : "border-gray-300"
+        }`}
+      />
+
+      {error && <p className="text-sm text-red-600 mt-1">{error}</p>}
+    </div>
+  );
+}

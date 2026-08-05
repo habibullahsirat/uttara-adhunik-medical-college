@@ -60,6 +60,14 @@ export const useFindDepartmentRightData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
+export const useAdmissionData = () => {
+  const { data, error, mutate } = useSWR(
+    `${API_URL}/api/homepage/admission`,
+    fetcher,
+  );
+  return { data, error, isLoading: !data && !error, mutate };
+};
+
 export const useFeatureData = () => {
   const { data, error, mutate } = useSWR(
     `${API_URL}/api/homepage/feature`,

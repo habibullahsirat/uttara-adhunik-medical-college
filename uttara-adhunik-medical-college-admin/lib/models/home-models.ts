@@ -261,6 +261,29 @@ const FindDepartmentSchemaRight = new mongoose.Schema(
   },
 );
 
+// Admission
+const AdmissionSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    image: {
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 // Features Section
 const FeatureSchema = new mongoose.Schema(
   {
@@ -453,6 +476,7 @@ delete mongoose.models.StatSchema;
 delete mongoose.models.FeatureSchema;
 delete mongoose.models.FindDepartmentSchemaLeft;
 delete mongoose.models.FindDepartmentSchemaRight;
+delete mongoose.models.AdmissionSchema;
 delete mongoose.models.PrincipleMessageSchema;
 delete mongoose.models.AlumniEventImageSchema;
 delete mongoose.models.AlumniEventSchema;
@@ -484,6 +508,10 @@ export const FindDepartmentLeft =
 export const FindDepartmentRight =
   mongoose.models.FindDepartmentRight ||
   mongoose.model("FindDepartmentRight", FindDepartmentSchemaRight);
+
+export const AdmissionSection =
+  mongoose.models.AdmissionSection ||
+  mongoose.model("AdmissionSection", AdmissionSchema);
 
 export const Feature =
   mongoose.models.Feature || mongoose.model("Feature", FeatureSchema);

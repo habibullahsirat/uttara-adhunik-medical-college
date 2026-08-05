@@ -26,7 +26,7 @@ export default function AdmissionList({
     return (
       <div className="text-center py-12 bg-gray-50 rounded-lg">
         <p className="text-gray-500 text-lg">
-          No admissiones found. Add your first admission!
+          No admission found. Add your first admission.
         </p>
       </div>
     );

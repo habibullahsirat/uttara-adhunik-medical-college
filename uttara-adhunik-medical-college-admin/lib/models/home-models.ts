@@ -320,6 +320,38 @@ const PrincipleMessageSchema = new Schema(
   },
 );
 
+// Alumni Event Section
+const AlumniEventImageSchema = new mongoose.Schema(
+  {
+    image1: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
+const AlumniEventSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    location: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 // Prevent mongoose from returning cached models with old schemas during Next.js HMR
 delete mongoose.models.HeroSection;
 delete mongoose.models.NoticeSection;
@@ -329,6 +361,8 @@ delete mongoose.models.FeatureSchema;
 delete mongoose.models.FindDepartmentSchemaLeft;
 delete mongoose.models.FindDepartmentSchemaRight;
 delete mongoose.models.PrincipleMessageSchema;
+delete mongoose.models.AlumniEventImageSchema;
+delete mongoose.models.AlumniEventSchema;
 
 export const HeroSection =
   mongoose.models.HeroSection ||
@@ -359,3 +393,11 @@ export const Feature =
 export const PrincipleMessage =
   mongoose.models.PrincipleMessage ||
   mongoose.model("PrincipleMessage", PrincipleMessageSchema);
+
+export const AlumniEventImage =
+  mongoose.models.AlumniEventImage ||
+  mongoose.model("AlumniEventImage", AlumniEventImageSchema);
+
+export const AlumniEvent =
+  mongoose.models.AlumniEvent ||
+  mongoose.model("AlumniEvent", AlumniEventSchema);

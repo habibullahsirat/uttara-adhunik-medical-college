@@ -2,14 +2,14 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export default function StatList({ news, onEdit, onDelete, isDeleting }) {
+export default function StatList({ stat, onEdit, onDelete, isDeleting }) {
   const [imageErrors, setImageErrors] = useState({});
 
-  const handleImageError = (newsId) => {
-    setImageErrors((prev) => ({ ...prev, [newsId]: true }));
+  const handleImageError = (statId) => {
+    setImageErrors((prev) => ({ ...prev, [statId]: true }));
   };
 
-  if (!news) {
+  if (!stat) {
     return (
       <div className="flex justify-center items-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
@@ -17,11 +17,11 @@ export default function StatList({ news, onEdit, onDelete, isDeleting }) {
     );
   }
 
-  if (news.length === 0) {
+  if (stat.length === 0) {
     return (
       <div className="text-center py-12 bg-gray-50 rounded-lg">
         <p className="text-gray-500 text-lg">
-          No news found. Add your first news!
+          No data found. Add your first data.
         </p>
       </div>
     );
@@ -29,20 +29,20 @@ export default function StatList({ news, onEdit, onDelete, isDeleting }) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {news.map((news) => (
+      {stat.map((stat) => (
         <div
-          key={news._id}
+          key={stat._id}
           className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow"
         >
           {/* Image Section */}
           <div className="relative h-48 w-full bg-gray-100">
-            {!imageErrors[news._id] ? (
+            {!imageErrors[stat._id] ? (
               <Image
-                src={news.image}
-                alt={news.title}
+                src={stat.image}
+                alt={stat.stat1}
                 fill
                 className="object-cover"
-                onError={() => handleImageError(news._id)}
+                onError={() => handleImageError(stat._id)}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             ) : (
@@ -65,7 +65,7 @@ export default function StatList({ news, onEdit, onDelete, isDeleting }) {
             )}
 
             {/* Cloudinary Badge (optional) */}
-            {news.image?.includes("cloudinary") && (
+            {stat.image?.includes("cloudinary") && (
               <div className="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
                 Cloudinary
               </div>
@@ -75,24 +75,24 @@ export default function StatList({ news, onEdit, onDelete, isDeleting }) {
           {/* Content Section */}
           <div className="p-4">
             <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-1">
-              {news.title}
+              {stat.title}
             </h3>
-            <p className="text-gray-600 mb-4 line-clamp-2">
-              {news.description}
-            </p>
+            <p className="text-gray-600 mb-4 line-clamp-2">{stat.stat1}</p>
+            <p className="text-gray-600 mb-4 line-clamp-2">{stat.stat2}</p>
+            <p className="text-gray-600 mb-4 line-clamp-2">{stat.stat3}</p>
 
             {/* Metadata */}
             <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
-              <span>ID: {news._id.slice(-6)}</span>
+              <span>ID: {stat._id.slice(-6)}</span>
               <span>
-                Updated: {new Date(news.updatedAt).toLocaleDateString()}
+                Updated: {new Date(stat.updatedAt).toLocaleDateString()}
               </span>
             </div>
 
             {/* Action Buttons */}
             <div className="flex justify-end gap-2 mt-4 pt-3 border-t border-gray-100">
               <button
-                onClick={() => onEdit(news)}
+                onClick={() => onEdit(stat)}
                 className="px-3 py-1.5 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-colors flex items-center gap-1 text-sm"
               >
                 <svg
@@ -111,7 +111,7 @@ export default function StatList({ news, onEdit, onDelete, isDeleting }) {
                 Edit
               </button>
               <button
-                onClick={() => onDelete(news._id)}
+                onClick={() => onDelete(stat._id)}
                 disabled={isDeleting}
                 className="px-3 py-1.5 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors flex items-center gap-1 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >

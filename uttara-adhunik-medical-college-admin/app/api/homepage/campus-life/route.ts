@@ -6,8 +6,8 @@ const PUBLIC_URL = process.env.PUBLIC_URL || "";
 
 export async function GET() {
   await connectToDB();
-  const hero = await CampusLifeSection.find();
-  const response = NextResponse.json(hero);
+  const campus = await CampusLifeSection.find();
+  const response = NextResponse.json(campus);
   // response.headers.set("Access-Control-Allow-Origin", "*");
   response.headers.set("Access-Control-Allow-Origin", PUBLIC_URL);
   return response;

@@ -55,9 +55,9 @@ export default function VisionManager() {
   const handleSubmit = async (formData) => {
     setIsSubmitting(true);
     try {
-      const url = editingHero
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/hero/${editingHero._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/homepage/hero`;
+      const url = editingVision
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/about/vision-and-mission/${editingVision._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/about/vision-and-mission`;
 
       const method = editingHero ? "PATCH" : "POST";
 

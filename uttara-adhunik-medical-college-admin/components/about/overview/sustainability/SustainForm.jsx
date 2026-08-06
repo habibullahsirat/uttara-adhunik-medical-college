@@ -3,7 +3,7 @@
 import { useState } from "react";
 import PhotoUpload from "@/components/ui/PhotoUpload";
 
-export default function AdmissionAidForm({ initialData, onSubmit, onCancel }) {
+export default function SustainForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     title: initialData?.title || "",
     description: initialData?.description || "",

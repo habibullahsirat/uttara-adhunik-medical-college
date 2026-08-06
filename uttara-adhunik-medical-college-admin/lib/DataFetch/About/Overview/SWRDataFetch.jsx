@@ -36,14 +36,6 @@ export const useSustainabilityData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
-export const useHistoryData = () => {
-  const { data, error, mutate } = useSWR(
-    `${API_URL}/api/about/overview/history`,
-    fetcher,
-  );
-  return { data, error, isLoading: !data && !error, mutate };
-};
-
 // Other page
 export const usePublicationData = () => {
   const { data, error, mutate } = useSWR(

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import PhotoUpload from "@/components/ui/PhotoUpload";
 
 export default function VisitForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({

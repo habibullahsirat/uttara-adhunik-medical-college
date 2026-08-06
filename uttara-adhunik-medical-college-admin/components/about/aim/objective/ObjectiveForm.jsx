@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function ObjectiveForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
-    title: initialData?.title1 || "",
+    title: initialData?.title || "",
     description1: initialData?.description1 || "",
     description2: initialData?.description2 || "",
   });

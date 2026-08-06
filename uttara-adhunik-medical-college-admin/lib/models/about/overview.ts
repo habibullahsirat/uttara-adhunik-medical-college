@@ -35,7 +35,7 @@ const heroSectionSchema = new Schema(
   },
 );
 
-// Notice Section
+// Visit Section
 const VisitSchema = new mongoose.Schema(
   {
     title: {
@@ -60,6 +60,52 @@ const VisitSchema = new mongoose.Schema(
     },
     cta: {
       title: ctaSchema,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
+// Admission & Aid Section
+const AdmissionAidSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    step1: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    step2: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    step3: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    image1: {
+      type: String,
+      required: true,
+    },
+    image2: {
+      type: String,
+      required: true,
+    },
+    image3: {
+      type: String,
+      required: true,
     },
   },
   {
@@ -450,6 +496,9 @@ const feedbackSectionSchema = new Schema(
 // Prevent mongoose from returning cached models with old schemas during Next.js HMR
 delete mongoose.models.AboutOverviewHeroSection;
 delete mongoose.models.VisitSection;
+delete mongoose.models.AdmissionAidSchema;
+
+// Other page
 delete mongoose.models.PublicationSection;
 delete mongoose.models.AboutSchema;
 delete mongoose.models.StatSchema;
@@ -471,6 +520,11 @@ export const AboutOverviewHeroSection =
 export const VisitSection =
   mongoose.models.VisitSection || mongoose.model("VisitSection", VisitSchema);
 
+export const AdmissionAidSection =
+  mongoose.models.AdmissionAidSection ||
+  mongoose.model("AdmissionAidSection", AdmissionAidSchema);
+
+// Other page
 export const PublicationSection =
   mongoose.models.PublicationSection ||
   mongoose.model("PublicationSection", PublicationSchema);

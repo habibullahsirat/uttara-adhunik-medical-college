@@ -20,6 +20,15 @@ export const useVisitData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
+export const useAdmissionAidData = () => {
+  const { data, error, mutate } = useSWR(
+    `${API_URL}/api/about/overview/admission-aid`,
+    fetcher,
+  );
+  return { data, error, isLoading: !data && !error, mutate };
+};
+
+// Other page
 export const usePublicationData = () => {
   const { data, error, mutate } = useSWR(
     `${API_URL}/api/homepage/publication`,

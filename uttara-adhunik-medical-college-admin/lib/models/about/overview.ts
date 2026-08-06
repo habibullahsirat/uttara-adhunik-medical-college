@@ -113,6 +113,27 @@ const AdmissionAidSchema = new Schema(
   },
 );
 
+// Sustainability Section
+const SustainabilitySchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    description: { type: String, required: true, trim: true },
+    feature1: { type: String, required: true, trim: true },
+    feature2: { type: String, required: true, trim: true },
+    feature3: { type: String, required: true, trim: true },
+    image1: {
+      type: String,
+      required: true,
+    },
+    image2: { type: String, required: true },
+  },
+  { timestamps: true },
+);
+
 // Publication Section
 const PublicationSchema = new mongoose.Schema(
   {
@@ -497,6 +518,7 @@ const feedbackSectionSchema = new Schema(
 delete mongoose.models.AboutOverviewHeroSection;
 delete mongoose.models.VisitSection;
 delete mongoose.models.AdmissionAidSchema;
+delete mongoose.models.SustainabilitySchema;
 
 // Other page
 delete mongoose.models.PublicationSection;
@@ -523,6 +545,10 @@ export const VisitSection =
 export const AdmissionAidSection =
   mongoose.models.AdmissionAidSection ||
   mongoose.model("AdmissionAidSection", AdmissionAidSchema);
+
+export const SustainabilitySection =
+  mongoose.models.SustainabilitySection ||
+  mongoose.model("SustainabilitySection", SustainabilitySchema);
 
 // Other page
 export const PublicationSection =

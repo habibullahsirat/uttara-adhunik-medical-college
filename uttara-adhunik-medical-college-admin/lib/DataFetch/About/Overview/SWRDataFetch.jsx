@@ -12,9 +12,9 @@ export const useHeroData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
-export const useNoticeData = () => {
+export const useVisitData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/homepage/notice`,
+    `${API_URL}/api/about/overview/visit`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

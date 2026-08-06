@@ -17,8 +17,6 @@ const ctaSchema = new Schema(
 );
 
 //Hero Section
-
-// Hero Section
 const heroSectionSchema = new Schema(
   {
     title: {
@@ -38,17 +36,30 @@ const heroSectionSchema = new Schema(
 );
 
 // Notice Section
-const NoticeSchema = new mongoose.Schema(
+const VisitSchema = new mongoose.Schema(
   {
     title: {
       type: String,
       required: true,
       trim: true,
     },
-    noticeType: {
+    description: {
       type: String,
       required: true,
       trim: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    phoneTitle: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    cta: {
+      title: ctaSchema,
     },
   },
   {
@@ -438,7 +449,7 @@ const feedbackSectionSchema = new Schema(
 
 // Prevent mongoose from returning cached models with old schemas during Next.js HMR
 delete mongoose.models.AboutOverviewHeroSection;
-delete mongoose.models.NoticeSection;
+delete mongoose.models.VisitSection;
 delete mongoose.models.PublicationSection;
 delete mongoose.models.AboutSchema;
 delete mongoose.models.StatSchema;
@@ -457,9 +468,8 @@ export const AboutOverviewHeroSection =
   mongoose.models.AboutOverviewHeroSection ||
   mongoose.model("AboutOverviewHeroSection", heroSectionSchema);
 
-export const NoticeSection =
-  mongoose.models.NoticeSection ||
-  mongoose.model("NoticeSection", NoticeSchema);
+export const VisitSection =
+  mongoose.models.VisitSection || mongoose.model("VisitSection", VisitSchema);
 
 export const PublicationSection =
   mongoose.models.PublicationSection ||

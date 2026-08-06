@@ -6,7 +6,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const useHeroData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/homepage/hero`,
+    `${API_URL}/api/about/overview/hero`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

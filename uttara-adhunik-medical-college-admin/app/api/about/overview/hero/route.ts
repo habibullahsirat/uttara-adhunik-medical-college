@@ -1,5 +1,5 @@
 import { connectToDB } from "@/lib/connectToDB";
-import { HeroSection } from "@/lib/models/about/overview";
+import { AboutOverviewHeroSection } from "@/lib/models/about/overview";
 import { NextResponse } from "next/server";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
 
     // Connect to the database
     await connectToDB();
-    await HeroSection.create(data);
+    await AboutOverviewHeroSection.create(data);
     return NextResponse.json({ message: "Data created" }, { status: 201 });
   } catch (error) {
     console.error("Error creating data:", error);

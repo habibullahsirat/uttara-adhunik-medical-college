@@ -437,7 +437,7 @@ const feedbackSectionSchema = new Schema(
 );
 
 // Prevent mongoose from returning cached models with old schemas during Next.js HMR
-delete mongoose.models.HeroSection;
+delete mongoose.models.AboutOverviewHeroSection;
 delete mongoose.models.NoticeSection;
 delete mongoose.models.PublicationSection;
 delete mongoose.models.AboutSchema;
@@ -453,9 +453,9 @@ delete mongoose.models.AlumniEventSchema;
 delete mongoose.models.NewsSchema;
 delete mongoose.models.FeedbackSection;
 
-export const HeroSection =
-  mongoose.models.HeroSection ||
-  mongoose.model("HeroSection", heroSectionSchema);
+export const AboutOverviewHeroSection =
+  mongoose.models.AboutOverviewHeroSection ||
+  mongoose.model("AboutOverviewHeroSection", heroSectionSchema);
 
 export const NoticeSection =
   mongoose.models.NoticeSection ||

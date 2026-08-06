@@ -17,29 +17,6 @@ const ctaSchema = new Schema(
 );
 
 //Hero Section
-// Program Item
-const programSchema = new Schema(
-  {
-    programTitle: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-
-    programDescription: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-
-    href: {
-      type: String,
-      trim: true,
-      default: "#",
-    },
-  },
-  { _id: false },
-);
 
 // Hero Section
 const heroSectionSchema = new Schema(
@@ -50,32 +27,9 @@ const heroSectionSchema = new Schema(
       trim: true,
     },
 
-    subtitle: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-
     image: {
       type: String,
       required: true,
-    },
-
-    cta: {
-      type: ctaSchema,
-      required: true,
-    },
-
-    // Right Side Heading
-    programHeading: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-
-    // Dynamic Programs
-    programs: {
-      type: [programSchema],
     },
   },
   {

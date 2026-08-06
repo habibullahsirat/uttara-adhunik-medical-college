@@ -1,35 +1,35 @@
 "use client";
 import { useState } from "react";
-import BannerList from "@/components/about/aim/banner/BannerList";
-import { useBannerData } from "@/lib/DataFetch/About/Aim/SWRDataFetch";
-import BannerForm from "@/components/about/aim/banner/BannerForm";
+import ObjectiveList from "@/components/about/aim/objective/ObjectiveList";
+import { useObjectiveData } from "@/lib/DataFetch/About/Aim/SWRDataFetch";
+import ObjectiveForm from "@/components/about/aim/objective/ObjectiveForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
-export default function BannerManager() {
-  const { data: banner, mutate, isLoading } = useBannerData();
+export default function ObjectiveManager() {
+  const { data: objective, mutate, isLoading } = useObjectiveData();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingBanner, setEditingBanner] = useState(null);
+  const [editingObjective, setEditingObjective] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleAdd = () => {
-    setEditingBanner(null);
+    setEditingObjective(null);
     setIsModalOpen(true);
   };
 
-  const handleEdit = (banner) => {
-    setEditingBanner(banner);
+  const handleEdit = (objective) => {
+    setEditingObjective(objective);
     setIsModalOpen(true);
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this banner?")) return;
+    if (!confirm("Are you sure you want to delete this objective?")) return;
 
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/about/aim/banner/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/about/aim/objective/${id}`,
         {
           method: "DELETE",
         },
@@ -37,10 +37,10 @@ export default function BannerManager() {
 
       if (!response.ok) throw new Error("Failed to delete");
 
-      toast.success("Banner deleted successfully!");
+      toast.success("Objective deleted successfully!");
       mutate(); // Refresh the data
     } catch (error) {
-      toast.error("Failed to delete banner");
+      toast.error("Failed to delete objective");
       console.error("Delete error:", error);
     } finally {
       setIsDeleting(false);
@@ -50,11 +50,11 @@ export default function BannerManager() {
   const handleSubmit = async (formData) => {
     setIsSubmitting(true);
     try {
-      const url = editingBanner
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/about/aim/banner/${editingBanner._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/about/aim/banner`;
+      const url = editingObjective
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/about/aim/objective/${editingObjective._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/about/aim/objective`;
 
-      const method = editingBanner ? "PATCH" : "POST";
+      const method = editingObjective ? "PATCH" : "POST";
 
       const response = await fetch(url, {
         method,
@@ -70,14 +70,14 @@ export default function BannerManager() {
       }
 
       toast.success(
-        editingBanner
-          ? "Banner updated successfully!"
-          : "Banner added successfully!",
+        editingObjective
+          ? "Objective updated successfully!"
+          : "Objective added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
     } catch (error) {
-      toast.error(error.message || "Failed to save banner");
+      toast.error(error.message || "Failed to save objective");
       console.error("Save error:", error);
     } finally {
       setIsSubmitting(false);
@@ -89,7 +89,7 @@ export default function BannerManager() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading Banner...</p>
+          <p className="text-gray-600">Loading Objective...</p>
         </div>
       </div>
     );
@@ -101,11 +101,11 @@ export default function BannerManager() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">
-            Banner Management
+            Objective Management
           </h1>
           <p className="text-gray-600 mt-1">
-            Total Banners:{" "}
-            <span className="font-semibold">{banner?.length || 0}</span>
+            Total Objectives:{" "}
+            <span className="font-semibold">{objective?.length || 0}</span>
           </p>
         </div>
 
@@ -126,13 +126,13 @@ export default function BannerManager() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          Add New Banner
+          Add New Objective
         </button>
       </div>
 
-      {/* Banner List */}
-      <BannerList
-        banner={banner}
+      {/* Objective List */}
+      <ObjectiveList
+        objective={objective}
         onEdit={handleEdit}
         onDelete={handleDelete}
         isDeleting={isDeleting}
@@ -142,10 +142,10 @@ export default function BannerManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title={editingBanner ? "Edit Banner" : "Add New Banner"}
+        title={editingObjective ? "Edit Objective" : "Add New Objective"}
       >
-        <BannerForm
-          initialData={editingBanner}
+        <ObjectiveForm
+          initialData={editingObjective}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}
         />

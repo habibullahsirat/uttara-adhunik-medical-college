@@ -54,24 +54,13 @@ export default function BannerForm({ initialData, onSubmit, onCancel }) {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.title.trim()) newErrors.title = "Title is required";
+    if (!formData.title1.trim()) newErrors.title1 = "Title 1 is required";
+    if (!formData.title2.trim()) newErrors.title2 = "Title 2 is required";
 
-    if (!formData.subtitle.trim()) newErrors.subtitle = "Subtitle is required";
-
-    if (!formData.programHeading.trim()) newErrors.programHeading = "Required";
+    if (!formData.description.trim())
+      newErrors.description = "Description is required";
 
     if (!formData.image) newErrors.image = "Image is required";
-
-    formData.programs.forEach((item, index) => {
-      if (!item.programTitle.trim()) {
-        newErrors[`programTitle_${index}`] = "Program title is required";
-      }
-
-      if (!item.programDescription.trim()) {
-        newErrors[`programDescription_${index}`] =
-          "Program description is required";
-      }
-    });
 
     setErrors(newErrors);
 
@@ -97,127 +86,39 @@ export default function BannerForm({ initialData, onSubmit, onCancel }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <Input
-        label="Title"
-        name="title"
-        value={formData.title}
+        label="Title 1"
+        name="title1"
+        value={formData.title1}
         onChange={handleChange}
-        error={errors.title}
+        error={errors.title1}
       />
 
       <Input
-        label="Subtitle"
-        name="subtitle"
-        value={formData.subtitle}
+        label="Title 2"
+        name="title2"
+        value={formData.title2}
         onChange={handleChange}
-        error={errors.subtitle}
+        error={errors.title2}
+      />
+
+      <Input
+        label="Description"
+        name="description"
+        value={formData.description}
+        onChange={handleChange}
+        error={errors.description}
       />
 
       {/* Image */}
 
       <PhotoUpload
         name="image"
-        label="Hero Image"
+        label="Aim Banner Image"
         required
         value={formData.image}
         onChange={handleImageChange}
         error={errors.image}
       />
-
-      {/* CTA */}
-
-      <div className="border-t pt-6">
-        <h2 className="font-semibold mb-4">CTA Button</h2>
-
-        <Input
-          label="Button Text"
-          name="cta.text"
-          value={formData.cta.text}
-          onChange={handleChange}
-        />
-
-        <div className="mt-4">
-          <Input
-            label="Button Link"
-            name="cta.href"
-            value={formData.cta.href}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-
-      {/* Program Heading */}
-
-      <div className="border-t pt-6">
-        <Input
-          label="Program Heading"
-          name="programHeading"
-          value={formData.programHeading}
-          onChange={handleChange}
-          error={errors.programHeading}
-        />
-      </div>
-
-      {/* Programs */}
-
-      <div className="border rounded-lg p-5">
-        <div className="flex justify-between items-center mb-5">
-          <h2 className="font-semibold">Programs</h2>
-
-          <button
-            type="button"
-            onClick={addProgram}
-            className="bg-blue-600 text-white px-3 py-2 rounded"
-          >
-            + Add Program
-          </button>
-        </div>
-
-        {formData.programs.map((program, index) => (
-          <div key={index} className="border rounded-lg p-4 mb-4">
-            <Input
-              label={`Program ${index + 1} Title`}
-              value={program.programTitle}
-              onChange={(e) =>
-                handleProgramChange(index, "programTitle", e.target.value)
-              }
-              error={errors[`programTitle_${index}`]}
-            />
-
-            <div className="mt-4">
-              <Input
-                label="Program Description"
-                value={program.programDescription}
-                onChange={(e) =>
-                  handleProgramChange(
-                    index,
-                    "programDescription",
-                    e.target.value,
-                  )
-                }
-                error={errors[`programDescription_${index}`]}
-              />
-            </div>
-
-            <div className="mt-4">
-              <Input
-                label="Program Link"
-                value={program.href}
-                onChange={(e) =>
-                  handleProgramChange(index, "href", e.target.value)
-                }
-              />
-            </div>
-
-            <button
-              type="button"
-              onClick={() => removeProgram(index)}
-              className="mt-4 text-red-600 hover:text-red-700"
-            >
-              Remove
-            </button>
-          </div>
-        ))}
-      </div>
 
       {/* Buttons */}
 
@@ -234,7 +135,7 @@ export default function BannerForm({ initialData, onSubmit, onCancel }) {
           type="submit"
           className="px-4 py-2 bg-blue-600 text-white rounded-md"
         >
-          {initialData ? "Update" : "Create"} Hero
+          {initialData ? "Update" : "Create"} Aim Banner
         </button>
       </div>
     </form>

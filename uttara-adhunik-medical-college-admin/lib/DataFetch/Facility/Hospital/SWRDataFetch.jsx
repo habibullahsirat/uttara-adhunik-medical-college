@@ -51,3 +51,11 @@ export const useSurgicalServiceData = () => {
   );
   return { data, error, isLoading: !data && !error, mutate };
 };
+
+export const useEmergencyServiceData = () => {
+  const { data, error, mutate } = useSWR(
+    `${API_URL}/api/facility/hospital/emergency-service`,
+    fetcher,
+  );
+  return { data, error, isLoading: !data && !error, mutate };
+};

@@ -25,8 +25,23 @@ const AboutHospitalSchema = new mongoose.Schema(
   },
 );
 
+// Facilities Section
+const FacilitiesSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true, trim: true },
+    description: { type: String, required: true, trim: true },
+    ctaText: { type: String, required: true, trim: true },
+    ctaLink: { type: String, required: true, trim: true },
+    image: { type: String, required: true },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 delete mongoose.models.hospitalBannerSection;
 delete mongoose.models.AboutHospitalSection;
+delete mongoose.models.FacilitiesSection;
 
 export const hospitalBannerSection =
   mongoose.models.hospitalBannerSection ||
@@ -35,3 +50,7 @@ export const hospitalBannerSection =
 export const AboutHospitalSection =
   mongoose.models.AboutHospitalSection ||
   mongoose.model("AboutHospitalSection", AboutHospitalSchema);
+
+export const FacilitiesSection =
+  mongoose.models.FacilitiesSection ||
+  mongoose.model("FacilitiesSection", FacilitiesSchema);

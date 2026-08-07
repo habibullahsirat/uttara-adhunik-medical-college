@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
-import ServiceList from "@/components/facility/hospital/diagnostic-service/ServiceList";
-import { useDiagnosticServiceData } from "@/lib/DataFetch/Facility/Hospital/SWRDataFetch";
-import ServiceForm from "@/components/facility/hospital/diagnostic-service/ServiceForm";
+import ServiceList from "@/components/facility/hospital/additional-service/ServiceList";
+import { useAdditionalServiceData } from "@/lib/DataFetch/Facility/Hospital/SWRDataFetch";
+import ServiceForm from "@/components/facility/hospital/additional-service/ServiceForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
 export default function ServiceManager() {
-  const { data: service, mutate, isLoading } = useDiagnosticServiceData();
+  const { data: service, mutate, isLoading } = useAdditionalServiceData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingService, setEditingService] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -29,7 +29,7 @@ export default function ServiceManager() {
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/facility/hospital/diagnostic-service/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/facility/hospital/additional-service/${id}`,
         {
           method: "DELETE",
         },
@@ -51,8 +51,8 @@ export default function ServiceManager() {
     setIsSubmitting(true);
     try {
       const url = editingService
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/facility/hospital/diagnostic-service/${editingService._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/facility/hospital/diagnostic-service`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/facility/hospital/additional-service/${editingService._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/facility/hospital/additional-service`;
 
       const method = editingService ? "PATCH" : "POST";
 

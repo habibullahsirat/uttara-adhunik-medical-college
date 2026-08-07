@@ -39,9 +39,22 @@ const FacilitiesSchema = new mongoose.Schema(
   },
 );
 
+// Medical Service Section
+const MedicalServiceSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true, trim: true },
+    description: { type: String, required: true, trim: true },
+    image: { type: String, required: true },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 delete mongoose.models.hospitalBannerSection;
 delete mongoose.models.AboutHospitalSection;
 delete mongoose.models.FacilitiesSection;
+delete mongoose.models.MedicalServiceSection;
 
 export const hospitalBannerSection =
   mongoose.models.hospitalBannerSection ||
@@ -54,3 +67,7 @@ export const AboutHospitalSection =
 export const FacilitiesSection =
   mongoose.models.FacilitiesSection ||
   mongoose.model("FacilitiesSection", FacilitiesSchema);
+
+export const MedicalServiceSection =
+  mongoose.models.MedicalServiceSection ||
+  mongoose.model("MedicalServiceSection", MedicalServiceSchema);

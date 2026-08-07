@@ -35,3 +35,11 @@ export const useMedicalServiceData = () => {
   );
   return { data, error, isLoading: !data && !error, mutate };
 };
+
+export const useClinicalServiceData = () => {
+  const { data, error, mutate } = useSWR(
+    `${API_URL}/api/facility/hospital/clinical-service`,
+    fetcher,
+  );
+  return { data, error, isLoading: !data && !error, mutate };
+};

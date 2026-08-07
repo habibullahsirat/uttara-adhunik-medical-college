@@ -3,9 +3,12 @@
 import { useState } from "react";
 import PhotoUpload from "@/components/ui/PhotoUpload";
 
-export default function HeroForm({ initialData, onSubmit, onCancel }) {
+export default function FacilityForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     title: initialData?.title || "",
+    description: initialData?.description || "",
+    ctaText: initialData?.ctaText || "",
+    ctaLink: initialData?.ctaLink || "",
     image: initialData?.image || "",
   });
 
@@ -53,6 +56,10 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
     const newErrors = {};
 
     if (!formData.title.trim()) newErrors.title = "Title is required";
+    if (!formData.description.trim())
+      newErrors.description = "Description is required";
+    if (!formData.ctaText.trim()) newErrors.ctaText = "CTA Text is required";
+    if (!formData.ctaLink.trim()) newErrors.ctaLink = "CTA Link is required";
     if (!formData.image) newErrors.image = "Image is required";
 
     setErrors(newErrors);
@@ -86,11 +93,35 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
         error={errors.title}
       />
 
+      <Input
+        label="Description"
+        name="description"
+        value={formData.description}
+        onChange={handleChange}
+        error={errors.description}
+      />
+
+      <Input
+        label="CTA Text"
+        name="ctaText"
+        value={formData.ctaText}
+        onChange={handleChange}
+        error={errors.ctaText}
+      />
+
+      <Input
+        label="CTA Link"
+        name="ctaLink"
+        value={formData.ctaLink}
+        onChange={handleChange}
+        error={errors.ctaLink}
+      />
+
       {/* Image */}
 
       <PhotoUpload
         name="image"
-        label="Hero Image"
+        label="Facility Section Image"
         required
         value={formData.image}
         onChange={handleImageChange}
@@ -112,7 +143,7 @@ export default function HeroForm({ initialData, onSubmit, onCancel }) {
           type="submit"
           className="px-4 py-2 bg-blue-600 text-white rounded-md"
         >
-          {initialData ? "Update" : "Create"} Hero
+          {initialData ? "Update" : "Create"} Facility Section
         </button>
       </div>
     </form>

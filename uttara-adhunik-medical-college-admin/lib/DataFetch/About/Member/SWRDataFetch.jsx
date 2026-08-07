@@ -4,9 +4,9 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export const useHeroData = () => {
+export const useMemberData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/about/overview/hero`,
+    `${API_URL}/api/about/member`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

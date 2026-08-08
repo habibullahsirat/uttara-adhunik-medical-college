@@ -28,7 +28,7 @@ export const useAcademicDatabaseData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
-export const useLibraryFeatureData = () => {
+export const useMEUFeatureData = () => {
   const { data, error, mutate } = useSWR(
     `${API_URL}/api/facility/meu/feature`,
     fetcher,

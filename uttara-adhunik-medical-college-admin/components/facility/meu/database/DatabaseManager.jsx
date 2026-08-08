@@ -7,7 +7,7 @@ import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
 export default function DatabaseManager() {
-  const { data: feature, mutate, isLoading } = useFacilityData();
+  const { data: feature, mutate, isLoading } = useAcademicDatabaseData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingFeature, setEditingFeature] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);

@@ -6,8 +6,8 @@ import FeatureForm from "@/components/facility/meu/feature/FeatureForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
-export default function FacilityManager() {
-  const { data: feature, mutate, isLoading } = useFacilityData();
+export default function FeatureManager() {
+  const { data: feature, mutate, isLoading } = useMEUFeatureData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingFeature, setEditingFeature] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -29,7 +29,7 @@ export default function FacilityManager() {
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/facility/meu/facility/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/facility/meu/feature/${id}`,
         {
           method: "DELETE",
         },
@@ -51,8 +51,8 @@ export default function FacilityManager() {
     setIsSubmitting(true);
     try {
       const url = editingFeature
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/facility/meu/facility/${editingFeature._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/facility/meu/facility`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/facility/meu/feature/${editingFeature._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/facility/meu/feature`;
 
       const method = editingFeature ? "PATCH" : "POST";
 
@@ -71,8 +71,8 @@ export default function FacilityManager() {
 
       toast.success(
         editingFeature
-          ? "Facility updated successfully!"
-          : "Facility added successfully!",
+          ? "Feature updated successfully!"
+          : "Feature added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
@@ -130,8 +130,8 @@ export default function FacilityManager() {
         </button>
       </div>
 
-      {/* Facility List */}
-      <FacilityList
+      {/* Feature List */}
+      <FeatureList
         feature={feature}
         onEdit={handleEdit}
         onDelete={handleDelete}

@@ -2,14 +2,14 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export default function AboutList({ about, onEdit, onDelete, isDeleting }) {
+export default function LibraryList({ library, onEdit, onDelete, isDeleting }) {
   const [imageErrors, setImageErrors] = useState({});
 
-  const handleImageError = (aboutId) => {
-    setImageErrors((prev) => ({ ...prev, [aboutId]: true }));
+  const handleImageError = (libraryId) => {
+    setImageErrors((prev) => ({ ...prev, [libraryId]: true }));
   };
 
-  if (!about) {
+  if (!library) {
     return (
       <div className="flex justify-center items-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
@@ -17,11 +17,11 @@ export default function AboutList({ about, onEdit, onDelete, isDeleting }) {
     );
   }
 
-  if (about.length === 0) {
+  if (library.length === 0) {
     return (
       <div className="text-center py-12 bg-gray-50 rounded-lg">
         <p className="text-gray-500 text-lg">
-          No about section found. Add your first about section.
+          No library section found. Add your first library section.
         </p>
       </div>
     );
@@ -29,20 +29,20 @@ export default function AboutList({ about, onEdit, onDelete, isDeleting }) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {about.map((about) => (
+      {library.map((library) => (
         <div
-          key={about._id}
+          key={library._id}
           className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow"
         >
           {/* Image Section */}
           <div className="relative h-48 w-full bg-gray-100">
-            {!imageErrors[about._id] ? (
+            {!imageErrors[library._id] ? (
               <Image
-                src={about.image}
-                alt={about.title}
+                src={library.image}
+                alt={library.title}
                 fill
                 className="object-cover"
-                onError={() => handleImageError(about._id)}
+                onError={() => handleImageError(library._id)}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             ) : (
@@ -65,7 +65,7 @@ export default function AboutList({ about, onEdit, onDelete, isDeleting }) {
             )}
 
             {/* Cloudinary Badge (optional) */}
-            {about.image?.includes("cloudinary") && (
+            {library.image?.includes("cloudinary") && (
               <div className="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
                 Cloudinary
               </div>
@@ -75,21 +75,21 @@ export default function AboutList({ about, onEdit, onDelete, isDeleting }) {
           {/* Content Section */}
           <div className="p-4">
             <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-1">
-              {about.title}
+              {library.title}
             </h3>
 
             {/* Metadata */}
             <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
-              <span>ID: {about._id.slice(-6)}</span>
+              <span>ID: {library._id.slice(-6)}</span>
               <span>
-                Updated: {new Date(about.updatedAt).toLocaleDateString()}
+                Updated: {new Date(library.updatedAt).toLocaleDateString()}
               </span>
             </div>
 
             {/* Action Buttons */}
             <div className="flex justify-end gap-2 mt-4 pt-3 border-t border-gray-100">
               <button
-                onClick={() => onEdit(about)}
+                onClick={() => onEdit(library)}
                 className="px-3 py-1.5 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-colors flex items-center gap-1 text-sm"
               >
                 <svg
@@ -108,7 +108,7 @@ export default function AboutList({ about, onEdit, onDelete, isDeleting }) {
                 Edit
               </button>
               <button
-                onClick={() => onDelete(about._id)}
+                onClick={() => onDelete(library._id)}
                 disabled={isDeleting}
                 className="px-3 py-1.5 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors flex items-center gap-1 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >

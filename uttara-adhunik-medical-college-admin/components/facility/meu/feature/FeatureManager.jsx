@@ -144,7 +144,7 @@ export default function FeatureManager() {
         onClose={() => !isSubmitting && setIsModalOpen(false)}
         title={editingFeature ? "Edit Facility" : "Add New Facility"}
       >
-        <FacilityForm
+        <FeatureForm
           initialData={editingFeature}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}

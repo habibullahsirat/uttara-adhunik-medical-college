@@ -2,7 +2,7 @@
 import { useState } from "react";
 import FeatureList from "@/components/facility/library/feature/FeatureList";
 import { useLibraryFeatureData } from "@/lib/DataFetch/Facility/Library/SWRDataFetch";
-import FeatureForm from "@/components/facility/library/about/FeatureForm";
+import FeatureForm from "@/components/facility/library/feature/FeatureForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 

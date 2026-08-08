@@ -82,7 +82,7 @@ export default function FeatureForm({ initialData, onSubmit, onCancel }) {
           type="submit"
           className="px-4 py-2 bg-blue-600 text-white rounded-md"
         >
-          {initialData ? "Update" : "Create"} About Library Section
+          {initialData ? "Update" : "Create"} Features
         </button>
       </div>
     </form>

@@ -1,16 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import PhotoUpload from "@/components/ui/PhotoUpload";
 
-export default function LibraryForm({ initialData, onSubmit, onCancel }) {
+export default function FeatureForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     title: initialData?.title || "",
-    description: initialData?.description || "",
-    data1: initialData?.data1 || "",
-    data2: initialData?.data2 || "",
-    data3: initialData?.data3 || "",
-    image: initialData?.image || "",
   });
 
   const [errors, setErrors] = useState({});
@@ -34,22 +28,6 @@ export default function LibraryForm({ initialData, onSubmit, onCancel }) {
   };
 
   // ============================
-  // Image
-  // ============================
-
-  const handleImageChange = (image) => {
-    setFormData((prev) => ({
-      ...prev,
-      image,
-    }));
-
-    setErrors((prev) => ({
-      ...prev,
-      image: "",
-    }));
-  };
-
-  // ============================
   // Validation
   // ============================
 
@@ -57,12 +35,6 @@ export default function LibraryForm({ initialData, onSubmit, onCancel }) {
     const newErrors = {};
 
     if (!formData.title.trim()) newErrors.title = "Title is required";
-    if (!formData.description.trim())
-      newErrors.description = "Description is required";
-    if (!formData.data1.trim()) newErrors.data1 = "Data 1 is required";
-    if (!formData.data2.trim()) newErrors.data2 = "Data 2 is required";
-    if (!formData.data3.trim()) newErrors.data3 = "Data 3 is required";
-    if (!formData.image) newErrors.image = "Image is required";
 
     setErrors(newErrors);
 
@@ -93,49 +65,6 @@ export default function LibraryForm({ initialData, onSubmit, onCancel }) {
         value={formData.title}
         onChange={handleChange}
         error={errors.title}
-      />
-
-      <Input
-        label="Description"
-        name="description"
-        value={formData.description}
-        onChange={handleChange}
-        error={errors.description}
-      />
-
-      <Input
-        label="Data 1"
-        name="data1"
-        value={formData.data1}
-        onChange={handleChange}
-        error={errors.data1}
-      />
-
-      <Input
-        label="Data 2"
-        name="data2"
-        value={formData.data2}
-        onChange={handleChange}
-        error={errors.data2}
-      />
-
-      <Input
-        label="Data 3"
-        name="data3"
-        value={formData.data3}
-        onChange={handleChange}
-        error={errors.data3}
-      />
-
-      {/* Image */}
-
-      <PhotoUpload
-        name="image"
-        label="About Hospital Image"
-        required
-        value={formData.image}
-        onChange={handleImageChange}
-        error={errors.image}
       />
 
       {/* Buttons */}

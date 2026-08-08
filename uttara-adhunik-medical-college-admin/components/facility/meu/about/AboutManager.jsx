@@ -2,7 +2,7 @@
 import { useState } from "react";
 import AboutList from "@/components/facility/meu/about/AboutList";
 import { useAboutMedicalData } from "@/lib/DataFetch/Facility/MedicalEducationUnit/SWRDataFetch";
-import AboutForm from "@/components/facility/meu/about/AbutForm";
+import AboutForm from "@/components/facility/meu/about/AboutForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 

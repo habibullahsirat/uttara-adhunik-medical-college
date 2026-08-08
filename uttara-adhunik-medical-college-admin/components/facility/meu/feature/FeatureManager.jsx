@@ -2,12 +2,12 @@
 import { useState } from "react";
 import FeatureList from "@/components/facility/meu/feature/FeatureList";
 import { useMEUFeatureData } from "@/lib/DataFetch/Facility/MedicalEducationUnit/SWRDataFetch";
-import FeatureForm from "@/components/facility/meu/facility/FeatureForm";
+import FeatureForm from "@/components/facility/meu/feature/FeatureForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
 export default function FeatureManager() {
-  const { data: feature, mutate, isLoading } = useFacilityData();
+  const { data: feature, mutate, isLoading } = useMEUFeatureData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingFeature, setEditingFeature] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);

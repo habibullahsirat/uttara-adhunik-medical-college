@@ -1,1 +1,1 @@
-import FeatureManager from "../../../../../components/facility/meu/feature/FeatureManager";
+import FeatureManager from "@/components/facility/meu/feature/FeatureManager";

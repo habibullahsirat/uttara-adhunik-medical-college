@@ -7,8 +7,8 @@ export default function AboutForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     title: initialData?.title || "",
     description: initialData?.description || "",
-    image1: initialData?.image || "",
-    image2: initialData?.image || "",
+    image1: initialData?.image1 || "",
+    image2: initialData?.image2 || "",
   });
 
   const [errors, setErrors] = useState({});

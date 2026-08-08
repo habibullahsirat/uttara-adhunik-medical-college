@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import AboutList from "@/components/facility/meu/training/AboutList";
+import AboutList from "@/components/facility/training/about/AboutList";
 import { useTrainingData } from "@/lib/DataFetch/Facility/Training/SWRDataFetch";
-import AboutForm from "@/components/facility/meu/training/AboutForm";
+import AboutForm from "@/components/facility/training/about/AboutForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 

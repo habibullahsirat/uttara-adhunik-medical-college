@@ -14,8 +14,23 @@ const AboutLibrarySchema = new mongoose.Schema(
   },
 );
 
+// Library Features section
+const LibraryFeatureSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true, trim: true },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 delete mongoose.models.AboutLibrarySection;
+delete mongoose.models.LibraryFeatureSection;
 
 export const AboutLibrarySection =
   mongoose.models.AboutLibrarySection ||
   mongoose.model("AboutLibrarySection", AboutLibrarySchema);
+
+export const LibraryFeatureSection =
+  mongoose.models.LibraryFeatureSection ||
+  mongoose.model("LibraryFeatureSection", LibraryFeatureSchema);

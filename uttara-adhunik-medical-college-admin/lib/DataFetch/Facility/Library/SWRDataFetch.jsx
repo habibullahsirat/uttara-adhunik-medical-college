@@ -11,3 +11,11 @@ export const useLibraryData = () => {
   );
   return { data, error, isLoading: !data && !error, mutate };
 };
+
+export const useLibraryFeatureData = () => {
+  const { data, error, mutate } = useSWR(
+    `${API_URL}/api/facility/library/feature`,
+    fetcher,
+  );
+  return { data, error, isLoading: !data && !error, mutate };
+};

@@ -4,7 +4,7 @@ const departmentSchema = new mongoose.Schema(
   {
     title: { type: String, required: true, trim: true },
     establishedDate: { type: Date, required: true },
-    ctaTitle: { type: String, required: true, trim: true },
+    ctaText: { type: String, required: true, trim: true },
     ctaLink: { type: String, required: true, trim: true },
     image: { type: String, required: true },
   },

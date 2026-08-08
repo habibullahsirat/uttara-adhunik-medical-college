@@ -28,9 +28,9 @@ export const useCollaborationData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
-export const useCollaborationData = () => {
+export const useActivityData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/facility/seminar/collaboration`,
+    `${API_URL}/api/facility/seminar/activity`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

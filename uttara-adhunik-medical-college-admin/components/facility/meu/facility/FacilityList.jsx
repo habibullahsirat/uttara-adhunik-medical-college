@@ -1,6 +1,11 @@
 "use client";
 
-export default function FeatureList({ feature, onEdit, onDelete, isDeleting }) {
+export default function FacilityList({
+  feature,
+  onEdit,
+  onDelete,
+  isDeleting,
+}) {
   if (!feature) {
     return (
       <div className="flex justify-center items-center h-64">

@@ -1,6 +1,6 @@
 "use client";
 
-export default function FacilityList({
+export default function DatabaseList({
   feature,
   onEdit,
   onDelete,
@@ -18,7 +18,8 @@ export default function FacilityList({
     return (
       <div className="text-center py-12 bg-gray-50 rounded-lg">
         <p className="text-gray-500 text-lg">
-          No feature section found. Add your first feature section.
+          No academic database section found. Add your first academic database
+          section.
         </p>
       </div>
     );

@@ -1,12 +1,12 @@
 import { connectToDB } from "@/lib/connectToDB";
-import { AboutLibrarySection } from "@/lib/models/facility/library-model";
+import { LibraryFeatureSection } from "@/lib/models/facility/library-model";
 import { NextResponse } from "next/server";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
 
 export async function GET() {
   await connectToDB();
-  const library = await AboutLibrarySection.find();
+  const library = await LibraryFeatureSection.find();
   const response = NextResponse.json(library);
   // response.headers.set("Access-Control-Allow-Origin", "*");
   response.headers.set("Access-Control-Allow-Origin", PUBLIC_URL);
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
 
     // Connect to the database
     await connectToDB();
-    await AboutLibrarySection.create(data);
+    await LibraryFeatureSection.create(data);
     return NextResponse.json({ message: "Data created" }, { status: 201 });
   } catch (error) {
     console.error("Error creating data:", error);

@@ -20,9 +20,17 @@ export const usePresentationData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
-export const usePresentationData = () => {
+export const useCollaborationData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/facility/seminar/presentation`,
+    `${API_URL}/api/facility/seminar/collaboration`,
+    fetcher,
+  );
+  return { data, error, isLoading: !data && !error, mutate };
+};
+
+export const useCollaborationData = () => {
+  const { data, error, mutate } = useSWR(
+    `${API_URL}/api/facility/seminar/collaboration`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

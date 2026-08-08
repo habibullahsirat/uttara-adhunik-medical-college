@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
-import FeatureList from "@/components/facility/library/feature/FeatureList";
-import { useLibraryFeatureData } from "@/lib/DataFetch/Facility/Library/SWRDataFetch";
-import FeatureForm from "@/components/facility/library/feature/FeatureForm";
+import FacilityList from "@/components/facility/meu/facility/FacilityList";
+import { useFacilityData } from "@/lib/DataFetch/Facility/MedicalEducationUnit/SWRDataFetch";
+import FacilityForm from "@/components/facility/meu/facility/FacilityForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
-export default function FeatureManager() {
-  const { data: feature, mutate, isLoading } = useLibraryFeatureData();
+export default function FacilityManager() {
+  const { data: feature, mutate, isLoading } = useFacilityData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingFeature, setEditingFeature] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -24,12 +24,12 @@ export default function FeatureManager() {
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this feature?")) return;
+    if (!confirm("Are you sure you want to delete this facility?")) return;
 
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/facility/library/feature/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/facility/meu/facility/${id}`,
         {
           method: "DELETE",
         },
@@ -51,8 +51,8 @@ export default function FeatureManager() {
     setIsSubmitting(true);
     try {
       const url = editingFeature
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/facility/library/feature/${editingFeature._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/facility/library/feature`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/facility/meu/facility/${editingFeature._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/facility/meu/facility`;
 
       const method = editingFeature ? "PATCH" : "POST";
 
@@ -71,8 +71,8 @@ export default function FeatureManager() {
 
       toast.success(
         editingFeature
-          ? "Feature updated successfully!"
-          : "Feature added successfully!",
+          ? "Facility updated successfully!"
+          : "Facility added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
@@ -130,8 +130,8 @@ export default function FeatureManager() {
         </button>
       </div>
 
-      {/* Feature List */}
-      <FeatureList
+      {/* Facility List */}
+      <FacilityList
         feature={feature}
         onEdit={handleEdit}
         onDelete={handleDelete}
@@ -142,9 +142,9 @@ export default function FeatureManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title={editingFeature ? "Edit Feature" : "Add New Feature"}
+        title={editingFeature ? "Edit Facility" : "Add New Facility"}
       >
-        <FeatureForm
+        <FacilityForm
           initialData={editingFeature}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}

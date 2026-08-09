@@ -29,7 +29,7 @@ export default function FacilityManager() {
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/facility/laboratory/facility/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/facility/laboratory/lab-facility/${id}`,
         {
           method: "DELETE",
         },
@@ -51,8 +51,8 @@ export default function FacilityManager() {
     setIsSubmitting(true);
     try {
       const url = editingFeature
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/facility/laboratory/facility/${editingFeature._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/facility/laboratory/facility`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/facility/laboratory/lab-facility/${editingFeature._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/facility/laboratory/lab-facility`;
 
       const method = editingFeature ? "PATCH" : "POST";
 

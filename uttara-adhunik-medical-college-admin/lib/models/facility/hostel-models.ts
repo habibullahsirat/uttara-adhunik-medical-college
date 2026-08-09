@@ -27,6 +27,6 @@ export const HostelSection =
   mongoose.models.HostelSection ||
   mongoose.model("HostelSection", HostelSchema);
 
-export const WeeklyPresentationSection =
-  mongoose.models.WeeklyPresentationSection ||
-  mongoose.model("WeeklyPresentationSection", WeeklyPresentationSchema);
+export const ServicesSection =
+  mongoose.models.ServicesSection ||
+  mongoose.model("ServicesSection", ServicesSchema);

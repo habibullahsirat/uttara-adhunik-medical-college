@@ -14,7 +14,7 @@ export const useLaboratoryData = () => {
 
 export const useFacilityData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/facility/laboratory/facility`,
+    `${API_URL}/api/facility/laboratory/lab-facility`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

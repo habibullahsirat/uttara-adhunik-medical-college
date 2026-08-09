@@ -6,8 +6,8 @@ import ServiceForm from "@/components/facility/hostel-service/service/ServiceFor
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
-export default function HostelManager() {
-  const { data: feature, mutate, isLoading } = HostelSection();
+export default function ServiceManager() {
+  const { data: feature, mutate, isLoading } = ServicesSection();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingFeature, setEditingFeature] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -24,12 +24,12 @@ export default function HostelManager() {
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this Heading?")) return;
+    if (!confirm("Are you sure you want to delete this service?")) return;
 
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/facility/hostel-service/hostel/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/facility/hostel-service/service/${id}`,
         {
           method: "DELETE",
         },
@@ -37,7 +37,7 @@ export default function HostelManager() {
 
       if (!response.ok) throw new Error("Failed to delete");
 
-      toast.success("Heading deleted successfully!");
+      toast.success("Service deleted successfully!");
       mutate(); // Refresh the data
     } catch (error) {
       toast.error("Failed to delete heading");
@@ -51,8 +51,8 @@ export default function HostelManager() {
     setIsSubmitting(true);
     try {
       const url = editingFeature
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/facility/hostel-service/hostel/${editingFeature._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/facility/hostel-service/hostel`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/facility/hostel-service/service/${editingFeature._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/facility/hostel-service/service`;
 
       const method = editingFeature ? "PATCH" : "POST";
 
@@ -71,8 +71,8 @@ export default function HostelManager() {
 
       toast.success(
         editingFeature
-          ? "Heading updated successfully!"
-          : "Heading added successfully!",
+          ? "Service updated successfully!"
+          : "Service added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
@@ -89,7 +89,7 @@ export default function HostelManager() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading heading...</p>
+          <p className="text-gray-600">Loading Services...</p>
         </div>
       </div>
     );
@@ -101,10 +101,10 @@ export default function HostelManager() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">
-            Hostel Service Section Management
+            Hostel Service Management
           </h1>
           <p className="text-gray-600 mt-1">
-            Total activity:{" "}
+            Total services:{" "}
             <span className="font-semibold">{feature?.length || 0}</span>
           </p>
         </div>
@@ -130,8 +130,8 @@ export default function HostelManager() {
         </button>
       </div>
 
-      {/* Hostel Service Heading List */}
-      <HostelList
+      {/* Hostel Service List */}
+      <ServiceList
         feature={feature}
         onEdit={handleEdit}
         onDelete={handleDelete}
@@ -142,9 +142,9 @@ export default function HostelManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title={editingFeature ? "Edit heading" : "Add New Heading"}
+        title={editingFeature ? "Edit service" : "Add New Service"}
       >
-        <HostelForm
+        <ServiceForm
           initialData={editingFeature}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}

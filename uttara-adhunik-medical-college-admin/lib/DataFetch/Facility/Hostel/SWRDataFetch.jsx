@@ -6,7 +6,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const HostelSection = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/facility/seminar/hostel-service`,
+    `${API_URL}/api/facility/hostel-service/hostel`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };
@@ -14,7 +14,7 @@ export const HostelSection = () => {
 
 export const ServicesSection = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/facility/seminar/service`,
+    `${API_URL}/api/facility/hostel-service/service`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

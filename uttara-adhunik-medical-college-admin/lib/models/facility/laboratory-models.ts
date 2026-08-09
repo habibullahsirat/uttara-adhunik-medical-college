@@ -24,10 +24,10 @@ const LaboratoryFacilitySchema = new mongoose.Schema(
 delete mongoose.models.LaboratorySection;
 delete mongoose.models.TrainingFacilitySection;
 
-export const TrainingSection =
-  mongoose.models.TrainingSection ||
-  mongoose.model("TrainingSection", LaboratorySchema);
+export const LaboratorySection =
+  mongoose.models.LaboratorySection ||
+  mongoose.model("LaboratorySection", LaboratorySchema);
 
-export const TrainingFacilitySection =
-  mongoose.models.TrainingFacilitySection ||
-  mongoose.model("TrainingFacilitySection", TrainingFacilitySchema);
+export const LaboratoryFacilitySection =
+  mongoose.models.LaboratoryFacilitySection ||
+  mongoose.model("LaboratoryFacilitySection", LaboratoryFacilitySchema);

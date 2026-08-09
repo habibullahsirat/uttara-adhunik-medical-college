@@ -126,7 +126,7 @@ export default function ServiceManager() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          Add New Activity
+          Add New Service
         </button>
       </div>
 

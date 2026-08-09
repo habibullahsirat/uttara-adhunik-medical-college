@@ -22,8 +22,6 @@ const ServicesSchema = new mongoose.Schema(
 
 delete mongoose.models.SeminarSection;
 delete mongoose.models.WeeklyPresentationSection;
-delete mongoose.models.CollaborationSection;
-delete mongoose.models.ActivitySection;
 
 export const SeminarSection =
   mongoose.models.SeminarSection ||

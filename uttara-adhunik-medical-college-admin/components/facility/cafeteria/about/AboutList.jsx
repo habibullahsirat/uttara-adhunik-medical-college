@@ -21,7 +21,7 @@ export default function AboutList({ about, onEdit, onDelete, isDeleting }) {
     return (
       <div className="text-center py-12 bg-gray-50 rounded-lg">
         <p className="text-gray-500 text-lg">
-          No Seminar section found. Add your first seminar section.
+          No Cafeteria section found. Add your first cafeteria section.
         </p>
       </div>
     );

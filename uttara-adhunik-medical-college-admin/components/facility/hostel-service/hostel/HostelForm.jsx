@@ -82,7 +82,7 @@ export default function HostelForm({ initialData, onSubmit, onCancel }) {
           type="submit"
           className="px-4 py-2 bg-blue-600 text-white rounded-md"
         >
-          {initialData ? "Update" : "Create"} Academic Activity
+          {initialData ? "Update" : "Create"} Hostel Service Heading
         </button>
       </div>
     </form>

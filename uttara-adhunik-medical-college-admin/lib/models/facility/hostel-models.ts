@@ -20,21 +20,13 @@ const ServicesSchema = new mongoose.Schema(
   },
 );
 
-delete mongoose.models.SeminarSection;
-delete mongoose.models.WeeklyPresentationSection;
+delete mongoose.models.HostelSection;
+delete mongoose.models.ServicesSection;
 
-export const SeminarSection =
-  mongoose.models.SeminarSection ||
-  mongoose.model("SeminarSection", SeminarSchema);
+export const HostelSection =
+  mongoose.models.HostelSection ||
+  mongoose.model("HostelSection", HostelSchema);
 
 export const WeeklyPresentationSection =
   mongoose.models.WeeklyPresentationSection ||
   mongoose.model("WeeklyPresentationSection", WeeklyPresentationSchema);
-
-export const CollaborationSection =
-  mongoose.models.CollaborationSection ||
-  mongoose.model("CollaborationSection", CollaborationSchema);
-
-export const ActivitySection =
-  mongoose.models.ActivitySection ||
-  mongoose.model("ActivitySection", ActivitySchema);

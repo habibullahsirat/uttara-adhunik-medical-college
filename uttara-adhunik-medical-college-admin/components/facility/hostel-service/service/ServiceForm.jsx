@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function HostelForm({ initialData, onSubmit, onCancel }) {
+export default function ServiceForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     title: initialData?.title || "",
   });
@@ -82,7 +82,7 @@ export default function HostelForm({ initialData, onSubmit, onCancel }) {
           type="submit"
           className="px-4 py-2 bg-blue-600 text-white rounded-md"
         >
-          {initialData ? "Update" : "Create"} Hostel Service Heading
+          {initialData ? "Update" : "Create"} Hostel Services
         </button>
       </div>
     </form>

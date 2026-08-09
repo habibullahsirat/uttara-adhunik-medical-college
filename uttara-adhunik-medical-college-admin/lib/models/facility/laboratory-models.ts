@@ -11,7 +11,7 @@ const LaboratorySchema = new mongoose.Schema(
   },
 );
 
-// Training Facility section
+// Laboratory Facility section
 const LaboratoryFacilitySchema = new mongoose.Schema(
   {
     title: { type: String, required: true, trim: true },
@@ -22,7 +22,7 @@ const LaboratoryFacilitySchema = new mongoose.Schema(
 );
 
 delete mongoose.models.LaboratorySection;
-delete mongoose.models.TrainingFacilitySection;
+delete mongoose.models.LaboratoryFacilitySection;
 
 export const LaboratorySection =
   mongoose.models.LaboratorySection ||

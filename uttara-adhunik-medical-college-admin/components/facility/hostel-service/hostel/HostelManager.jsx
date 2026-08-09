@@ -1,12 +1,12 @@
 "use client";
 import { useState } from "react";
-import ActivityList from "@/components/facility/seminar/activity/ActivityList";
-import { useActivityData } from "@/lib/DataFetch/Facility/Seminar/SWRDataFetch";
-import ActivityForm from "@/components/facility/seminar/activity/ActivityForm";
+import HostelList from "@/components/facility/hostel-service/hostel/HostelList";
+import { HostelSection } from "@/lib/DataFetch/Facility/Hostel/SWRDataFetch";
+import HostelForm from "@/components/facility/hostel-service/hostel/HostelForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
-export default function ActivityManager() {
+export default function HostelManager() {
   const { data: feature, mutate, isLoading } = useActivityData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingFeature, setEditingFeature] = useState(null);

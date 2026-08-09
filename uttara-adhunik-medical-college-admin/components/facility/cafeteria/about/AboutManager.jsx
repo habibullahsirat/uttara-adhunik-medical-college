@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
-import AboutList from "@/components/facility/seminar/about/AboutList";
-import { useSeminarData } from "@/lib/DataFetch/Facility/Seminar/SWRDataFetch";
-import AboutForm from "@/components/facility/seminar/about/AboutForm";
+import AboutList from "@/components/facility/cafeteria/about/AboutList";
+import { useCafeteriaData } from "@/lib/DataFetch/Facility/Cafeteria/SWRDataFetch";
+import AboutForm from "@/components/facility/cafeteria/about/AboutForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
 export default function AboutManager() {
-  const { data: about, mutate, isLoading } = useSeminarData();
+  const { data: about, mutate, isLoading } = useCafeteriaData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingAbout, setEditingAbout] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -29,7 +29,7 @@ export default function AboutManager() {
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/facility/seminar/about/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/facility/cafeteria/about/${id}`,
         {
           method: "DELETE",
         },
@@ -51,8 +51,8 @@ export default function AboutManager() {
     setIsSubmitting(true);
     try {
       const url = editingAbout
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/facility/seminar/about/${editingAbout._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/facility/seminar/about`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/facility/cafeteria/about/${editingAbout._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/facility/cafeteria/about`;
 
       const method = editingAbout ? "PATCH" : "POST";
 
@@ -71,8 +71,8 @@ export default function AboutManager() {
 
       toast.success(
         editingAbout
-          ? "Scientific Seminar updated successfully!"
-          : "Scientific Seminar added successfully!",
+          ? "Cafeteria section updated successfully!"
+          : "Cafeteria section added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
@@ -89,7 +89,7 @@ export default function AboutManager() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading Seminar section...</p>
+          <p className="text-gray-600">Loading Cafeteria section...</p>
         </div>
       </div>
     );
@@ -101,7 +101,7 @@ export default function AboutManager() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">
-            Seminar Section Management
+            Cafeteria Section Management
           </h1>
           <p className="text-gray-600 mt-1">
             Total about Section:{" "}

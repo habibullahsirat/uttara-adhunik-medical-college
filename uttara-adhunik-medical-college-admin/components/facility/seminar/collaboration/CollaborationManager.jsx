@@ -103,10 +103,10 @@ export default function CollaborationManager() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">
-            Presentation Management
+            Guest Speakers & Collaboration Management
           </h1>
           <p className="text-gray-600 mt-1">
-            Total features:{" "}
+            Total section:{" "}
             <span className="font-semibold">{feature?.length || 0}</span>
           </p>
         </div>
@@ -128,7 +128,7 @@ export default function CollaborationManager() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          Add New Feature
+          Add New Collaboration
         </button>
       </div>
 
@@ -144,7 +144,7 @@ export default function CollaborationManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title={editingFeature ? "Edit Facility" : "Add New Facility"}
+        title={editingFeature ? "Edit Collaboration" : "Add New collaboration"}
       >
         <CollaborationForm
           initialData={editingFeature}

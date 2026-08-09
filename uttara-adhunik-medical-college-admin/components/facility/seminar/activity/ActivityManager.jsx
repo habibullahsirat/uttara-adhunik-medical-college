@@ -109,7 +109,7 @@ export default function ActivityManager() {
             Academic Activity Management
           </h1>
           <p className="text-gray-600 mt-1">
-            Total features:{" "}
+            Total activity:{" "}
             <span className="font-semibold">{feature?.length || 0}</span>
           </p>
         </div>
@@ -131,7 +131,7 @@ export default function ActivityManager() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          Add New Feature
+          Add New Activity
         </button>
       </div>
 
@@ -147,7 +147,7 @@ export default function ActivityManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title={editingFeature ? "Edit Facility" : "Add New Facility"}
+        title={editingFeature ? "Edit activity" : "Add New Activity"}
       >
         <ActivityForm
           initialData={editingFeature}

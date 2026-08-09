@@ -12,9 +12,9 @@ export const HostelSection = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
-export const usePresentationData = () => {
+export const ServicesSection = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/facility/seminar/presentation`,
+    `${API_URL}/api/facility/seminar/service`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import FacilityList from "@/components/facility/training/facility/FacilityList";
-import { useFacilityData } from "@/lib/DataFetch/Facility/Training/SWRDataFetch";
-import FacilityForm from "@/components/facility/training/facility/FacilityForm";
+import FacilityList from "@/components/facility/laboratory/facility/FacilityList";
+import { useFacilityData } from "@/lib/DataFetch/Facility/Laboratory/SWRDataFetch";
+import FacilityForm from "@/components/facility/laboratory/facility/FacilityForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
@@ -29,7 +29,7 @@ export default function FacilityManager() {
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/facility/training/facility/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/facility/laboratory/facility/${id}`,
         {
           method: "DELETE",
         },
@@ -51,8 +51,8 @@ export default function FacilityManager() {
     setIsSubmitting(true);
     try {
       const url = editingFeature
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/facility/training/facility/${editingFeature._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/facility/training/facility`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/facility/laboratory/facility/${editingFeature._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/facility/laboratory/facility`;
 
       const method = editingFeature ? "PATCH" : "POST";
 

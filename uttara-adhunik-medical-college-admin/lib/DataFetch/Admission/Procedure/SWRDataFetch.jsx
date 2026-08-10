@@ -4,7 +4,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export const useHeroData = () => {
+export const useAboutData = () => {
   const { data, error, mutate } = useSWR(
     `${API_URL}/api/admission/rules/procedure/about`,
     fetcher,
@@ -12,7 +12,7 @@ export const useHeroData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
-export const useNoticeData = () => {
+export const useEligibilityData = () => {
   const { data, error, mutate } = useSWR(
     `${API_URL}/api/admission/rules/procedure/national-student-eligibility`,
     fetcher,
@@ -20,7 +20,7 @@ export const useNoticeData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
-export const usePublicationData = () => {
+export const useSelectionData = () => {
   const { data, error, mutate } = useSWR(
     `${API_URL}/api/admission/rules/procedure/national-student-selection`,
     fetcher,
@@ -78,47 +78,7 @@ export const useFeatureData = () => {
 
 export const usePrincipleMessageData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/homepage/principle-message`,
-    fetcher,
-  );
-  return { data, error, isLoading: !data && !error, mutate };
-};
-
-export const useCampusLifeData = () => {
-  const { data, error, mutate } = useSWR(
-    `${API_URL}/api/homepage/campus-life`,
-    fetcher,
-  );
-  return { data, error, isLoading: !data && !error, mutate };
-};
-
-export const useAlumniEventImageData = () => {
-  const { data, error, mutate } = useSWR(
-    `${API_URL}/api/homepage/event-image`,
-    fetcher,
-  );
-  return { data, error, isLoading: !data && !error, mutate };
-};
-
-export const useAlumniEventData = () => {
-  const { data, error, mutate } = useSWR(
-    `${API_URL}/api/homepage/events`,
-    fetcher,
-  );
-  return { data, error, isLoading: !data && !error, mutate };
-};
-
-export const useNewsData = () => {
-  const { data, error, mutate } = useSWR(
-    `${API_URL}/api/homepage/news`,
-    fetcher,
-  );
-  return { data, error, isLoading: !data && !error, mutate };
-};
-
-export const useFeedbackData = () => {
-  const { data, error, mutate } = useSWR(
-    `${API_URL}/api/homepage/feedback`,
+    `${API_URL}/api/admission/rules/procedure/foreign-student-fee`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

@@ -44,6 +44,7 @@ const NationalStudentQuotaSchema = new mongoose.Schema(
 delete mongoose.models.AdmissionProcedureSection;
 delete mongoose.models.EligibilityNationalStudentSection;
 delete mongoose.models.NationalStudentSelectionSection;
+delete mongoose.models.NationalStudentQuotaSection;
 
 export const AdmissionProcedureSection =
   mongoose.models.AdmissionProcedureSection ||
@@ -62,3 +63,7 @@ export const NationalStudentSelectionSection =
     "NationalStudentSelectionSection",
     NationalStudentSelectionSchema,
   );
+
+export const NationalStudentQuotaSection =
+  mongoose.models.NationalStudentQuotaSection ||
+  mongoose.model("NationalStudentQuotaSection", NationalStudentQuotaSchema);

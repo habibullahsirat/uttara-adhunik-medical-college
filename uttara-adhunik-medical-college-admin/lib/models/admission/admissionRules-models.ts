@@ -21,8 +21,29 @@ const EligibilityNationalStudentSchema = new mongoose.Schema(
   },
 );
 
+// National Student Selection
+const NationalStudentSelectionSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true, trim: true },
+  },
+  {
+    timestamps: true,
+  },
+);
+
+// National Student Quota
+const NationalStudentQuotaSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true, trim: true },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 delete mongoose.models.AdmissionProcedureSection;
 delete mongoose.models.EligibilityNationalStudentSection;
+delete mongoose.models.NationalStudentSelectionSection;
 
 export const AdmissionProcedureSection =
   mongoose.models.AdmissionProcedureSection ||
@@ -33,4 +54,11 @@ export const EligibilityNationalStudentSection =
   mongoose.model(
     "EligibilityNationalStudentSection",
     EligibilityNationalStudentSchema,
+  );
+
+export const NationalStudentSelectionSection =
+  mongoose.models.NationalStudentSelectionSection ||
+  mongoose.model(
+    "NationalStudentSelectionSection",
+    NationalStudentSelectionSchema,
   );

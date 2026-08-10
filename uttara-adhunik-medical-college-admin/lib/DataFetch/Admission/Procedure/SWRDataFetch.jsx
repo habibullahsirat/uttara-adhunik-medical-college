@@ -62,7 +62,7 @@ export const useFindDepartmentRightData = () => {
 
 export const useAdmissionData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/homepage/admission`,
+    `${API_URL}/api/admission/rules/procedure/foreign-student-eligibility`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };
@@ -70,7 +70,7 @@ export const useAdmissionData = () => {
 
 export const useFeatureData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/homepage/feature`,
+    `${API_URL}/api/admission/rules/procedure/foreign-student-documents`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

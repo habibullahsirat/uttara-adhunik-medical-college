@@ -52,7 +52,7 @@ export const useMontlyFeeData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
-export const useAdmissionData = () => {
+export const useForeignStudentEligibilityData = () => {
   const { data, error, mutate } = useSWR(
     `${API_URL}/api/admission/rules/procedure/foreign-student-eligibility`,
     fetcher,
@@ -60,15 +60,15 @@ export const useAdmissionData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
-export const useFeatureData = () => {
+export const useForeignDocumentData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/admission/rules/procedure/foreign-student-documents`,
+    `${API_URL}/api/admission/rules/procedure/foreign-student-document`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };
 };
 
-export const usePrincipleMessageData = () => {
+export const useForeignStudentFeeData = () => {
   const { data, error, mutate } = useSWR(
     `${API_URL}/api/admission/rules/procedure/foreign-student-fee`,
     fetcher,

@@ -41,10 +41,30 @@ const NationalStudentQuotaSchema = new mongoose.Schema(
   },
 );
 
+// Fee Structure
+const FeeStructureSchema = new mongoose.Schema(
+  {
+    particulars: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    amount: {
+      type: Number,
+      required: true,
+      min: 0,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 delete mongoose.models.AdmissionProcedureSection;
 delete mongoose.models.EligibilityNationalStudentSection;
 delete mongoose.models.NationalStudentSelectionSection;
 delete mongoose.models.NationalStudentQuotaSection;
+delete mongoose.models.FeeStructureSection;
 
 export const AdmissionProcedureSection =
   mongoose.models.AdmissionProcedureSection ||
@@ -67,3 +87,7 @@ export const NationalStudentSelectionSection =
 export const NationalStudentQuotaSection =
   mongoose.models.NationalStudentQuotaSection ||
   mongoose.model("NationalStudentQuotaSection", NationalStudentQuotaSchema);
+
+export const FeeStructureSection =
+  mongoose.models.FeeStructureSection ||
+  mongoose.model("FeeStructureSection", FeeStructureSchema);

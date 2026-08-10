@@ -91,6 +91,25 @@ const RequiredDocumentsSchema = new mongoose.Schema(
   },
 );
 
+// Fee Structure for foreign students
+const FeeStructureForeignSchema = new mongoose.Schema(
+  {
+    particulars: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    amount: {
+      type: Number,
+      required: true,
+      min: 0,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 delete mongoose.models.AdmissionProcedureSection;
 delete mongoose.models.EligibilityNationalStudentSection;
 delete mongoose.models.NationalStudentSelectionSection;
@@ -99,6 +118,7 @@ delete mongoose.models.FeeStructureSection;
 delete mongoose.models.MonthlyFeeSection;
 delete mongoose.models.EligibilityForeignStudentSection;
 delete mongoose.models.RequiredDocumentsSection;
+delete mongoose.models.FeeStructureForeignSection;
 
 export const AdmissionProcedureSection =
   mongoose.models.AdmissionProcedureSection ||
@@ -140,3 +160,7 @@ export const EligibilityForeignStudentSection =
 export const RequiredDocumentsSection =
   mongoose.models.RequiredDocumentsSection ||
   mongoose.model("RequiredDocumentsSection", RequiredDocumentsSchema);
+
+export const FeeStructureForeignSection =
+  mongoose.models.FeeStructureForeignSection ||
+  mongoose.model("FeeStructureForeignSection", FeeStructureForeignSchema);

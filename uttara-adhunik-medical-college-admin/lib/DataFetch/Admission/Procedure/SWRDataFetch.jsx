@@ -38,7 +38,7 @@ export const useAboutData = () => {
 
 export const useStatData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/homepage/stat`,
+    `${API_URL}/api/admission/rules/procedure/national-student-fee`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

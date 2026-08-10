@@ -28,7 +28,7 @@ export const useSelectionData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
-export const useAboutData = () => {
+export const useQuotaData = () => {
   const { data, error, mutate } = useSWR(
     `${API_URL}/api/admission/rules/procedure/national-student-quota`,
     fetcher,
@@ -36,17 +36,9 @@ export const useAboutData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
-export const useStatData = () => {
+export const useFeeData = () => {
   const { data, error, mutate } = useSWR(
     `${API_URL}/api/admission/rules/procedure/national-student-fee`,
-    fetcher,
-  );
-  return { data, error, isLoading: !data && !error, mutate };
-};
-
-export const useFindDepartmentLeftData = () => {
-  const { data, error, mutate } = useSWR(
-    `${API_URL}/api/homepage/find-department-left`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

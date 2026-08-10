@@ -54,7 +54,7 @@ export const useFindDepartmentLeftData = () => {
 
 export const useFindDepartmentRightData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/homepage/find-department-right`,
+    `${API_URL}/api/admission/rules/procedure/national-student-monthly-fee`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

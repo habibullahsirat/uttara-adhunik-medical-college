@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-// Seminar Section
+// Admission Section
 const AdmissionProcedureSchema = new mongoose.Schema(
   {
     title: { type: String, required: true, trim: true },
@@ -12,6 +12,7 @@ const AdmissionProcedureSchema = new mongoose.Schema(
   },
 );
 
+// Eligibility For national student
 const EligibilityNationalStudentSchema = new mongoose.Schema(
   {
     description: { type: String, required: true, trim: true },
@@ -60,11 +61,44 @@ const FeeStructureSchema = new mongoose.Schema(
   },
 );
 
+// Monthly section
+const MonthlyFeeSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true, trim: true },
+  },
+  {
+    timestamps: true,
+  },
+);
+
+// Eligibility For foreign student
+const EligibilityForeignStudentSchema = new mongoose.Schema(
+  {
+    description: { type: String, required: true, trim: true },
+  },
+  {
+    timestamps: true,
+  },
+);
+
+//Required documents for foreign students
+const RequiredDocumentsSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true, trim: true },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 delete mongoose.models.AdmissionProcedureSection;
 delete mongoose.models.EligibilityNationalStudentSection;
 delete mongoose.models.NationalStudentSelectionSection;
 delete mongoose.models.NationalStudentQuotaSection;
 delete mongoose.models.FeeStructureSection;
+delete mongoose.models.MonthlyFeeSection;
+delete mongoose.models.EligibilityForeignStudentSection;
+delete mongoose.models.RequiredDocumentsSection;
 
 export const AdmissionProcedureSection =
   mongoose.models.AdmissionProcedureSection ||
@@ -91,3 +125,18 @@ export const NationalStudentQuotaSection =
 export const FeeStructureSection =
   mongoose.models.FeeStructureSection ||
   mongoose.model("FeeStructureSection", FeeStructureSchema);
+
+export const MonthlyFeeSection =
+  mongoose.models.MonthlyFeeSection ||
+  mongoose.model("MonthlyFeeSection", MonthlyFeeSchema);
+
+export const EligibilityForeignStudentSection =
+  mongoose.models.EligibilityForeignStudentSection ||
+  mongoose.model(
+    "EligibilityForeignStudentSection",
+    EligibilityForeignStudentSchema,
+  );
+
+export const RequiredDocumentsSection =
+  mongoose.models.RequiredDocumentsSection ||
+  mongoose.model("RequiredDocumentsSection", RequiredDocumentsSchema);

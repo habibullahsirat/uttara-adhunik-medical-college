@@ -30,7 +30,7 @@ export const usePublicationData = () => {
 
 export const useAboutData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/homepage/about`,
+    `${API_URL}/api/admission/rules/procedure/national-student-quota`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
-import SelectionList from "@/components/admission/procedure-and-fee/selection/SelectionList";
-import { useSelectionData } from "@/lib/DataFetch/Admission/Procedure/SWRDataFetch";
-import SelectionForm from "@/components/admission/procedure-and-fee/selection/SelectionForm";
+import SelectionList from "@/components/admission/procedure-and-fee/quota/QuotaList";
+import { useQuotaData } from "@/lib/DataFetch/Admission/Procedure/SWRDataFetch";
+import SelectionForm from "@/components/admission/procedure-and-fee/quota/QuotaForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
-export default function SelectionManager() {
-  const { data: feature, mutate, isLoading } = useSelectionData();
+export default function QuotaManager() {
+  const { data: feature, mutate, isLoading } = useQuotaData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingFeature, setEditingFeature] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);

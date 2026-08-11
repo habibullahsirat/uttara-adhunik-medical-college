@@ -14,7 +14,7 @@ export const useAboutData = () => {
 
 export const useEligibilityData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/admission/rules/procedure/national-student-eligibility`,
+    `${API_URL}/api/admission/rules/procedure/eligibility-national-student`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };
@@ -30,7 +30,7 @@ export const useSelectionData = () => {
 
 export const useQuotaData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/admission/rules/procedure/national-student-quota`,
+    `${API_URL}/api/admission/rules/procedure/student-quota`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

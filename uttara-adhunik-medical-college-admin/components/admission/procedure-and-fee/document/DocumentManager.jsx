@@ -30,7 +30,7 @@ export default function DocumentManager() {
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/document/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/documents/${id}`,
         {
           method: "DELETE",
         },
@@ -52,8 +52,8 @@ export default function DocumentManager() {
     setIsSubmitting(true);
     try {
       const url = editingFeature
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/document/${editingFeature._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/document`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/documents/${editingFeature._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/documents`;
 
       const method = editingFeature ? "PATCH" : "POST";
 

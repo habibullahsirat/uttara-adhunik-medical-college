@@ -1339,6 +1339,16 @@ const NAV_GROUPS = [
                 href: "/admin/admission/procedure-and-fee/monthly-fee",
                 icon: Sparkles,
               },
+              {
+                name: "Eligibility for Foreign Students",
+                href: "/admin/admission/procedure-and-fee/eligibility-foreign-student",
+                icon: Sparkles,
+              },
+              {
+                name: "Required Documents for Foreign Student",
+                href: "/admin/admission/procedure-and-fee/document",
+                icon: Sparkles,
+              },
             ],
           },
 

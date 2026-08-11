@@ -1358,6 +1358,18 @@ const NAV_GROUPS = [
           },
 
           {
+            name: "Admission Papers",
+            icon: Info,
+            children: [
+              {
+                name: "Admission Papers & Notices",
+                href: "/admin/admission/paper",
+                icon: Building2,
+              },
+            ],
+          },
+
+          {
             name: "History",
             icon: History,
             children: [

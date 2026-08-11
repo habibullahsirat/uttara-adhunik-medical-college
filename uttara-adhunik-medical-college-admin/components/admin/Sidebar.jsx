@@ -1298,6 +1298,118 @@ const NAV_GROUPS = [
           },
         ],
       },
+      // --------------------
+      // Admission Page
+      // -------------------
+      {
+        name: "Admission Page",
+        icon: Info,
+        children: [
+          {
+            name: "Admission Procedure & Fees",
+            icon: Info,
+            children: [
+              {
+                name: "Banner",
+                href: "/admin/admission/procedure-and-fee/about",
+                icon: Building2,
+              },
+              {
+                name: "Admission and Aid",
+                href: "/admin/admission/procedure-and-fee/eligibility-national-student",
+                icon: GraduationCap,
+              },
+              {
+                name: "Sustainability",
+                href: "/admin/about/overview/sustainability",
+                icon: Sparkles,
+              },
+            ],
+          },
+
+          {
+            name: "History",
+            icon: History,
+            children: [
+              {
+                name: "History",
+                href: "/admin/about/history/history",
+                icon: History,
+              },
+              {
+                name: "Time Line",
+                href: "/admin/about/history/time-line",
+                icon: Clock3,
+              },
+            ],
+          },
+
+          {
+            name: "Vision and Mission",
+            icon: Target,
+            children: [
+              {
+                name: "Vision",
+                href: "/admin/about/vision-mission/vision",
+                icon: Target,
+              },
+            ],
+          },
+
+          {
+            name: "Aim and Objective",
+            icon: Crosshair,
+            children: [
+              {
+                name: "Aim",
+                href: "/admin/about/aim-objective/aim",
+                icon: Crosshair,
+              },
+              {
+                name: "Objective",
+                href: "/admin/about/aim-objective/objective",
+                icon: Target,
+              },
+            ],
+          },
+
+          {
+            name: "Founder Members",
+            icon: Users,
+            children: [
+              {
+                name: "Members",
+                href: "/admin/about/founder-members/members",
+                icon: Users,
+              },
+            ],
+          },
+
+          {
+            name: "EC Member",
+            icon: UserRound,
+            children: [
+              {
+                name: "Members",
+                href: "/admin/about/ec-member/members",
+                icon: UserRound,
+              },
+            ],
+          },
+
+          {
+            name: "GB Member",
+            icon: Users,
+            children: [
+              {
+                name: "Members",
+                href: "/admin/about/gb-member/members",
+                icon: Users,
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
 ];

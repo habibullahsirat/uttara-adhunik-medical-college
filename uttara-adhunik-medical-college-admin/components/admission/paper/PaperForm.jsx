@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import PdfUpload from "@/components/ui/PdfUpload";
+import PDFUpload from "@/components/ui/PDFUpload";
 
 export default function AboutForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
@@ -96,7 +96,7 @@ export default function AboutForm({ initialData, onSubmit, onCancel }) {
 
       {/* PDF */}
 
-      <PdfUpload
+      <PDFUpload
         name="pdf"
         label="PDF Document"
         required

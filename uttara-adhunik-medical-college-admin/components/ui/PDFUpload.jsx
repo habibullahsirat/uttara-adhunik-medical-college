@@ -3,7 +3,7 @@
 import { useCallback, useState, useEffect } from "react";
 import { toast } from "sonner";
 
-export default function PdfUpload({
+export default function PDFUpload({
   name,
   label,
   value,
@@ -96,37 +96,29 @@ export default function PdfUpload({
     e.preventDefault();
     e.stopPropagation();
 
-    ```
-setDragActive(false);
+    setDragActive(false);
 
-if (e.dataTransfer.files?.[0]) {
-  handleFileChange(e.dataTransfer.files[0]);
-}
-```;
+    if (e.dataTransfer.files?.[0]) {
+      handleFileChange(e.dataTransfer.files[0]);
+    }
   };
 
   const handleDrag = (e) => {
     e.preventDefault();
     e.stopPropagation();
 
-    ```
-setDragActive(
-  e.type === "dragenter" || e.type === "dragover"
-);
-```;
+    setDragActive(e.type === "dragenter" || e.type === "dragover");
   };
 
   const removePdf = () => {
     setPreview(null);
     onChange("");
 
-    ```
-const fileInput = document.getElementById(name);
+    const fileInput = document.getElementById(name);
 
-if (fileInput) {
-  fileInput.value = "";
-}
-```;
+    if (fileInput) {
+      fileInput.value = "";
+    }
   };
 
   const containerClasses = [

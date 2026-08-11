@@ -10,13 +10,13 @@
 
 import { useState } from "react";
 import PaperList from "@/components/admission/paper/PaperList";
-import { AdmissionPaperSection } from "@/lib/DataFetch/Admission/Papers/SWRDataFetch";
+import { usePaperData } from "@/lib/DataFetch/Admission/Papers/SWRDataFetch";
 import PaperForm from "@/components/admission/paper/PaperList";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
-export default function AboutManager() {
-  const { data: about, mutate, isLoading } = AdmissionPaperSection();
+export default function PaperManager() {
+  const { data: about, mutate, isLoading } = usePaperData();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingAbout, setEditingAbout] = useState(null);

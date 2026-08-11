@@ -3,7 +3,7 @@
 import { useState } from "react";
 import PDFUpload from "@/components/ui/PDFUpload";
 
-export default function AboutForm({ initialData, onSubmit, onCancel }) {
+export default function PaperForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     title: initialData?.title || "",
     pdfUrl: initialData?.pdfUrl || "",

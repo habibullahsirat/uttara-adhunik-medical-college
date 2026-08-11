@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function AboutList({ about, onEdit, onDelete, isDeleting }) {
+export default function PaperList({ about, onEdit, onDelete, isDeleting }) {
   const [pdfErrors, setPdfErrors] = useState({});
 
   const handlePdfError = (aboutId) => {

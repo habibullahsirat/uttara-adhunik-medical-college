@@ -55,8 +55,8 @@ export default function FacilityManager() {
     setIsSubmitting(true);
     try {
       const url = editingFeature
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/eligibility-national-student/${editingFeature._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/eligibility-national-student`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/eligibility-foreign-student/${editingFeature._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/eligibility-foreign-student`;
 
       const method = editingFeature ? "PATCH" : "POST";
 

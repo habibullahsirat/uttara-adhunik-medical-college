@@ -1,6 +1,6 @@
 "use client";
 
-export default function FacilityList({
+export default function SelectionList({
   feature,
   onEdit,
   onDelete,
@@ -18,7 +18,7 @@ export default function FacilityList({
     return (
       <div className="text-center py-12 bg-gray-50 rounded-lg">
         <p className="text-gray-500 text-lg">
-          No feature section found. Add your first feature section.
+          No selection section found. Add your first selection section.
         </p>
       </div>
     );

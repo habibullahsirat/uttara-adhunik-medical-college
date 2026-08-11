@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function FacilityForm({ initialData, onSubmit, onCancel }) {
+export default function SelectionForm({ initialData, onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
     title: initialData?.title || "",
   });
@@ -82,7 +82,7 @@ export default function FacilityForm({ initialData, onSubmit, onCancel }) {
           type="submit"
           className="px-4 py-2 bg-blue-600 text-white rounded-md"
         >
-          {initialData ? "Update" : "Create"} Facility
+          {initialData ? "Update" : "Create"} Selection
         </button>
       </div>
     </form>

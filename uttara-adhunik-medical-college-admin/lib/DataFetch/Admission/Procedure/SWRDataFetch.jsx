@@ -38,7 +38,7 @@ export const useQuotaData = () => {
 
 export const useFeeData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/admission/rules/procedure/national-student-fee`,
+    `${API_URL}/api/admission/rules/procedure/fee-structure-national`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };
@@ -46,7 +46,7 @@ export const useFeeData = () => {
 
 export const useMonthlyFeeData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/admission/rules/procedure/national-student-monthly-fee`,
+    `${API_URL}/api/admission/rules/procedure/monthly-fee`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };
@@ -54,7 +54,7 @@ export const useMonthlyFeeData = () => {
 
 export const useForeignStudentEligibilityData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/admission/rules/procedure/foreign-student-eligibility`,
+    `${API_URL}/api/admission/rules/procedure/eligibility-foreign-student`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };
@@ -62,7 +62,7 @@ export const useForeignStudentEligibilityData = () => {
 
 export const useForeignDocumentData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/admission/rules/procedure/foreign-student-document`,
+    `${API_URL}/api/admission/rules/procedure/documents`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };
@@ -70,7 +70,7 @@ export const useForeignDocumentData = () => {
 
 export const useForeignStudentFeeData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/admission/rules/procedure/foreign-student-fee`,
+    `${API_URL}/api/admission/rules/procedure/fee-structure-foreign`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

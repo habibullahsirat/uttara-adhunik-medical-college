@@ -71,8 +71,8 @@ export default function AboutManager() {
 
       toast.success(
         editingAbout
-          ? "Laboratory Facilities Section updated successfully!"
-          : "Laboratory Facilities Section added successfully!",
+          ? "AboutSection updated successfully!"
+          : "About Section added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);

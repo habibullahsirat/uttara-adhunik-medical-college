@@ -1334,6 +1334,11 @@ const NAV_GROUPS = [
                 href: "/admin/admission/procedure-and-fee/fee-national",
                 icon: Sparkles,
               },
+              {
+                name: "Monthly fee for National Student",
+                href: "/admin/admission/procedure-and-fee/monthly-fee",
+                icon: Sparkles,
+              },
             ],
           },
 
@@ -1674,7 +1679,7 @@ export default function Sidebar({
           flex flex-col
           shrink-0
           transition-all duration-200
-          ${collapsed ? "lg:w-[76px]" : "lg:w-[248px]"}
+          ${collapsed ? "lg:w-[76px]" : "lg:w-[350px]"}
           w-[248px]
           ${mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
         `}

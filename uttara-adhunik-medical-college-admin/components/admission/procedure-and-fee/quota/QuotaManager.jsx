@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import SelectionList from "@/components/admission/procedure-and-fee/quota/QuotaList";
+import QuotaList from "@/components/admission/procedure-and-fee/quota/QuotaList";
 import { useQuotaData } from "@/lib/DataFetch/Admission/Procedure/SWRDataFetch";
-import SelectionForm from "@/components/admission/procedure-and-fee/quota/QuotaForm";
+import QuotaForm from "@/components/admission/procedure-and-fee/quota/QuotaForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
@@ -24,12 +24,12 @@ export default function QuotaManager() {
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this section?")) return;
+    if (!confirm("Are you sure you want to delete this quota?")) return;
 
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/national-student-selection/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/student-quota/${id}`,
         {
           method: "DELETE",
         },
@@ -37,10 +37,10 @@ export default function QuotaManager() {
 
       if (!response.ok) throw new Error("Failed to delete");
 
-      toast.success("Feature deleted successfully!");
+      toast.success("Quota deleted successfully!");
       mutate(); // Refresh the data
     } catch (error) {
-      toast.error("Failed to delete section");
+      toast.error("Failed to delete quota");
       console.error("Delete error:", error);
     } finally {
       setIsDeleting(false);
@@ -51,8 +51,8 @@ export default function QuotaManager() {
     setIsSubmitting(true);
     try {
       const url = editingFeature
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/national-student-selection/${editingFeature._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/national-student-selection`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/student-quota/${editingFeature._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/student-quota`;
 
       const method = editingFeature ? "PATCH" : "POST";
 
@@ -71,13 +71,13 @@ export default function QuotaManager() {
 
       toast.success(
         editingFeature
-          ? "Selection status updated successfully!"
-          : "Selection status added successfully!",
+          ? "Quota updated successfully!"
+          : "Quota added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
     } catch (error) {
-      toast.error(error.message || "Failed to save section");
+      toast.error(error.message || "Failed to save quota");
       console.error("Save error:", error);
     } finally {
       setIsSubmitting(false);
@@ -89,7 +89,7 @@ export default function QuotaManager() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading section...</p>
+          <p className="text-gray-600">Loading Quota...</p>
         </div>
       </div>
     );
@@ -100,11 +100,9 @@ export default function QuotaManager() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">
-            Selection Criteria Management
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-900">Quota Management</h1>
           <p className="text-gray-600 mt-1">
-            Total features:{" "}
+            Total Quotas:{" "}
             <span className="font-semibold">{feature?.length || 0}</span>
           </p>
         </div>
@@ -126,12 +124,12 @@ export default function QuotaManager() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          Add New Selection Criteria
+          Add New Quota
         </button>
       </div>
 
-      {/* Selection List */}
-      <SelectionList
+      {/* Quota List */}
+      <QuotaList
         feature={feature}
         onEdit={handleEdit}
         onDelete={handleDelete}
@@ -144,7 +142,7 @@ export default function QuotaManager() {
         onClose={() => !isSubmitting && setIsModalOpen(false)}
         title={editingFeature ? "Edit Selection" : "Add New Selection"}
       >
-        <SelectionForm
+        <QuotaForm
           initialData={editingFeature}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}

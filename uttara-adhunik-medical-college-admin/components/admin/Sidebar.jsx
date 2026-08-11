@@ -1370,6 +1370,30 @@ const NAV_GROUPS = [
           },
 
           {
+            name: "Admission Forms",
+            icon: Info,
+            children: [
+              {
+                name: "Admission Papers & Notices",
+                href: "/admin/admission/form",
+                icon: Building2,
+              },
+            ],
+          },
+
+          {
+            name: "Admission Result",
+            icon: Info,
+            children: [
+              {
+                name: "Admission Papers & Notices",
+                href: "/admin/admission/result",
+                icon: Building2,
+              },
+            ],
+          },
+
+          {
             name: "History",
             icon: History,
             children: [

@@ -44,7 +44,7 @@ export const useFeeData = () => {
   return { data, error, isLoading: !data && !error, mutate };
 };
 
-export const useMontlyFeeData = () => {
+export const useMonthlyFeeData = () => {
   const { data, error, mutate } = useSWR(
     `${API_URL}/api/admission/rules/procedure/national-student-monthly-fee`,
     fetcher,

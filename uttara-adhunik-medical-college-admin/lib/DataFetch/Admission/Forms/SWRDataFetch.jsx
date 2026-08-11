@@ -6,7 +6,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const usePaperData = () => {
   const { data, error, mutate } = useSWR(
-    `${API_URL}/api/admission/paper`,
+    `${API_URL}/api/admission/form`,
     fetcher,
   );
   return { data, error, isLoading: !data && !error, mutate };

@@ -24,12 +24,12 @@ export default function SelectionManager() {
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this facility?")) return;
+    if (!confirm("Are you sure you want to delete this section?")) return;
 
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/facility/laboratory/lab-facility/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/national-student-selection/${id}`,
         {
           method: "DELETE",
         },
@@ -51,8 +51,8 @@ export default function SelectionManager() {
     setIsSubmitting(true);
     try {
       const url = editingFeature
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/facility/laboratory/lab-facility/${editingFeature._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/facility/laboratory/lab-facility`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/national-student-selection/${editingFeature._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/national-student-selection`;
 
       const method = editingFeature ? "PATCH" : "POST";
 
@@ -71,8 +71,8 @@ export default function SelectionManager() {
 
       toast.success(
         editingFeature
-          ? "Facility updated successfully!"
-          : "Facility added successfully!",
+          ? "Selection status updated successfully!"
+          : "Selection status added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
@@ -89,7 +89,7 @@ export default function SelectionManager() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading features...</p>
+          <p className="text-gray-600">Loading section...</p>
         </div>
       </div>
     );
@@ -101,7 +101,7 @@ export default function SelectionManager() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">
-            Feature Management
+            Selection Criteria Management
           </h1>
           <p className="text-gray-600 mt-1">
             Total features:{" "}
@@ -126,12 +126,12 @@ export default function SelectionManager() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          Add New Feature
+          Add New Selection Criteria
         </button>
       </div>
 
-      {/* Facility List */}
-      <FacilityList
+      {/* Selection List */}
+      <SelectionList
         feature={feature}
         onEdit={handleEdit}
         onDelete={handleDelete}
@@ -142,9 +142,9 @@ export default function SelectionManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title={editingFeature ? "Edit Facility" : "Add New Facility"}
+        title={editingFeature ? "Edit Selection" : "Add New Selection"}
       >
-        <FacilityForm
+        <SelectionForm
           initialData={editingFeature}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}

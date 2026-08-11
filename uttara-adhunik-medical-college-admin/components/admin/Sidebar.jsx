@@ -1320,8 +1320,8 @@ const NAV_GROUPS = [
                 icon: GraduationCap,
               },
               {
-                name: "Sustainability",
-                href: "/admin/about/overview/sustainability",
+                name: "Selection Criteria",
+                href: "/admin/admission/procedure-and-fee/selection",
                 icon: Sparkles,
               },
             ],

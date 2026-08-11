@@ -124,7 +124,7 @@ export default function FeeManager() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          Add New Quota
+          Add New Fee
         </button>
       </div>
 

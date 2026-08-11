@@ -1349,6 +1349,11 @@ const NAV_GROUPS = [
                 href: "/admin/admission/procedure-and-fee/document",
                 icon: Sparkles,
               },
+              {
+                name: "Fees for Foreign Students",
+                href: "/admin/admission/procedure-and-fee/fee-foreign",
+                icon: Sparkles,
+              },
             ],
           },
 

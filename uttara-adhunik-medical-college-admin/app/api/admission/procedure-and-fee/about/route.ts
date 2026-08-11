@@ -1,12 +1,12 @@
 import { connectToDB } from "@/lib/connectToDB";
-import { CafeteriaSection } from "@/lib/models/facility/cafeteria-models";
+import { AdmissionProcedureSection } from "@/lib/models/admission/admissionRules-models";
 import { NextResponse } from "next/server";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
 
 export async function GET() {
   await connectToDB();
-  const cafeteria = await CafeteriaSection.find();
+  const cafeteria = await AdmissionProcedureSection.find();
   const response = NextResponse.json(cafeteria);
   // response.headers.set("Access-Control-Allow-Origin", "*");
   response.headers.set("Access-Control-Allow-Origin", PUBLIC_URL);
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
 
     // Connect to the database
     await connectToDB();
-    await CafeteriaSection.create(data);
+    await AdmissionProcedureSection.create(data);
     return NextResponse.json({ message: "Data created" }, { status: 201 });
   } catch (error) {
     console.error("Error creating data:", error);

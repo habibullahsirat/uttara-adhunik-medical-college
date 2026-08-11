@@ -1324,6 +1324,11 @@ const NAV_GROUPS = [
                 href: "/admin/admission/procedure-and-fee/selection",
                 icon: Sparkles,
               },
+              {
+                name: "Student Quotas",
+                href: "/admin/admission/procedure-and-fee/quota",
+                icon: Sparkles,
+              },
             ],
           },
 

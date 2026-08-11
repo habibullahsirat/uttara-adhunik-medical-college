@@ -6,7 +6,7 @@ import FeeForm from "@/components/admission/procedure-and-fee/fee-national/FeeFo
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
-export default function QuotaManager() {
+export default function FeeManager() {
   const { data: feature, mutate, isLoading } = useFeeData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingFeature, setEditingFeature] = useState(null);
@@ -24,12 +24,12 @@ export default function QuotaManager() {
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this quota?")) return;
+    if (!confirm("Are you sure you want to delete this fee?")) return;
 
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/student-quota/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/fee-structure-national/${id}`,
         {
           method: "DELETE",
         },
@@ -37,10 +37,10 @@ export default function QuotaManager() {
 
       if (!response.ok) throw new Error("Failed to delete");
 
-      toast.success("Quota deleted successfully!");
+      toast.success("Fee deleted successfully!");
       mutate(); // Refresh the data
     } catch (error) {
-      toast.error("Failed to delete quota");
+      toast.error("Failed to delete feeFee");
       console.error("Delete error:", error);
     } finally {
       setIsDeleting(false);
@@ -51,8 +51,8 @@ export default function QuotaManager() {
     setIsSubmitting(true);
     try {
       const url = editingFeature
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/student-quota/${editingFeature._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/student-quota`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/fee-structure-national/${editingFeature._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/fee-structure-national`;
 
       const method = editingFeature ? "PATCH" : "POST";
 
@@ -71,13 +71,13 @@ export default function QuotaManager() {
 
       toast.success(
         editingFeature
-          ? "Quota updated successfully!"
-          : "Quota added successfully!",
+          ? "Fee updated successfully!"
+          : "Fee added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
     } catch (error) {
-      toast.error(error.message || "Failed to save quota");
+      toast.error(error.message || "Failed to save fee");
       console.error("Save error:", error);
     } finally {
       setIsSubmitting(false);
@@ -89,7 +89,7 @@ export default function QuotaManager() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading Quota...</p>
+          <p className="text-gray-600">Loading Fees...</p>
         </div>
       </div>
     );
@@ -100,9 +100,9 @@ export default function QuotaManager() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Quota Management</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Fees Management</h1>
           <p className="text-gray-600 mt-1">
-            Total Quotas:{" "}
+            Total Fees:{" "}
             <span className="font-semibold">{feature?.length || 0}</span>
           </p>
         </div>
@@ -128,8 +128,8 @@ export default function QuotaManager() {
         </button>
       </div>
 
-      {/* Quota List */}
-      <QuotaList
+      {/* Fee List */}
+      <FeeList
         feature={feature}
         onEdit={handleEdit}
         onDelete={handleDelete}
@@ -140,9 +140,9 @@ export default function QuotaManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title={editingFeature ? "Edit Selection" : "Add New Selection"}
+        title={editingFeature ? "Edit Fee" : "Add New Fee"}
       >
-        <QuotaForm
+        <FeeForm
           initialData={editingFeature}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}

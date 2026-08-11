@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
-import FacilityList from "@/components/facility/cafeteria/cafe-feature/FacilityList";
-import { useFacilityData } from "@/lib/DataFetch/Facility/Cafeteria/SWRDataFetch";
-import FacilityForm from "@/components/facility/cafeteria/cafe-feature/FacilityForm";
+import FeeList from "@/components/admission/procedure-and-fee/monthly-fee/FeeList";
+import { useMonthlyFeeData } from "@/lib/DataFetch/Admission/Procedure/SWRDataFetch";
+import FeeForm from "@/components/admission/procedure-and-fee/monthly-fee/FeeForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
-export default function FacilityManager() {
-  const { data: feature, mutate, isLoading } = useFacilityData();
+export default function FeeManager() {
+  const { data: feature, mutate, isLoading } = useMonthlyFeeData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingFeature, setEditingFeature] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -24,12 +24,12 @@ export default function FacilityManager() {
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this facility?")) return;
+    if (!confirm("Are you sure you want to delete this fee?")) return;
 
     setIsDeleting(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/facility/cafeteria/cafe-facility/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/monthly-fee/${id}`,
         {
           method: "DELETE",
         },
@@ -37,10 +37,10 @@ export default function FacilityManager() {
 
       if (!response.ok) throw new Error("Failed to delete");
 
-      toast.success("Feature deleted successfully!");
+      toast.success("Fee deleted successfully!");
       mutate(); // Refresh the data
     } catch (error) {
-      toast.error("Failed to delete section");
+      toast.error("Failed to delete fee");
       console.error("Delete error:", error);
     } finally {
       setIsDeleting(false);
@@ -51,8 +51,8 @@ export default function FacilityManager() {
     setIsSubmitting(true);
     try {
       const url = editingFeature
-        ? `${process.env.NEXT_PUBLIC_API_URL}/api/facility/cafeteria/cafe-facility/${editingFeature._id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/api/facility/cafeteria/cafe-facility`;
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/monthly-fee/${editingFeature._id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/admission/procedure-and-fee/monthly-fee`;
 
       const method = editingFeature ? "PATCH" : "POST";
 
@@ -71,13 +71,13 @@ export default function FacilityManager() {
 
       toast.success(
         editingFeature
-          ? "Facility updated successfully!"
-          : "Facility added successfully!",
+          ? "Fee updated successfully!"
+          : "Fee added successfully!",
       );
       mutate(); // Refresh the data
       setIsModalOpen(false);
     } catch (error) {
-      toast.error(error.message || "Failed to save section");
+      toast.error(error.message || "Failed to save fee");
       console.error("Save error:", error);
     } finally {
       setIsSubmitting(false);
@@ -89,7 +89,7 @@ export default function FacilityManager() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading facilities...</p>
+          <p className="text-gray-600">Loading Fees...</p>
         </div>
       </div>
     );
@@ -101,10 +101,10 @@ export default function FacilityManager() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">
-            Facility Management
+            Monthly Fee Management
           </h1>
           <p className="text-gray-600 mt-1">
-            Total features:{" "}
+            Total Monthly Fees:{" "}
             <span className="font-semibold">{feature?.length || 0}</span>
           </p>
         </div>
@@ -130,8 +130,8 @@ export default function FacilityManager() {
         </button>
       </div>
 
-      {/* Facility List */}
-      <FacilityList
+      {/* Fee List */}
+      <FeeList
         feature={feature}
         onEdit={handleEdit}
         onDelete={handleDelete}
@@ -142,9 +142,9 @@ export default function FacilityManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title={editingFeature ? "Edit Facility" : "Add New Facility"}
+        title={editingFeature ? "Edit Fee" : "Add New Fee"}
       >
-        <FacilityForm
+        <FeeForm
           initialData={editingFeature}
           onSubmit={handleSubmit}
           onCancel={() => !isSubmitting && setIsModalOpen(false)}

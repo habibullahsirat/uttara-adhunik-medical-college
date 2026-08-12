@@ -1,5 +1,6 @@
 import Banner from "@/components/FacilityPage/Labratory/Banner";
-import TabNav from "@/components/FacilityPage/Labratory/TabNav";
+// import TabNav from "@/components/FacilityPage/Labratory/TabNav";
+import TabNav from "@/components/FacilityPage/shared/TabNav";
 import LabratoryServices from "@/components/FacilityPage/Labratory/LabratoryServices";
 import Service from "@/components/FacilityPage/Labratory/Service";
 

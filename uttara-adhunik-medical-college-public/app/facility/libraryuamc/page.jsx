@@ -1,5 +1,6 @@
 import Banner from "@/components/FacilityPage/Library/Banner";
-import TabNav from "@/components/FacilityPage/Library/TabNav";
+// import TabNav from "@/components/FacilityPage/Library/TabNav";
+import TabNav from "@/components/FacilityPage/shared/TabNav";
 
 import LibrarySection from "@/components/FacilityPage/Library/LibrarySection";
 import LibraryFacility from "@/components/FacilityPage/Library/LibraryFacility";

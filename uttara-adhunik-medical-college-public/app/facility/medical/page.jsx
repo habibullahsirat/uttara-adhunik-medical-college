@@ -1,5 +1,6 @@
 import Banner from "@/components/FacilityPage/Medical/Banner";
-import TabNav from "@/components/FacilityPage/Medical/TabNav";
+// import TabNav from "@/components/FacilityPage/Medical/TabNav";
+import TabNav from "@/components/FacilityPage/shared/TabNav";
 import Education from "@/components/FacilityPage/Medical/Education";
 import Resource from "@/components/FacilityPage/Medical/Resource";
 

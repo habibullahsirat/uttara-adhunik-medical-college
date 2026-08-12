@@ -1,5 +1,5 @@
 import Banner from "@/components/FacilityPage/Cafeteria/Banner";
-import TabNav from "@/components/FacilityPage/Cafeteria/TabNav";
+import TabNav from "@/components/FacilityPage/shared/TabNav";
 import CafeteriaSection from "@/components/FacilityPage/Cafeteria/CafeteriaSection";
 import Service from "@/components/FacilityPage/Cafeteria/Service";
 export default function Cafeteria() {

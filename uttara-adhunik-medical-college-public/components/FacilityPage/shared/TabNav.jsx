@@ -153,7 +153,7 @@ export default function TabNav() {
             FIRST ROW - 5 TABS
         ================================================= */}
         <div className="flex flex-wrap justify-center gap-[30px]">
-          {TABS.slice(0, 5).map((tab) => {
+          {TABS.slice(0, 6).map((tab) => {
             const isActive = pathname === tab.href;
 
             return (
@@ -186,7 +186,7 @@ export default function TabNav() {
             SECOND ROW - 3 TABS
         ================================================= */}
         <div className="mt-[30px] flex flex-wrap justify-center gap-[30px]">
-          {TABS.slice(5).map((tab) => {
+          {TABS.slice(6).map((tab) => {
             const isActive = pathname === tab.href;
 
             return (

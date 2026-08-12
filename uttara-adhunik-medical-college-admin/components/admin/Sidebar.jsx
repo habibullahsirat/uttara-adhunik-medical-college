@@ -1488,6 +1488,16 @@ const NAV_GROUPS = [
       },
     ],
   },
+  {
+    label: "Public Message",
+    items: [
+      {
+        name: "Public Message",
+        href: "/admin/public-message",
+        icon: LayoutDashboard,
+      },
+    ],
+  },
 ];
 
 const DISPLAY_FONT =

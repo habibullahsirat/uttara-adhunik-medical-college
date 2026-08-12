@@ -377,31 +377,80 @@ export default function Contact() {
   // Used to show success/error messages
   const [status, setStatus] = useState("");
 
-  const sendEmail = (e) => {
-    // Prevent the browser from refreshing the page
+  // const sendEmail = (e) => {
+  //   // Prevent the browser from refreshing the page
+  //   e.preventDefault();
+
+  //   setStatus("sending");
+
+  //   emailjs
+  //     .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, {
+  //       publicKey: PUBLIC_KEY,
+  //     })
+  //     .then(
+  //       () => {
+  //         console.log("Email sent successfully!");
+
+  //         setStatus("success");
+
+  //         // Clear the form after successful submission
+  //         form.current.reset();
+  //       },
+  //       (error) => {
+  //         console.error("EmailJS error:", error);
+
+  //         setStatus("error");
+  //       },
+  //     );
+  // };
+
+  const sendEmail = async (e) => {
     e.preventDefault();
 
     setStatus("sending");
 
-    emailjs
-      .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, {
+    const formData = new FormData(form.current);
+
+    const data = {
+      first_name: formData.get("first_name"),
+      last_name: formData.get("last_name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      message: formData.get("message"),
+      privacy: formData.get("privacy") === "on",
+    };
+
+    try {
+      // 1. Save data to MongoDB
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Failed to save contact data");
+      }
+
+      // 2. Send email through EmailJS
+      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, {
         publicKey: PUBLIC_KEY,
-      })
-      .then(
-        () => {
-          console.log("Email sent successfully!");
+      });
 
-          setStatus("success");
+      console.log("Contact saved and email sent successfully!");
 
-          // Clear the form after successful submission
-          form.current.reset();
-        },
-        (error) => {
-          console.error("EmailJS error:", error);
+      setStatus("success");
 
-          setStatus("error");
-        },
-      );
+      form.current.reset();
+    } catch (error) {
+      console.error("Contact submission error:", error);
+
+      setStatus("error");
+    }
   };
 
   return (

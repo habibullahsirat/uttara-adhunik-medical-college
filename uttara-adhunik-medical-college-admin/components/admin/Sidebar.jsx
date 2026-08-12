@@ -985,37 +985,37 @@ const NAV_GROUPS = [
         children: [
           {
             name: "Hero",
-            href: "/admin/home/hero",
+            href: "/admin/homepage/hero",
             icon: ImageIcon,
           },
           {
             name: "Notice Board",
-            href: "/admin/home/notice-board",
+            href: "/admin/homepage/notice",
             icon: Bell,
           },
           {
             name: "Publication",
-            href: "/admin/home/publication",
+            href: "/admin/homepage/publication",
             icon: Newspaper,
           },
           {
             name: "About",
-            href: "/admin/home/about",
+            href: "/admin/homepage/about",
             icon: FileText,
           },
           {
             name: "Stats",
-            href: "/admin/home/stats",
+            href: "/admin/homepage/stat",
             icon: BarChart3,
           },
           {
             name: "Find Department",
-            href: "/admin/home/find-department",
+            href: "/admin/homepage/find-department",
             icon: Building2,
           },
           {
             name: "Admission",
-            href: "/admin/home/admission",
+            href: "/admin/homepage/admission",
             icon: GraduationCap,
           },
           {
@@ -1045,7 +1045,7 @@ const NAV_GROUPS = [
           },
           {
             name: "Students Feedback",
-            href: "/admin/home/students-feedback",
+            href: "/admin/homepage/students-feedback",
             icon: MessageSquare,
           },
         ],

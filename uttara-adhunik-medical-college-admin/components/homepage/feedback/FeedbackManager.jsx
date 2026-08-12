@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import FeedbackList from "./FeedbackList";
-import { useFeedbackData } from "@/lib/DataFetch/homepage/SWRDataFetch";
+import { useFeedbackData } from "@/lib/DataFetch/Homepage/SWRDataFetch";
 import FeedbackForm from "./FeedbackForm";
 import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";

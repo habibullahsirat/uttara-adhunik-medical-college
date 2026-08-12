@@ -1080,7 +1080,7 @@ const NAV_GROUPS = [
               },
               {
                 name: "Admission and Aid",
-                href: "/admin/about/overview/admission-and-aid",
+                href: "/admin/about/overview/admission-aid",
                 icon: GraduationCap,
               },
               {

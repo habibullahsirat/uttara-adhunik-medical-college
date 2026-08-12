@@ -1,16 +1,6 @@
-const GREEN = "#018837";
+"use client";
 
-function PhotoPlaceholder({ label, className = "" }) {
-  return (
-    <div
-      className={`relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0a3d1f] to-[#018837] ${className}`}
-    >
-      <span className="font-body text-[11px] uppercase tracking-widest text-white/60 text-center px-4">
-        {label}
-      </span>
-    </div>
-  );
-}
+import { ArrowRight } from "lucide-react";
 
 export default function Footer() {
   const campusLinks = [
@@ -20,108 +10,357 @@ export default function Footer() {
     "Support",
     "Accessible mode",
   ];
+
   const pageLinks = ["Home", "About", "Facilities", "Admission", "Contact"];
+
   const posts = [
-    { title: "Those inequalities that Matter", date: "August 6, 2024" },
+    {
+      title: "Those inequalities that Matter",
+      date: "August 6, 2024",
+      image: "/post1.png",
+    },
     {
       title: "After Decades Of Improvement, Cardiovascular",
       date: "July 4, 2024",
+      image: "/post2.png",
     },
   ];
 
   return (
-    <footer className="flex flex-col items-center bg-black px-6 md:px-20 pt-14 pb-8 text-white">
-      <div className="flex w-full max-w-6xl flex-col md:flex-row items-center justify-between gap-8 border-b border-[#242424] pb-14">
-        <h3 className="font-body text-2xl">Subscribe To Newsletter</h3>
-        <div className="flex w-full max-w-md items-stretch">
-          <input
-            placeholder="Enter Your mail"
-            className="flex-1 border px-5 py-4 font-body text-sm bg-transparent outline-none placeholder:text-white/70"
-            style={{ borderColor: GREEN }}
-          />
-          <button className="px-8 py-4 font-body text-sm font-medium bg-white text-[#110C2D]">
-            Submit Button →
-          </button>
-        </div>
-      </div>
+    <footer className="w-full bg-black text-white">
+      {/* ================= NEWSLETTER ================= */}
+      <div className="border-b border-[#242424]">
+        <div
+          className="
+            mx-auto flex w-full max-w-[1130px]
+            flex-col gap-8
+            px-5 py-[50px]
+            md:flex-row md:items-center md:justify-between
+            md:gap-10
+          "
+        >
+          <h4
+            className="
+              font-body text-[30.94px]
+              font-normal leading-[36px]
+              text-white
+            "
+          >
+            Subscribe To Newsletter
+          </h4>
 
-      <div className="grid w-full max-w-6xl grid-cols-1 md:grid-cols-4 gap-10 py-14">
-        <div className="flex flex-col gap-5">
-          <div className="flex items-center gap-3">
-            <div
-              className="flex h-12 w-12 items-center justify-center rounded-full text-white font-display font-bold"
-              style={{ backgroundColor: GREEN }}
+          <form
+            className="
+              flex w-full max-w-[494px]
+              flex-col gap-[10px]
+              sm:flex-row
+            "
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <input
+              type="email"
+              placeholder="Enter Your mail"
+              className="
+                box-border h-[53px] w-full
+                border border-[#018837]
+                bg-transparent
+                px-[21px] py-[18px]
+                font-body text-[14px]
+                leading-[17px]
+                text-white
+                outline-none
+                placeholder:text-white
+              "
+            />
+
+            <button
+              type="submit"
+              className="
+                flex h-[53px]
+                w-full shrink-0
+                items-center justify-center
+                gap-[3px]
+                bg-white
+                px-[38px]
+                text-[16px]
+                font-medium
+                leading-[18px]
+                text-[#110C2D]
+                transition-colors
+                hover:bg-[#FECD2F]
+                sm:w-[208px]
+              "
             >
-              U
-            </div>
-            <span className="font-display text-lg font-bold">
-              Uttara Adhunik Medical College
-            </span>
-          </div>
-          <p className="font-body text-[#737477]">
-            We are passionate education dedicated to providing high-quality
-            resources for learners of all backgrounds.
-          </p>
-          {/* <div className="flex items-center gap-4">
-            {[Facebook, Youtube, Linkedin, Instagram].map((Icon, i) => (
-              <Icon
-                key={i}
-                className="h-4 w-4 text-[#737477]"
-                strokeWidth={1.8}
-              />
-            ))}
-          </div> */}
-        </div>
+              <span>Submit Button</span>
 
-        <div>
-          <h4 className="mb-4 font-body text-lg font-medium underline underline-offset-4">
-            Our Campus
-          </h4>
-          <ul className="flex flex-col gap-2 font-body text-[#737477]">
-            {campusLinks.map((l) => (
-              <li key={l}>
-                <a href="#">{l}</a>
-              </li>
-            ))}
-          </ul>
+              <span className="text-[18px] leading-none">→</span>
+            </button>
+          </form>
         </div>
+      </div>
 
-        <div>
-          <h4 className="mb-4 font-body text-lg font-medium underline underline-offset-4">
-            Our Pages
-          </h4>
-          <ul className="flex flex-col gap-2 font-body text-[#737477]">
-            {pageLinks.map((l) => (
-              <li key={l}>
-                <a href="#">{l}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="mb-4 font-body text-lg font-medium underline underline-offset-4">
-            Recent Posts
-          </h4>
-          <div className="flex flex-col gap-4">
-            {posts.map((p) => (
-              <div key={p.title} className="flex items-center gap-3">
-                <PhotoPlaceholder label="" className="h-14 w-20 shrink-0" />
-                <div>
-                  <p className="font-body text-xs text-[#737477]">{p.date}</p>
-                  <p className="font-body text-sm">{p.title}</p>
-                </div>
+      {/* ================= MAIN FOOTER ================= */}
+      <div className="mx-auto w-full max-w-[1290px] px-5">
+        <div
+          className="
+            grid
+            grid-cols-1
+            gap-12
+            py-[65px]
+            sm:grid-cols-2
+            lg:grid-cols-4
+            lg:gap-0
+          "
+        >
+          {/* ================= BRAND ================= */}
+          <div className="pr-8">
+            <div className="mb-[25px] flex items-center gap-[8px]">
+              {/* Replace this with your actual logo */}
+              <div
+                className="
+                  flex h-[66px] w-[66px]
+                  shrink-0 items-center justify-center
+                  overflow-hidden rounded-full
+                "
+              >
+                <img
+                  src="/logo2.png"
+                  alt="Uttara Adhunik Medical College"
+                  className="h-full w-full object-contain"
+                />
               </div>
-            ))}
+
+              <h3
+                className="
+                  max-w-[175px]
+                  font-display
+                  text-[20.7px]
+                  font-bold
+                  leading-[25px]
+                  text-white
+                "
+              >
+                Uttara Adhunik Medical College
+              </h3>
+            </div>
+
+            <p
+              className="
+                max-w-[333px]
+                font-body
+                text-[16px]
+                font-normal
+                leading-[29px]
+                text-[#737477]
+              "
+            >
+              We are passionate education dedicated to providing high-quality
+              resources for learners of all backgrounds.
+            </p>
+          </div>
+
+          {/* ================= OUR CAMPUS ================= */}
+          <div>
+            <h4
+              className="
+                mb-[46px]
+                inline-block
+                font-body
+                text-[20px]
+                font-medium
+                leading-[26px]
+                text-white
+                underline
+                underline-offset-4
+              "
+            >
+              Our Campus
+            </h4>
+
+            <ul className="flex flex-col">
+              {campusLinks.map((link) => (
+                <li key={link}>
+                  <a
+                    href="#"
+                    className="
+                      block
+                      py-[8px]
+                      font-body
+                      text-[16px]
+                      font-normal
+                      leading-[25px]
+                      text-[#737477]
+                      transition-colors
+                      hover:text-white
+                    "
+                  >
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ================= OUR PAGES ================= */}
+          <div>
+            <h4
+              className="
+                mb-[46px]
+                inline-block
+                font-body
+                text-[20px]
+                font-medium
+                leading-[26px]
+                text-white
+                underline
+                underline-offset-4
+              "
+            >
+              Our Pages
+            </h4>
+
+            <ul className="flex flex-col">
+              {pageLinks.map((link) => (
+                <li key={link}>
+                  <a
+                    href="#"
+                    className="
+                      block
+                      py-[8px]
+                      font-body
+                      text-[16px]
+                      font-normal
+                      leading-[25px]
+                      text-[#737477]
+                      transition-colors
+                      hover:text-white
+                    "
+                  >
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ================= RECENT POSTS ================= */}
+          <div>
+            <h4
+              className="
+                mb-[46px]
+                inline-block
+                font-body
+                text-[20px]
+                font-medium
+                leading-[26px]
+                text-white
+                underline
+                underline-offset-4
+              "
+            >
+              Recent Posts
+            </h4>
+
+            <div className="flex flex-col gap-[28px]">
+              {posts.map((post) => (
+                <a
+                  href="#"
+                  key={post.title}
+                  className="
+                    group
+                    flex
+                    items-start
+                    gap-[20px]
+                  "
+                >
+                  {/* Figma uses 190x80 post images */}
+                  <div
+                    className="
+                      h-[80px]
+                      w-[80px]
+                      shrink-0
+                      overflow-hidden
+                      bg-[#242424]
+                    "
+                  >
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="
+                        h-full
+                        w-full
+                        object-cover
+                        transition-transform
+                        duration-300
+                        group-hover:scale-105
+                      "
+                    />
+                  </div>
+
+                  <div className="pt-[1px]">
+                    <div className="mb-[10px] flex items-center gap-[8px]">
+                      <span className="text-[#737477]">›</span>
+
+                      <p
+                        className="
+                          font-body
+                          text-[14px]
+                          font-normal
+                          leading-[25px]
+                          text-[#737477]
+                        "
+                      >
+                        {post.date}
+                      </p>
+                    </div>
+
+                    <p
+                      className="
+                        max-w-[236px]
+                        font-body
+                        text-[15.75px]
+                        font-normal
+                        leading-[18px]
+                        capitalize
+                        text-white
+                      "
+                    >
+                      {post.title}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="flex w-full max-w-6xl flex-col sm:flex-row items-center justify-between gap-2 border-t border-[#242424] pt-6 font-body text-sm text-[#737477]">
-        <span>
-          Copyright @ 2024. All Rights Reserved by{" "}
-          <span className="text-white">Umaio</span>
-        </span>
+      {/* ================= COPYRIGHT ================= */}
+      <div className="border-t border-[#242424]">
+        <div
+          className="
+            mx-auto
+            flex
+            min-h-[64px]
+            w-full
+            max-w-[1290px]
+            items-center
+            px-5
+          "
+        >
+          <p
+            className="
+              font-body
+              text-[16px]
+              font-normal
+              leading-[29px]
+              text-[#737477]
+            "
+          >
+            Copyright @ 2024. All Rights Reserved by{" "}
+            <span className="text-white">Umaio</span>
+          </p>
+        </div>
       </div>
     </footer>
   );

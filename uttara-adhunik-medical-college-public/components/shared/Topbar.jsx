@@ -2,11 +2,18 @@ import {
   MapPin,
   Mail,
   Phone,
+  Search,
+  ChevronDown,
+  AlignJustify,
+  Clock,
+  ArrowRight,
+  Star,
+  Menu,
   // Facebook,
   // Youtube,
   // Linkedin,
   // Instagram,
-  //   X,
+  X,
 } from "lucide-react";
 
 export default function TopBar() {

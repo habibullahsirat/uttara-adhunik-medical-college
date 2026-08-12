@@ -1009,8 +1009,13 @@ const NAV_GROUPS = [
             icon: BarChart3,
           },
           {
-            name: "Find Department",
-            href: "/admin/homepage/find-department",
+            name: "Find Department Section",
+            href: "/admin/homepage/find-department-left",
+            icon: Building2,
+          },
+          {
+            name: "Find Department Banner",
+            href: "/admin/homepage/find-department-right",
             icon: Building2,
           },
           {
@@ -1020,32 +1025,37 @@ const NAV_GROUPS = [
           },
           {
             name: "Facility",
-            href: "/admin/home/facility",
+            href: "/admin/homepage/feature",
             icon: Landmark,
           },
           {
             name: "Principle Message",
-            href: "/admin/home/principle-message",
+            href: "/admin/homepage/principle-message",
             icon: UserRound,
           },
           {
             name: "Campus Life",
-            href: "/admin/home/campus-life",
+            href: "/admin/homepage/campus-life",
             icon: School,
           },
           {
-            name: "Alumni Event",
-            href: "/admin/home/alumni-event",
+            name: "Alumni Event Section",
+            href: "/admin/homepage/alumni-events",
+            icon: Handshake,
+          },
+          {
+            name: "Alumni Event Banner",
+            href: "/admin/homepage/alumni-events-image",
             icon: Handshake,
           },
           {
             name: "Latest News",
-            href: "/admin/home/latest-news",
+            href: "/admin/homepage/news",
             icon: Newspaper,
           },
           {
             name: "Students Feedback",
-            href: "/admin/homepage/students-feedback",
+            href: "/admin/homepage/feedback",
             icon: MessageSquare,
           },
         ],

@@ -1,5 +1,5 @@
 import Banner from "@/components/AdmissionPage/ApplicationForm/Banner";
-import TabNav from "@/components/AdmissionPage/ApplicationForm/TabNav";
+import TabNav from "@/components/AdmissionPage/shared/TabNav";
 import Form from "@/components/AdmissionPage/ApplicationForm/Form";
 
 export default function ApplicationForm() {

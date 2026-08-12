@@ -1,5 +1,6 @@
 import Banner from "@/components/AdmissionPage/AdmissionResult/Banner";
-import TabNav from "@/components/AdmissionPage/AdmissionResult/TabNav";
+// import TabNav from "@/components/AdmissionPage/AdmissionResult/TabNav";
+import TabNav from "@/components/AdmissionPage/shared/TabNav";
 import Result from "@/components/AdmissionPage/AdmissionResult/Result";
 
 export default function AdmissionResult() {

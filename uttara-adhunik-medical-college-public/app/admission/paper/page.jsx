@@ -1,5 +1,6 @@
 import Banner from "@/components/AdmissionPage/Paper/Banner";
-import TabNav from "@/components/AdmissionPage/Paper/TabNav";
+// import TabNav from "@/components/AdmissionPage/Paper/TabNav";
+import TabNav from "@/components/AdmissionPage/shared/TabNav";
 import NoticeSection from "@/components/AdmissionPage/Paper/NoticeSection";
 
 export default function Paper() {

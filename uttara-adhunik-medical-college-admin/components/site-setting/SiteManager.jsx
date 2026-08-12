@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import SiteList from "@/components/site/SiteList";
-import SiteForm from "@/components/site/SiteForm";
+import SiteList from "@/components/site-setting/SiteList";
+import SiteForm from "@/components/site-setting/SiteForm";
 import Modal from "@/components/ui/Modal";
 import { useSiteData } from "@/lib/DataFetch/Site/SWRDataFetch";
 import { toast } from "sonner";

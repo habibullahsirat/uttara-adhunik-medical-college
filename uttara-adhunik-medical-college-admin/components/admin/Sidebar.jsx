@@ -1498,6 +1498,17 @@ const NAV_GROUPS = [
       },
     ],
   },
+
+  {
+    label: "Site Setting",
+    items: [
+      {
+        name: "Site Setting",
+        href: "/admin/site-setting",
+        icon: LayoutDashboard,
+      },
+    ],
+  },
 ];
 
 const DISPLAY_FONT =

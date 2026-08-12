@@ -366,9 +366,9 @@ function IconInput({ label, placeholder, type = "text", icon, name }) {
   );
 }
 
-const SERVICE_ID = process.env.EMAIL_JS_SERVICE_ID;
-const TEMPLATE_ID = process.env.EMAIL_JS_TEMPLATE_ID;
-const PUBLIC_KEY = process.env.EMAIL_JS_PUBLIC_KEY;
+const SERVICE_ID = process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID;
+const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID;
+const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY;
 
 export default function Contact() {
   // This connects EmailJS to our form

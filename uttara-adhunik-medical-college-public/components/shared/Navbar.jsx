@@ -1890,6 +1890,13 @@ const dropdownMenus = {
       href: "/admission/registration",
     },
   ],
+
+  Career: [
+    {
+      label: "CAREER",
+      href: "/contact",
+    },
+  ],
 };
 
 /* =========================================================

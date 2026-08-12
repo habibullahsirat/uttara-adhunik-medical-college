@@ -63,7 +63,7 @@ const SiteSchema = new mongoose.Schema(
     },
 
     opening_hour: {
-      type: Boolean,
+      type: String,
       required: true,
       trim: true,
     },

@@ -2,7 +2,7 @@ import Banner from "@/components/Aboutpage/EC/Banner";
 // import TabNav from "@/components/Aboutpage/EC/TabNav";
 import TabNav from "@/components/Aboutpage/shared/TabNav";
 import ECSection from "@/components/Aboutpage/EC/ECSection";
-import Admission from "@/components/Aboutpage/EC/Admission";
+import Admission from "@/components/homepage/Admission";
 
 export default function EC() {
   return (
@@ -11,7 +11,6 @@ export default function EC() {
       <Banner />
       <TabNav />
       <ECSection />
-
       <Admission />
     </div>
   );

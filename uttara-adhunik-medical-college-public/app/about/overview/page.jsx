@@ -1,13 +1,13 @@
 import Banner from "@/components/Aboutpage/Overview/Banner";
 import TabNav from "@/components/Aboutpage/shared/TabNav";
-import AboutSection from "@/components/Aboutpage/Overview/AboutSection";
+import AboutSection from "@/components/Aboutpage/Overview/AboutSection"; // Main Component it is used somewhere
 import StatStrip from "@/components/homepage/StatStrip";
 import AdmissionAidSection from "@/components/Aboutpage/Overview/AdmissionAidSection";
 import SustainabilitySection from "@/components/Aboutpage/Overview/SustainabilitySection";
-import PrincipalMessage from "@/components/Aboutpage/Overview/PrincipalMessage";
-import AdmissionCTA from "@/components/Aboutpage/Overview/AdmissionCTA";
+import PrincipalMessage from "@/components/homepage/PrincipalMessage";
+import Admission from "@/components/homepage/Admission";
 import VisitingSection from "@/components/Aboutpage/Overview/VisitingSection";
-import Testimonials from "@/components/Aboutpage/Overview/Testimonials";
+import Testimonials from "@/components/homepage/Testimonials";
 
 export default function Overview() {
   return (
@@ -21,7 +21,7 @@ export default function Overview() {
       <AdmissionAidSection />
       <SustainabilitySection />
       <PrincipalMessage />
-      <AdmissionCTA />
+      <Admission />
       <Testimonials />
     </div>
   );

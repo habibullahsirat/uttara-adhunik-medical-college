@@ -3,7 +3,7 @@ import Banner from "@/components/Aboutpage/HistoryUAMC/Banner";
 import TabNav from "@/components/Aboutpage/shared/TabNav";
 
 import HistorySection from "@/components/Aboutpage/HistoryUAMC/HistorySection";
-import StatStrip from "@/components/Aboutpage/HistoryUAMC/StatStrip";
+import StatStrip from "@/components/homepage/StatStrip";
 import TimelineSection from "@/components/Aboutpage/HistoryUAMC/TimelineSection";
 import AdmissionAidSection from "@/components/Aboutpage/HistoryUAMC/AdmissionAidSection";
 import AdmissionCTA from "@/components/Aboutpage/HistoryUAMC/AdmissionCTA";

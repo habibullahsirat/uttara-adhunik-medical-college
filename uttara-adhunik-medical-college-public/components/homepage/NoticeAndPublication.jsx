@@ -1225,7 +1225,7 @@ export default function NoticeAndPublication() {
         setLoadingNotices(true);
         setNoticeError("");
 
-        const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+        const baseUrl = process.env.NEXT_PUBLIC_ADMIN_API;
 
         if (!baseUrl) {
           throw new Error("NEXT_PUBLIC_API_BASE_URL is not configured.");

@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 
 import Hero from "@/components/Homepage/Hero";
 import StatStrip from "@/components/Homepage/StatStrip";

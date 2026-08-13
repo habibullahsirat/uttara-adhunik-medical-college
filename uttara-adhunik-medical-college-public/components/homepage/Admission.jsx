@@ -90,7 +90,7 @@ const baseUrl = process.env.NEXT_PUBLIC_ADMIN_API;
 
 async function getAdmissionData() {
   try {
-    const response = await fetch(`${baseUrl}/homepage/admission`, {
+    const response = await fetch(`${baseUrl}/api/homepage/admission`, {
       next: {
         revalidate: 60,
       },

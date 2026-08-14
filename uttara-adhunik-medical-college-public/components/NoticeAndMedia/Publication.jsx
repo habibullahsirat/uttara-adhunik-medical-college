@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 function TabbedList({ heading, tabs, rowsPerTab, maxHeight = "820px" }) {
   const [active, setActive] = useState(0);
   const rows = rowsPerTab[active] || [];
@@ -62,7 +64,7 @@ function TabbedList({ heading, tabs, rowsPerTab, maxHeight = "820px" }) {
   );
 }
 
-function Publication() {
+export default function Publication() {
   const journal = Array.from({ length: 7 }, noticeRow);
   const tenders = Array.from({ length: 4 }, noticeRow);
   return (

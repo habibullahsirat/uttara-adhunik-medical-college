@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 function TabbedList({ heading, tabs, rowsPerTab, maxHeight = "820px" }) {
   const [active, setActive] = useState(0);
   const rows = rowsPerTab[active] || [];

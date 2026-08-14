@@ -268,7 +268,7 @@ import Gallery from "@/components/NoticeAndMedia/Gallery";
 /* ------------------------------------------------------------------ */
 /* Page                                                                 */
 /* ------------------------------------------------------------------ */
-export default function News() {
+export default function NewsSection() {
   return (
     <div className="w-full min-h-screen bg-white font-sans">
       {/* <Navbar /> */}

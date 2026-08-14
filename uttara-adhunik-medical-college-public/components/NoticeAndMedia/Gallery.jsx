@@ -12,7 +12,7 @@ function GalleryCard({ caption, hue }) {
   );
 }
 
-function EventGallery() {
+export default function Gallery() {
   const captions = [
     "বঙ্গবন্ধুর স্বদেশ প্রত্যাবর্তন...",
     "স্বাধীনতা দিবস ও সুবর্ণজয়ন্তী",

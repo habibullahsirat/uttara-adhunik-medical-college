@@ -16,7 +16,7 @@ function AlumniRow({ number, title, date, time, place }) {
   );
 }
 
-function AlumniEvent() {
+export default function Alumni() {
   const rows = [
     {
       number: "01",

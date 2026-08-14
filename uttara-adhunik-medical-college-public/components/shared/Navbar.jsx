@@ -4539,8 +4539,8 @@ function MainNav({ settings }) {
   const isHomeActive = pathname === "/";
 
   const isNoticeMediaActive =
-    pathname === "/notice-media" ||
-    pathname.startsWith("/notice-media/") ||
+    pathname === "/notice" ||
+    pathname.startsWith("/notice/") ||
     pathname === "/notice";
 
   const isCareerActive =
@@ -4833,7 +4833,7 @@ function MainNav({ settings }) {
             {/* NOTICE & MEDIA */}
 
             <Link
-              href="/notice-media"
+              href="/notice"
               onClick={() => setOpenDropdown(null)}
               className={`
                 relative flex items-center

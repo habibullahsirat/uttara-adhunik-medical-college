@@ -917,6 +917,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_ADMIN_API;
 
@@ -939,6 +940,44 @@ function formatDate(date) {
 export default function Footer() {
   const [siteSettings, setSiteSettings] = useState(null);
   const [latestNews, setLatestNews] = useState([]);
+  const [email, setEmail] = useState("");
+  const [isSending, setIsSending] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!email.trim()) {
+      setMessage("Please enter your email address.");
+      return;
+    }
+
+    setIsSending(true);
+    setMessage("");
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_TWO,
+        {
+          to_email: email,
+          site_name:
+            siteSettings?.site_name || "Uttara Adhunik Medical College",
+        },
+        {
+          publicKey: process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY,
+        },
+      );
+
+      setMessage("Newsletter sent successfully.");
+      setEmail("");
+    } catch (error) {
+      console.error("Newsletter error:", error);
+      setMessage("Failed to send newsletter. Please try again.");
+    } finally {
+      setIsSending(false);
+    }
+  };
 
   /* =========================================================
      FETCH FOOTER DATA
@@ -1059,7 +1098,7 @@ export default function Footer() {
       {/* =====================================================
           NEWSLETTER
       ===================================================== */}
-      <div className="border-b border-[#242424]">
+      {/* <div className="border-b border-[#242424]">
         <div
           className="
             mx-auto flex w-full max-w-[1130px]
@@ -1129,6 +1168,90 @@ export default function Footer() {
               <ArrowRight size={18} strokeWidth={1.8} />
             </button>
           </form>
+        </div>
+      </div> */}
+      <div className="border-b border-[#242424]">
+        <div
+          className="
+      mx-auto flex w-full max-w-[1130px]
+      flex-col gap-8
+      px-5 py-[50px]
+      sm:px-6
+      md:flex-row md:items-center md:justify-between
+      md:gap-10
+      lg:px-0
+    "
+        >
+          <h4
+            className="
+        font-body text-[30.94px]
+        font-normal leading-[36px]
+        text-white
+      "
+          >
+            Subscribe To Newsletter
+          </h4>
+
+          <div className="w-full max-w-[494px]">
+            <form
+              className="
+          flex w-full
+          flex-col gap-[10px]
+          sm:flex-row
+        "
+              onSubmit={handleNewsletterSubmit}
+            >
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter Your mail"
+                required
+                className="
+            box-border h-[53px] w-full
+            border border-[#018837]
+            bg-transparent
+            px-[21px] py-[18px]
+            font-body text-[14px]
+            leading-[17px]
+            text-white
+            outline-none
+            placeholder:text-white
+            focus:border-white
+          "
+              />
+
+              <button
+                type="submit"
+                disabled={isSending}
+                className="
+            flex h-[53px]
+            w-full shrink-0
+            items-center justify-center
+            gap-[3px]
+            bg-white
+            px-[38px]
+            text-[16px]
+            font-medium
+            leading-[18px]
+            text-[#110C2D]
+            transition-colors
+            hover:bg-[#FECD2F]
+            disabled:cursor-not-allowed
+            disabled:opacity-60
+            sm:w-[208px]
+          "
+              >
+                <span>{isSending ? "Sending..." : "Submit Button"}</span>
+
+                {!isSending && <ArrowRight size={18} strokeWidth={1.8} />}
+              </button>
+            </form>
+
+            {message && (
+              <p className="mt-3 text-sm text-[#FECD2F]">{message}</p>
+            )}
+          </div>
         </div>
       </div>
 

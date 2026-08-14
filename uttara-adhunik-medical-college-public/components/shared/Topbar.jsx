@@ -307,8 +307,7 @@ const portalLinks = [
 ];
 
 export default function TopHeader() {
-  const [siteSetting, setSiteSetting] =
-    (useState < SiteSetting) | (null > null);
+  const [siteSetting, setSiteSetting] = useState(null);
 
   useEffect(() => {
     const fetchSiteSetting = async () => {

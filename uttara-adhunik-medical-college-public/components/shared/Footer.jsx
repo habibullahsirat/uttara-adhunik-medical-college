@@ -958,7 +958,7 @@ export default function Footer() {
     try {
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_TWO,
+        process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID_TWO,
         {
           to_email: email,
           site_name:

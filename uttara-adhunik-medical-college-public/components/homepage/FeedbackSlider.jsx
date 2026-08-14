@@ -50,7 +50,7 @@ export default function FeedbackSlider({ reviews }) {
   // Auto-advance, right to left, every 5s
   useEffect(() => {
     if (totalPages <= 1) return;
-    autoplayRef.current = setInterval(nextSlide, 5000);
+    autoplayRef.current = setInterval(nextSlide, 2000);
     return () => clearInterval(autoplayRef.current);
   }, [nextSlide, totalPages]);
 

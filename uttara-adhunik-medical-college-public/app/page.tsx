@@ -2,7 +2,6 @@ import React from "react";
 
 import Hero from "@/components/Homepage/Hero";
 import StatStrip from "@/components/Homepage/StatStrip";
-// import About from "@/components/Homepage/About";
 import AboutUAMC from "@/components/Aboutpage/Overview/AboutSection";
 import NoticeAndPublication from "@/components/Homepage/NoticeAndPublication";
 import FindDepartment from "@/components/Homepage/FindDepartment";
@@ -26,7 +25,6 @@ export default function LandingPage() {
       <style>{fontImport}</style>
       <Hero />
       <NoticeAndPublication />
-      {/* <About /> */}
       <AboutUAMC />
       <StatStrip />
       <FindDepartment />

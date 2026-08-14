@@ -1,5 +1,15 @@
 import React, { useState } from "react";
 
+function noticeRow() {
+  return {
+    day: "12",
+    month: "Mar 25",
+    title:
+      '"BCPS e-Logbook: Modernizing the Monitoring of FCPS 1st Phase Training"',
+    time: "3.40 PM",
+  };
+}
+
 function TabbedList({ heading, tabs, rowsPerTab, maxHeight = "820px" }) {
   const [active, setActive] = useState(0);
   const rows = rowsPerTab[active] || [];

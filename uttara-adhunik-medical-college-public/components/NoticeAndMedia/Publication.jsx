@@ -88,6 +88,7 @@
 // }
 
 // Dynamic version
+"use client";
 import React, { useEffect, useMemo, useState } from "react";
 
 const API_URL = `${process.env.NEXT_PUBLIC_ADMIN_API}/api/homepage/publication`;

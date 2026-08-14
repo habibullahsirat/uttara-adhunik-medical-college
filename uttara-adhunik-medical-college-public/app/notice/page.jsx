@@ -1,10 +1,8 @@
-"use client";
-
 import Hero from "@/components/NoticeAndMedia/Hero";
 import News from "@/components/NoticeAndMedia/News";
 import Notice from "@/components/NoticeAndMedia/Notice";
 import Publication from "@/components/NoticeAndMedia/Publication";
-import Alumni from "@/components/NoticeAndMedia/Alumni";
+import AlumniEvents from "@/components/Homepage/AlumniEvents";
 import Gallery from "@/components/NoticeAndMedia/Gallery";
 
 export default function NewsSection() {
@@ -14,7 +12,7 @@ export default function NewsSection() {
       <News />
       <Notice />
       <Publication />
-      <Alumni />
+      <AlumniEvents />
       <Gallery />
     </div>
   );

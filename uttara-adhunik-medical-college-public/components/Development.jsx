@@ -437,7 +437,7 @@ export default function UnderDevelopment() {
 
               {/* Secondary Button */}
               <a
-                href="#"
+                href="/facility/department"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#FECD2F] px-6 py-3.5 text-sm font-bold text-[#018837] shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-[#f5c51f] sm:w-auto"
               >
                 Visit Us
@@ -582,7 +582,7 @@ export default function UnderDevelopment() {
                     </p>
 
                     <p className="mt-1 text-sm font-bold text-[#018837]">
-                      uamc.edu.bd
+                      uamcedubd.vercel.app
                     </p>
                   </div>
 

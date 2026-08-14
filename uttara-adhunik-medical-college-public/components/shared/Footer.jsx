@@ -1008,11 +1008,11 @@ export default function Footer() {
   const campusLinks = [
     {
       label: "Our Campus",
-      href: "/campus",
+      href: "/about/historyofuamc",
     },
     {
       label: "Departments",
-      href: "/departments",
+      href: "/facility/department",
     },
     {
       label: "Faculty & Staff",
@@ -1020,7 +1020,7 @@ export default function Footer() {
     },
     {
       label: "Library",
-      href: "/library",
+      href: "/facility/libraryuamc",
     },
     {
       label: "Student Life",
@@ -1038,19 +1038,19 @@ export default function Footer() {
     },
     {
       label: "About Us",
-      href: "/about",
+      href: "/about/overview",
     },
     {
       label: "Facilities",
-      href: "/facilities",
+      href: "/facility/hospitalservice/",
     },
     {
       label: "Admission",
-      href: "/admission",
+      href: "/admission/procedure",
     },
     {
       label: "Contact Us",
-      href: "/contact",
+      href: "/career",
     },
   ];
 

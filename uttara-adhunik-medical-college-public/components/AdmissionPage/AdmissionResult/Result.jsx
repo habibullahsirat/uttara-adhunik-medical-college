@@ -1808,3 +1808,1008 @@ export default function NoticeSection() {
     </section>
   );
 }
+
+// Version 2
+// "use client";
+
+// import React, { useEffect, useState } from "react";
+
+// const GREEN = "#018837";
+
+// /* =========================================================
+//    ICONS
+// ========================================================= */
+
+// function DownloadIcon() {
+//   return (
+//     <svg
+//       width="18"
+//       height="18"
+//       viewBox="0 0 24 24"
+//       fill="none"
+//       xmlns="http://www.w3.org/2000/svg"
+//       aria-hidden="true"
+//     >
+//       <path
+//         d="M12 3V15"
+//         stroke={GREEN}
+//         strokeWidth="1.7"
+//         strokeLinecap="round"
+//       />
+
+//       <path
+//         d="M7 10L12 15L17 10"
+//         stroke={GREEN}
+//         strokeWidth="1.7"
+//         strokeLinecap="round"
+//         strokeLinejoin="round"
+//       />
+
+//       <path
+//         d="M5 20H19"
+//         stroke={GREEN}
+//         strokeWidth="1.7"
+//         strokeLinecap="round"
+//       />
+//     </svg>
+//   );
+// }
+
+// function ShareIcon() {
+//   return (
+//     <svg
+//       width="18"
+//       height="18"
+//       viewBox="0 0 24 24"
+//       fill="none"
+//       xmlns="http://www.w3.org/2000/svg"
+//       aria-hidden="true"
+//     >
+//       <circle cx="18" cy="5" r="2.5" stroke={GREEN} strokeWidth="1.7" />
+
+//       <circle cx="6" cy="12" r="2.5" stroke={GREEN} strokeWidth="1.7" />
+
+//       <circle cx="18" cy="19" r="2.5" stroke={GREEN} strokeWidth="1.7" />
+
+//       <path
+//         d="M8.2 10.8L15.8 6.2"
+//         stroke={GREEN}
+//         strokeWidth="1.7"
+//         strokeLinecap="round"
+//       />
+
+//       <path
+//         d="M8.2 13.2L15.8 17.8"
+//         stroke={GREEN}
+//         strokeWidth="1.7"
+//         strokeLinecap="round"
+//       />
+//     </svg>
+//   );
+// }
+
+// /* =========================================================
+//    ACTION BUTTON
+// ========================================================= */
+
+// function ActionButton({ label, onClick, disabled, children }) {
+//   return (
+//     <button
+//       type="button"
+//       aria-label={label}
+//       onClick={onClick}
+//       disabled={disabled}
+//       className="
+//         flex
+//         h-10
+//         w-10
+//         shrink-0
+//         items-center
+//         justify-center
+//         rounded-full
+//         bg-[#018837]/10
+//         transition-all
+//         duration-200
+//         hover:-translate-y-px
+//         hover:bg-[#018837]/15
+//         focus:outline-none
+//         focus-visible:ring-2
+//         focus-visible:ring-[#018837]/40
+//         active:translate-y-0
+//         disabled:cursor-not-allowed
+//         disabled:opacity-40
+//         touch-manipulation
+//       "
+//     >
+//       {children}
+//     </button>
+//   );
+// }
+
+// /* =========================================================
+//    NOTICE ACTIONS
+// ========================================================= */
+
+// function NoticeActions({ title, pdfUrl, id, onShare, copiedId }) {
+//   const handleDownload = () => {
+//     if (!pdfUrl) return;
+
+//     window.open(pdfUrl, "_blank", "noopener,noreferrer");
+//   };
+
+//   return (
+//     <div className="flex items-center gap-2.5">
+//       <ActionButton
+//         label={`Download ${title}`}
+//         onClick={handleDownload}
+//         disabled={!pdfUrl}
+//       >
+//         <DownloadIcon />
+//       </ActionButton>
+
+//       <div className="relative">
+//         <ActionButton
+//           label={`Share ${title}`}
+//           onClick={() => onShare(id, pdfUrl)}
+//           disabled={!pdfUrl}
+//         >
+//           <ShareIcon />
+//         </ActionButton>
+
+//         {copiedId === id && (
+//           <div
+//             className="
+//               absolute
+//               right-0
+//               top-[46px]
+//               z-30
+//               whitespace-nowrap
+//               rounded-md
+//               bg-[#018837]
+//               px-3
+//               py-2
+//               text-xs
+//               font-medium
+//               text-white
+//               shadow-lg
+//             "
+//           >
+//             Link copied
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
+
+// /* =========================================================
+//    DESKTOP ROW
+// ========================================================= */
+
+// function DesktopNoticeRow({ no, date, title, pdfUrl, onShare, copiedId, id }) {
+//   return (
+//     <div
+//       className="
+//         hidden
+//         min-h-[80px]
+//         w-full
+//         grid-cols-[70px_minmax(130px,235px)_1px_minmax(0,350px)_1px_minmax(110px,235px)]
+//         items-center
+//         gap-x-0
+//         border-b
+//         border-[#444]/12
+//         px-5
+//         md:grid
+//       "
+//     >
+//       {/* Number */}
+//       <div
+//         className="
+//           min-w-0
+//           pr-3
+//           font-['Inter',Arial,sans-serif]
+//           text-[15px]
+//           leading-[15px]
+//           font-normal
+//           text-[#444]
+//         "
+//       >
+//         {no}
+//       </div>
+
+//       {/* Date */}
+//       <div
+//         className="
+//           min-w-0
+//           pr-4
+//           font-['Inter',Arial,sans-serif]
+//           text-[15px]
+//           leading-[20px]
+//           font-normal
+//           text-[#444]
+//         "
+//       >
+//         {date}
+//       </div>
+
+//       {/* Separator */}
+//       <div
+//         className="
+//           mx-auto
+//           h-4
+//           w-px
+//           bg-[#444]/50
+//         "
+//       />
+
+//       {/* Title */}
+//       <div
+//         className="
+//           min-w-0
+//           px-5
+//           font-['Inter',Arial,sans-serif]
+//           text-[15px]
+//           leading-[20px]
+//           font-normal
+//           text-[#444]
+//           md:px-6
+//           lg:px-8
+//           xl:px-10
+//         "
+//       >
+//         <span className="block break-words">{title}</span>
+//       </div>
+
+//       {/* Separator */}
+//       <div
+//         className="
+//           mx-auto
+//           h-4
+//           w-px
+//           bg-[#444]/50
+//         "
+//       />
+
+//       {/* Actions */}
+//       <div className="flex justify-end pl-4">
+//         <NoticeActions
+//           title={title}
+//           pdfUrl={pdfUrl}
+//           id={id}
+//           onShare={onShare}
+//           copiedId={copiedId}
+//         />
+//       </div>
+//     </div>
+//   );
+// }
+
+// /* =========================================================
+//    MOBILE ROW
+// ========================================================= */
+
+// function MobileNoticeRow({ no, date, title, pdfUrl, onShare, copiedId, id }) {
+//   return (
+//     <article
+//       className="
+//         block
+//         border-b
+//         border-[#444]/12
+//         px-4
+//         py-5
+//         sm:px-5
+//         md:hidden
+//       "
+//     >
+//       <div className="flex items-start gap-4">
+//         {/* Content */}
+//         <div className="min-w-0 flex-1">
+//           {/* Number + Date */}
+//           <div
+//             className="
+//               flex
+//               flex-wrap
+//               items-center
+//               gap-x-3
+//               gap-y-1
+//             "
+//           >
+//             <span
+//               className="
+//                 font-['Inter',Arial,sans-serif]
+//                 text-[13px]
+//                 leading-[18px]
+//                 font-semibold
+//                 text-[#018837]
+//               "
+//             >
+//               {no}
+//             </span>
+
+//             <span
+//               className="
+//                 h-3.5
+//                 w-px
+//                 bg-[#444]/30
+//               "
+//               aria-hidden="true"
+//             />
+
+//             <span
+//               className="
+//                 font-['Inter',Arial,sans-serif]
+//                 text-[13px]
+//                 leading-[18px]
+//                 font-normal
+//                 text-[#666]
+//               "
+//             >
+//               {date}
+//             </span>
+//           </div>
+
+//           {/* Title */}
+//           <h4
+//             className="
+//               mt-2.5
+//               break-words
+//               font-['Inter',Arial,sans-serif]
+//               text-[15px]
+//               leading-[22px]
+//               font-medium
+//               text-[#444]
+//             "
+//           >
+//             {title}
+//           </h4>
+//         </div>
+
+//         {/* Actions */}
+//         <div className="shrink-0">
+//           <NoticeActions
+//             title={title}
+//             pdfUrl={pdfUrl}
+//             id={id}
+//             onShare={onShare}
+//             copiedId={copiedId}
+//           />
+//         </div>
+//       </div>
+//     </article>
+//   );
+// }
+
+// /* =========================================================
+//    HEADER
+// ========================================================= */
+
+// function SectionHeader() {
+//   return (
+//     <header
+//       className="
+//         flex
+//         w-full
+//         flex-col
+//         items-center
+//         text-center
+//       "
+//     >
+//       <h2
+//         className="
+//           m-0
+//           font-['Bitter',Georgia,serif]
+//           text-[30px]
+//           leading-[38px]
+//           font-bold
+//           tracking-[0.01em]
+//           text-black
+
+//           xs:text-[32px]
+//           xs:leading-[40px]
+
+//           sm:text-[38px]
+//           sm:leading-[46px]
+
+//           md:text-[44px]
+//           md:leading-[52px]
+
+//           lg:text-[48px]
+//           lg:leading-[58px]
+
+//           xl:text-[50px]
+//           xl:leading-[60px]
+//         "
+//       >
+//         Admission Results
+//       </h2>
+
+//       <p
+//         className="
+//           m-0
+//           mt-1
+//           px-3
+//           font-['Inter',Arial,sans-serif]
+//           text-[13px]
+//           leading-[22px]
+//           font-normal
+//           tracking-[0.01em]
+//           text-black
+
+//           sm:mt-0
+//           sm:text-[14px]
+//           sm:leading-[26px]
+
+//           md:text-[15px]
+//           md:leading-[30px]
+//         "
+//       >
+//         MBBS Admission (Session: 2021–2022)
+//       </p>
+//     </header>
+//   );
+// }
+
+// /* =========================================================
+//    TABLE HEADER
+// ========================================================= */
+
+// function TableHeader() {
+//   return (
+//     <div
+//       className="
+//         hidden
+//         min-h-[56px]
+//         w-full
+//         grid-cols-[70px_minmax(130px,235px)_1px_minmax(0,350px)_1px_minmax(110px,235px)]
+//         items-center
+//         border-y
+//         border-[#444]/50
+//         bg-[#14A800]/10
+//         px-5
+//         md:grid
+//       "
+//     >
+//       {/* Number */}
+//       <div
+//         className="
+//           font-['Bitter',Georgia,serif]
+//           text-[15px]
+//           leading-[15px]
+//           font-bold
+//           text-[#444]
+//         "
+//       >
+//         No.
+//       </div>
+
+//       {/* Date */}
+//       <div
+//         className="
+//           font-['Bitter',Georgia,serif]
+//           text-[15px]
+//           leading-[15px]
+//           font-bold
+//           text-[#444]
+//         "
+//       >
+//         Date
+//       </div>
+
+//       {/* Separator */}
+//       <div
+//         className="
+//           mx-auto
+//           h-4
+//           w-px
+//           bg-[#444]/50
+//         "
+//       />
+
+//       {/* Title */}
+//       <div
+//         className="
+//           px-5
+//           font-['Bitter',Georgia,serif]
+//           text-[15px]
+//           leading-[15px]
+//           font-bold
+//           text-[#444]
+//           md:px-6
+//           lg:px-8
+//           xl:px-10
+//         "
+//       >
+//         Title
+//       </div>
+
+//       {/* Separator */}
+//       <div
+//         className="
+//           mx-auto
+//           h-4
+//           w-px
+//           bg-[#444]/50
+//         "
+//       />
+
+//       {/* Action */}
+//       <div
+//         className="
+//           flex
+//           justify-end
+//           pl-4
+//           font-['Bitter',Georgia,serif]
+//           text-[15px]
+//           leading-[15px]
+//           font-bold
+//           text-[#444]
+//         "
+//       >
+//         Action
+//       </div>
+//     </div>
+//   );
+// }
+
+// /* =========================================================
+//    MAIN COMPONENT
+// ========================================================= */
+
+// export default function NoticeSection() {
+//   const [notices, setNotices] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState("");
+//   const [copiedId, setCopiedId] = useState(null);
+
+//   /* =======================================================
+//      FETCH
+//   ======================================================= */
+
+//   useEffect(() => {
+//     const fetchNotices = async () => {
+//       try {
+//         setLoading(true);
+//         setError("");
+
+//         const response = await fetch(
+//           `${process.env.NEXT_PUBLIC_ADMIN_API}/api/admission/result`,
+//           {
+//             method: "GET",
+//             cache: "no-store",
+//           },
+//         );
+
+//         if (!response.ok) {
+//           throw new Error("Failed to fetch admission results.");
+//         }
+
+//         const data = await response.json();
+
+//         if (!Array.isArray(data)) {
+//           throw new Error("Invalid admission notice response.");
+//         }
+
+//         setNotices(data);
+//       } catch (err) {
+//         console.error("Admission notices error:", err);
+
+//         setError("Unable to load admission results.");
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchNotices();
+//   }, []);
+
+//   /* =======================================================
+//      DATE FORMAT
+//   ======================================================= */
+
+//   const formatDate = (dateString) => {
+//     if (!dateString) return "—";
+
+//     const date = new Date(dateString);
+
+//     if (Number.isNaN(date.getTime())) {
+//       return "—";
+//     }
+
+//     return new Intl.DateTimeFormat("en-US", {
+//       month: "long",
+//       day: "numeric",
+//       year: "numeric",
+//     }).format(date);
+//   };
+
+//   /* =======================================================
+//      PDF URL CLEANER
+//   ======================================================= */
+
+//   const cleanPdfUrl = (url) => {
+//     if (!url || typeof url !== "string") {
+//       return "";
+//     }
+
+//     const markdownMatch = url.match(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/);
+
+//     if (markdownMatch) {
+//       return markdownMatch[2];
+//     }
+
+//     return url.trim();
+//   };
+
+//   /* =======================================================
+//      SHARE
+//   ======================================================= */
+
+//   const handleShare = async (id, pdfUrl) => {
+//     const url = cleanPdfUrl(pdfUrl);
+
+//     if (!url) return;
+
+//     try {
+//       await navigator.clipboard.writeText(url);
+
+//       setCopiedId(id);
+
+//       setTimeout(() => {
+//         setCopiedId(null);
+//       }, 2000);
+//     } catch (err) {
+//       console.error("Failed to copy link:", err);
+
+//       try {
+//         const textarea = document.createElement("textarea");
+
+//         textarea.value = url;
+
+//         textarea.style.position = "fixed";
+//         textarea.style.left = "-9999px";
+//         textarea.style.top = "0";
+
+//         document.body.appendChild(textarea);
+
+//         textarea.focus();
+//         textarea.select();
+
+//         document.execCommand("copy");
+
+//         textarea.remove();
+
+//         setCopiedId(id);
+
+//         setTimeout(() => {
+//           setCopiedId(null);
+//         }, 2000);
+//       } catch (fallbackError) {
+//         console.error("Fallback copy failed:", fallbackError);
+//       }
+//     }
+//   };
+
+//   /* =======================================================
+//      RENDER
+//   ======================================================= */
+
+//   return (
+//     <section
+//       className="
+//         w-full
+//         overflow-hidden
+//         bg-white
+
+//         px-4
+//         pb-12
+//         pt-10
+
+//         xs:px-5
+
+//         sm:px-8
+//         sm:pb-[55px]
+//         sm:pt-[45px]
+
+//         md:px-10
+//         md:pb-[65px]
+//         md:pt-[55px]
+
+//         lg:px-12
+//         lg:pb-[70px]
+//         lg:pt-[65px]
+
+//         xl:px-20
+//         xl:pb-20
+//         xl:pt-20
+//       "
+//     >
+//       {/* =================================================
+//           FIGMA CONTENT CONTAINER
+
+//           Figma:
+//           Section = 1600px
+//           Horizontal padding = 80px
+//           Content = 1440px
+//       ================================================== */}
+
+//       <div
+//         className="
+//           mx-auto
+//           flex
+//           w-full
+//           max-w-[1440px]
+//           flex-col
+//         "
+//       >
+//         {/* =================================================
+//             HEADER
+//         ================================================== */}
+
+//         <SectionHeader />
+
+//         {/* =================================================
+//             NOTICE AREA
+
+//             Figma gap from header = 50px
+//         ================================================== */}
+
+//         <div
+//           className="
+//             mt-9
+//             flex
+//             w-full
+//             flex-col
+//             items-start
+//             gap-5
+
+//             sm:mt-10
+
+//             md:mt-12
+
+//             lg:mt-[50px]
+//           "
+//         >
+//           {/* Heading */}
+//           <div
+//             className="
+//               flex
+//               min-h-[45px]
+//               w-full
+//               items-center
+//             "
+//           >
+//             {/* Green accent */}
+//             <div
+//               className="
+//                 mr-3
+//                 h-[45px]
+//                 w-1
+//                 shrink-0
+//                 bg-[#018837]
+
+//                 sm:mr-3.5
+//               "
+//             />
+
+//             <h3
+//               className="
+//                 m-0
+//                 min-w-0
+//                 break-words
+//                 font-['Bitter',Georgia,serif]
+//                 text-[22px]
+//                 leading-[29px]
+//                 font-bold
+//                 text-[#444]
+
+//                 xs:text-[24px]
+//                 xs:leading-[32px]
+
+//                 sm:text-[28px]
+//                 sm:leading-[36px]
+
+//                 md:text-[32px]
+//                 md:leading-[40px]
+
+//                 lg:text-[36px]
+//                 lg:leading-[43px]
+
+//                 xl:text-[40px]
+//                 xl:leading-[45px]
+//               "
+//             >
+//               Recent Admission Notices &amp; Required Documents
+//             </h3>
+//           </div>
+
+//           {/* =================================================
+//               TABLE
+//           ================================================== */}
+
+//           <div
+//             className="
+//               w-full
+//               overflow-hidden
+//               bg-white
+//             "
+//           >
+//             <TableHeader />
+
+//             {/* =================================================
+//                 LOADING
+//             ================================================== */}
+
+//             {loading && (
+//               <div
+//                 className="
+//                   flex
+//                   min-h-[150px]
+//                   w-full
+//                   items-center
+//                   justify-center
+//                   px-5
+//                   text-center
+//                   font-['Inter',Arial,sans-serif]
+//                   text-[14px]
+//                   text-[#444]
+
+//                   sm:text-[15px]
+//                 "
+//               >
+//                 Loading admission notices...
+//               </div>
+//             )}
+
+//             {/* =================================================
+//                 ERROR
+//             ================================================== */}
+
+//             {!loading && error && (
+//               <div
+//                 className="
+//                   flex
+//                   min-h-[150px]
+//                   w-full
+//                   items-center
+//                   justify-center
+//                   px-5
+//                   text-center
+//                   font-['Inter',Arial,sans-serif]
+//                   text-[14px]
+//                   text-red-600
+
+//                   sm:text-[15px]
+//                 "
+//               >
+//                 {error}
+//               </div>
+//             )}
+
+//             {/* =================================================
+//                 EMPTY
+//             ================================================== */}
+
+//             {!loading && !error && notices.length === 0 && (
+//               <div
+//                 className="
+//                     flex
+//                     min-h-[150px]
+//                     w-full
+//                     items-center
+//                     justify-center
+//                     px-5
+//                     text-center
+//                     font-['Inter',Arial,sans-serif]
+//                     text-[14px]
+//                     text-[#444]
+
+//                     sm:text-[15px]
+//                   "
+//               >
+//                 No admission notices available.
+//               </div>
+//             )}
+
+//             {/* =================================================
+//                 NOTICES
+//             ================================================== */}
+
+//             {!loading &&
+//               !error &&
+//               notices.map((notice, index) => {
+//                 const id = notice._id || index;
+
+//                 const title = notice.title || "Admission Notice";
+
+//                 const pdfUrl = cleanPdfUrl(notice.pdfUrl);
+
+//                 const no = String(index + 1).padStart(2, "0");
+
+//                 const date = formatDate(notice.createdAt);
+
+//                 return (
+//                   <React.Fragment key={id}>
+//                     {/* Desktop / Tablet */}
+//                     <DesktopNoticeRow
+//                       no={no}
+//                       date={date}
+//                       title={title}
+//                       pdfUrl={pdfUrl}
+//                       id={id}
+//                       onShare={handleShare}
+//                       copiedId={copiedId}
+//                     />
+
+//                     {/* Mobile */}
+//                     <MobileNoticeRow
+//                       no={no}
+//                       date={date}
+//                       title={title}
+//                       pdfUrl={pdfUrl}
+//                       id={id}
+//                       onShare={handleShare}
+//                       copiedId={copiedId}
+//                     />
+//                   </React.Fragment>
+//                 );
+//               })}
+//           </div>
+//         </div>
+
+//         {/* =================================================
+//             NOTE
+
+//             Figma:
+//             border-left: 4px
+//             padding: 10px 20px
+//             min-height: 48px
+//         ================================================== */}
+
+//         <div
+//           className="
+//             mt-6
+//             flex
+//             min-h-[48px]
+//             w-full
+//             items-center
+//             border-l-4
+//             border-[#018837]
+//             px-4
+//             py-2.5
+
+//             sm:mt-7
+//             sm:px-5
+
+//             md:mt-8
+//           "
+//         >
+//           <p
+//             className="
+//               m-0
+//               break-words
+//               font-['Inter',Arial,sans-serif]
+//               text-[13px]
+//               leading-[21px]
+//               font-normal
+//               text-black
+
+//               sm:text-[14px]
+//               sm:leading-[22px]
+
+//               md:text-[15px]
+//               md:leading-[24px]
+
+//               lg:text-[16px]
+//               lg:leading-[27px]
+//             "
+//           >
+//             <strong className="font-bold">Note:</strong> All applicants are
+//             advised to check the latest official notices on the Directorate
+//             General of Medical Education (DGME) website for up-to-date admission
+//             instructions and required documents.
+//           </p>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }

@@ -1415,6 +1415,822 @@
 // }
 
 // Version 2
+// "use client";
+
+// import { useEffect, useState } from "react";
+// import { Clock, ArrowRight } from "lucide-react";
+
+// const GREEN = "#018837";
+// const LIGHT_BG = "#E8E8F4";
+// const TEXT = "#444444";
+
+// /* =========================================================
+//    DATE FORMATTER
+// ========================================================= */
+
+// function formatDate(dateString) {
+//   if (!dateString) {
+//     return {
+//       day: "",
+//       month: "",
+//       time: "",
+//     };
+//   }
+
+//   const date = new Date(dateString);
+
+//   if (Number.isNaN(date.getTime())) {
+//     return {
+//       day: "",
+//       month: "",
+//       time: "",
+//     };
+//   }
+
+//   const day = date.toLocaleDateString("en-US", {
+//     day: "2-digit",
+//   });
+
+//   const month = date.toLocaleDateString("en-US", {
+//     month: "short",
+//     year: "2-digit",
+//   });
+
+//   const time = date.toLocaleTimeString("en-US", {
+//     hour: "numeric",
+//     minute: "2-digit",
+//   });
+
+//   return {
+//     day,
+//     month,
+//     time,
+//   };
+// }
+
+// /* =========================================================
+//    NORMALIZE API DATA
+// ========================================================= */
+
+// function normalizeItem(item) {
+//   const { day, month, time } = formatDate(item.createdAt);
+
+//   return {
+//     id: item._id,
+//     title: item.title?.replace(/^"|"$/g, "") || "",
+//     day,
+//     month,
+//     time,
+//     createdAt: item.createdAt,
+//     updatedAt: item.updatedAt,
+//   };
+// }
+
+// /* =========================================================
+//    NOTICE CARD
+// ========================================================= */
+
+// function NoticeCard({ item }) {
+//   return (
+//     <article
+//       className="
+//         flex
+//         w-full
+//         min-h-[104px]
+//         shrink-0
+//         items-center
+//         gap-2.5
+//         bg-[#E8E8F4]
+//         p-3
+
+//         sm:min-h-[112px]
+//         sm:gap-3
+//         sm:p-3.5
+
+//         md:min-h-[120px]
+//         md:gap-4
+//         md:p-4
+
+//         lg:min-h-[126px]
+//         lg:p-5
+//       "
+//     >
+//       {/* =================================================
+//           DATE
+//       ================================================= */}
+
+//       <div
+//         className="
+//           flex
+//           h-[76px]
+//           w-[62px]
+//           shrink-0
+//           flex-col
+//           items-center
+
+//           sm:h-[80px]
+//           sm:w-[68px]
+
+//           md:h-[84px]
+//           md:w-[80px]
+
+//           lg:h-[86px]
+//           lg:w-[90px]
+//         "
+//       >
+//         {/* DAY */}
+
+//         <div
+//           className="
+//             flex
+//             h-1/2
+//             w-full
+//             items-center
+//             justify-center
+//             bg-[#E8E8F4]
+//             font-['Inter',sans-serif]
+//             text-[19px]
+//             font-bold
+//             leading-none
+//             text-[#444444]
+
+//             sm:text-[21px]
+//             md:text-[23px]
+//             lg:text-[25px]
+//           "
+//         >
+//           {item.day}
+//         </div>
+
+//         {/* MONTH */}
+
+//         <div
+//           className="
+//             flex
+//             h-1/2
+//             w-full
+//             items-center
+//             justify-center
+//             bg-[#018837]
+//             font-['Inter',sans-serif]
+//             text-[12px]
+//             font-semibold
+//             leading-none
+//             text-white
+
+//             sm:text-[13px]
+//             md:text-[16px]
+//             lg:text-[18px]
+//           "
+//         >
+//           {item.month}
+//         </div>
+//       </div>
+
+//       {/* =================================================
+//           CONTENT
+//       ================================================= */}
+
+//       <div
+//         className="
+//           flex
+//           min-w-0
+//           flex-1
+//           flex-col
+//           justify-between
+//           self-stretch
+//           py-0.5
+
+//           sm:py-1
+//           md:py-1.5
+//         "
+//       >
+//         {/* TITLE */}
+
+//         <p
+//           className="
+//             m-0
+//             w-full
+//             overflow-hidden
+//             font-['Inter',sans-serif]
+//             text-[12px]
+//             font-medium
+//             leading-[17px]
+//             text-[#444444]
+//             [display:-webkit-box]
+//             [-webkit-box-orient:vertical]
+//             [-webkit-line-clamp:2]
+
+//             sm:text-[13px]
+//             sm:leading-[18px]
+
+//             md:text-[16px]
+//             md:leading-[21px]
+
+//             lg:text-[18px]
+//             lg:leading-[22px]
+//           "
+//         >
+//           {item.title}
+//         </p>
+
+//         {/* TIME */}
+
+//         <div
+//           className="
+//             flex
+//             items-center
+//             gap-1.5
+//             font-['Inter',sans-serif]
+//             text-[11px]
+//             font-semibold
+//             leading-4
+//             text-[#444444]
+
+//             sm:gap-2
+//             sm:text-[12px]
+
+//             md:gap-2.5
+//             md:text-[14px]
+
+//             lg:gap-3.5
+//             lg:text-[15px]
+//           "
+//         >
+//           <Clock
+//             className="
+//               h-[12px]
+//               w-[12px]
+//               shrink-0
+
+//               sm:h-[13px]
+//               sm:w-[13px]
+
+//               md:h-[14px]
+//               md:w-[14px]
+
+//               lg:h-[15px]
+//               lg:w-[15px]
+//             "
+//             strokeWidth={1.8}
+//           />
+
+//           <span>{item.time}</span>
+//         </div>
+//       </div>
+//     </article>
+//   );
+// }
+
+// /* =========================================================
+//    TABBED LIST
+// ========================================================= */
+
+// function TabbedList({ title, tabs, items, loading, error }) {
+//   const [active, setActive] = useState(0);
+
+//   const activeTab = tabs[active];
+
+//   const filteredItems = items.filter((item) => item.type === activeTab);
+
+//   return (
+//     <div
+//       className="
+//         flex
+//         w-full
+//         max-w-[720px]
+//         flex-col
+//         gap-6
+
+//         sm:gap-7
+
+//         md:gap-8
+
+//         lg:gap-10
+
+//         xl:gap-11
+//       "
+//     >
+//       {/* =================================================
+//           HEADER
+//       ================================================= */}
+
+//       <div
+//         className="
+//           flex
+//           min-h-[48px]
+//           w-full
+//           items-center
+//           justify-between
+//           gap-3
+
+//           sm:min-h-[55px]
+
+//           md:min-h-[65px]
+
+//           lg:min-h-[75px]
+//           lg:items-end
+//           lg:px-3
+
+//           xl:px-5
+//         "
+//       >
+//         {/* TITLE */}
+
+//         <h2
+//           className="
+//             m-0
+//             whitespace-nowrap
+//             font-['Bitter',serif]
+//             text-[29px]
+//             font-bold
+//             leading-tight
+//             text-[#018837]
+
+//             sm:text-[34px]
+
+//             md:text-[40px]
+
+//             lg:text-[46px]
+
+//             xl:text-[50px]
+//           "
+//         >
+//           {title}
+//         </h2>
+
+//         {/* VIEW ALL */}
+
+//         <a
+//           href="#"
+//           className="
+//             inline-flex
+//             shrink-0
+//             items-center
+//             justify-center
+//             gap-1
+//             font-['Inter',sans-serif]
+//             text-[12px]
+//             font-medium
+//             leading-5
+//             text-[#018837]
+//             no-underline
+
+//             sm:text-[13px]
+
+//             md:text-[14px]
+
+//             lg:mb-1
+//             lg:text-[15px]
+
+//             xl:text-[16px]
+//           "
+//         >
+//           <span>View All</span>
+
+//           <ArrowRight
+//             className="
+//               h-[13px]
+//               w-[13px]
+
+//               sm:h-[14px]
+//               sm:w-[14px]
+
+//               md:h-[15px]
+//               md:w-[15px]
+
+//               lg:h-4
+//               lg:w-4
+//             "
+//             strokeWidth={1.8}
+//           />
+//         </a>
+//       </div>
+
+//       {/* =================================================
+//           BOARD
+//       ================================================= */}
+
+//       <div className="flex w-full flex-col">
+//         {/* =================================================
+//             TABS
+//         ================================================= */}
+
+//         <div
+//           className="
+//             flex
+//             min-h-[60px]
+//             w-full
+//             items-center
+//             overflow-x-auto
+//             bg-[#E8E8F4]
+//             p-1.5
+//             [scrollbar-width:none]
+//             [&::-webkit-scrollbar]:hidden
+
+//             sm:min-h-[68px]
+//             sm:p-2
+
+//             md:min-h-[76px]
+//             md:p-2.5
+
+//             lg:min-h-[84px]
+//           "
+//         >
+//           {tabs.map((tab, index) => {
+//             const isActive = active === index;
+
+//             return (
+//               <button
+//                 key={tab}
+//                 type="button"
+//                 onClick={() => setActive(index)}
+//                 className={`
+//                   flex
+//                   h-[48px]
+//                   min-w-[125px]
+//                   shrink-0
+//                   items-center
+//                   justify-center
+//                   whitespace-nowrap
+//                   border-0
+//                   px-3
+//                   font-['Bitter',serif]
+//                   text-[12px]
+//                   leading-5
+//                   transition-all
+//                   duration-200
+//                   ease-in-out
+//                   focus:outline-none
+//                   focus-visible:ring-2
+//                   focus-visible:ring-[#018837]
+//                   focus-visible:ring-offset-1
+
+//                   sm:h-[52px]
+//                   sm:min-w-[130px]
+//                   sm:text-[13px]
+
+//                   md:h-[58px]
+//                   md:min-w-[135px]
+//                   md:text-[14px]
+
+//                   lg:h-[64px]
+//                   lg:min-w-[150px]
+//                   lg:text-[15px]
+
+//                   ${
+//                     isActive
+//                       ? `
+//                         bg-white
+//                         font-bold
+//                         text-[#018837]
+//                         shadow-[1px_1px_10px_rgba(0,0,0,0.20)]
+//                         border-b-2
+//                         border-[#018837]
+//                       `
+//                       : `
+//                         bg-transparent
+//                         font-normal
+//                         text-black
+//                         border-b-2
+//                         border-transparent
+//                         hover:bg-white/50
+//                       `
+//                   }
+//                 `}
+//               >
+//                 {tab}
+//               </button>
+//             );
+//           })}
+//         </div>
+
+//         {/* =================================================
+//             LIST
+//         ================================================= */}
+
+//         <div
+//           className="
+//             flex
+//             h-[430px]
+//             w-full
+//             flex-col
+//             gap-2
+//             overflow-x-hidden
+//             overflow-y-auto
+//             bg-white
+//             p-2
+//             [scrollbar-color:#018837_#E8E8F4]
+//             [scrollbar-width:thin]
+
+//             sm:h-[470px]
+//             sm:p-2.5
+
+//             md:h-[520px]
+
+//             lg:h-[610px]
+//           "
+//         >
+//           {/* LOADING */}
+
+//           {loading && (
+//             <div
+//               className="
+//                 flex
+//                 min-h-[150px]
+//                 flex-1
+//                 items-center
+//                 justify-center
+//                 px-5
+//                 text-center
+//                 font-['Inter',sans-serif]
+//                 text-[12px]
+//                 text-[#444444]
+
+//                 sm:text-[13px]
+
+//                 md:text-[14px]
+
+//                 lg:text-[15px]
+//               "
+//             >
+//               Loading...
+//             </div>
+//           )}
+
+//           {/* ERROR */}
+
+//           {!loading && error && (
+//             <div
+//               className="
+//                 flex
+//                 min-h-[150px]
+//                 flex-1
+//                 items-center
+//                 justify-center
+//                 px-5
+//                 text-center
+//                 font-['Inter',sans-serif]
+//                 text-[12px]
+//                 text-[#D32F2F]
+
+//                 sm:text-[13px]
+
+//                 md:text-[14px]
+
+//                 lg:text-[15px]
+//               "
+//             >
+//               {error}
+//             </div>
+//           )}
+
+//           {/* EMPTY */}
+
+//           {!loading && !error && filteredItems.length === 0 && (
+//             <div
+//               className="
+//                   flex
+//                   min-h-[150px]
+//                   flex-1
+//                   items-center
+//                   justify-center
+//                   px-5
+//                   text-center
+//                   font-['Inter',sans-serif]
+//                   text-[12px]
+//                   text-[#444444]
+
+//                   sm:text-[13px]
+
+//                   md:text-[14px]
+
+//                   lg:text-[15px]
+//                 "
+//             >
+//               No {activeTab.toLowerCase()} available.
+//             </div>
+//           )}
+
+//           {/* DATA */}
+
+//           {!loading &&
+//             !error &&
+//             filteredItems.map((item) => (
+//               <NoticeCard key={item.id} item={item} />
+//             ))}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// /* =========================================================
+//    MAIN COMPONENT
+// ========================================================= */
+
+// export default function NoticeAndPublication() {
+//   /* =======================================================
+//      API STATES
+//   ======================================================= */
+
+//   const [notices, setNotices] = useState([]);
+//   const [publications, setPublications] = useState([]);
+
+//   const [loadingNotices, setLoadingNotices] = useState(true);
+
+//   const [loadingPublications, setLoadingPublications] = useState(true);
+
+//   const [noticeError, setNoticeError] = useState("");
+//   const [publicationError, setPublicationError] = useState("");
+
+//   /* =======================================================
+//      FETCH NOTICES
+//   ======================================================= */
+
+//   useEffect(() => {
+//     const fetchNotices = async () => {
+//       try {
+//         setLoadingNotices(true);
+//         setNoticeError("");
+
+//         const baseUrl = process.env.NEXT_PUBLIC_ADMIN_API;
+
+//         if (!baseUrl) {
+//           throw new Error("NEXT_PUBLIC_API_BASE_URL is not configured.");
+//         }
+
+//         const response = await fetch(`${baseUrl}/api/homepage/notice`, {
+//           method: "GET",
+//           cache: "no-store",
+//         });
+
+//         if (!response.ok) {
+//           throw new Error(
+//             `Failed to fetch notices. Status: ${response.status}`,
+//           );
+//         }
+
+//         const data = await response.json();
+
+//         if (!Array.isArray(data)) {
+//           throw new Error("Invalid notice API response.");
+//         }
+
+//         const formattedNotices = data.map((item) => ({
+//           ...normalizeItem(item),
+//           type: item.noticeType,
+//         }));
+
+//         setNotices(formattedNotices);
+//       } catch (error) {
+//         console.error("Notice API error:", error);
+
+//         setNoticeError(error?.message || "Unable to load notices.");
+//       } finally {
+//         setLoadingNotices(false);
+//       }
+//     };
+
+//     fetchNotices();
+//   }, []);
+
+//   /* =======================================================
+//      FETCH PUBLICATIONS
+//   ======================================================= */
+
+//   useEffect(() => {
+//     const fetchPublications = async () => {
+//       try {
+//         setLoadingPublications(true);
+//         setPublicationError("");
+
+//         const baseUrl = process.env.NEXT_PUBLIC_ADMIN_API;
+
+//         if (!baseUrl) {
+//           throw new Error("NEXT_PUBLIC_API_BASE_URL is not configured.");
+//         }
+
+//         const response = await fetch(`${baseUrl}/api/homepage/publication`, {
+//           method: "GET",
+//           cache: "no-store",
+//         });
+
+//         if (!response.ok) {
+//           throw new Error(
+//             `Failed to fetch publications. Status: ${response.status}`,
+//           );
+//         }
+
+//         const data = await response.json();
+
+//         if (!Array.isArray(data)) {
+//           throw new Error("Invalid publication API response.");
+//         }
+
+//         const formattedPublications = data.map((item) => ({
+//           ...normalizeItem(item),
+//           type: item.publicationType,
+//         }));
+
+//         setPublications(formattedPublications);
+//       } catch (error) {
+//         console.error("Publication API error:", error);
+
+//         setPublicationError(error?.message || "Unable to load publications.");
+//       } finally {
+//         setLoadingPublications(false);
+//       }
+//     };
+
+//     fetchPublications();
+//   }, []);
+
+//   /* =======================================================
+//      RENDER
+//   ======================================================= */
+
+//   return (
+//     <section
+//       className="
+//         w-full
+//         bg-white
+//         px-4
+//         py-10
+
+//         sm:px-5
+//         sm:py-12
+
+//         md:px-6
+//         md:py-14
+
+//         lg:px-8
+//         lg:py-16
+
+//         xl:px-10
+//         xl:py-20
+
+//         2xl:px-12
+//       "
+//     >
+//       {/* =================================================
+//           MAIN CONTAINER
+//       ================================================= */}
+
+//       <div
+//         className="
+//           mx-auto
+//           grid
+//           w-full
+//           max-w-[1450px]
+//           grid-cols-1
+//           gap-y-12
+
+//           sm:gap-y-14
+
+//           md:gap-y-16
+
+//           lg:grid-cols-2
+//           lg:gap-x-5
+//           lg:gap-y-0
+
+//           xl:gap-x-8
+//         "
+//       >
+//         {/* =================================================
+//             NOTICE BOARD
+//         ================================================= */}
+
+//         <TabbedList
+//           title="Notice Board"
+//           tabs={[
+//             "General Notice",
+//             "Admission Notice",
+//             "Reports",
+//             "Job Circular",
+//           ]}
+//           items={notices}
+//           loading={loadingNotices}
+//           error={noticeError}
+//         />
+
+//         {/* =================================================
+//             PUBLICATION
+//         ================================================= */}
+
+//         <TabbedList
+//           title="Publication"
+//           tabs={["Journal", "Tenders"]}
+//           items={publications}
+//           loading={loadingPublications}
+//           error={publicationError}
+//         />
+//       </div>
+//     </section>
+//   );
+// }
+
+// Version 3
 "use client";
 
 import { useEffect, useState } from "react";
@@ -1447,24 +2263,20 @@ function formatDate(dateString) {
     };
   }
 
-  const day = date.toLocaleDateString("en-US", {
-    day: "2-digit",
-  });
-
-  const month = date.toLocaleDateString("en-US", {
-    month: "short",
-    year: "2-digit",
-  });
-
-  const time = date.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-  });
-
   return {
-    day,
-    month,
-    time,
+    day: date.toLocaleDateString("en-US", {
+      day: "2-digit",
+    }),
+
+    month: date.toLocaleDateString("en-US", {
+      month: "short",
+      year: "2-digit",
+    }),
+
+    time: date.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+    }),
   };
 }
 
@@ -1496,22 +2308,25 @@ function NoticeCard({ item }) {
       className="
         flex
         w-full
-        min-h-[104px]
+        min-h-[76px]
         shrink-0
         items-center
-        gap-2.5
+        gap-2
         bg-[#E8E8F4]
-        p-3
+        p-2
 
-        sm:min-h-[112px]
-        sm:gap-3
-        sm:p-3.5
+        xs:min-h-[82px]
 
-        md:min-h-[120px]
-        md:gap-4
-        md:p-4
+        sm:min-h-[96px]
+        sm:gap-2.5
+        sm:p-2.5
+
+        md:min-h-[110px]
+        md:gap-3
+        md:p-3
 
         lg:min-h-[126px]
+        lg:gap-4
         lg:p-5
       "
     >
@@ -1522,17 +2337,19 @@ function NoticeCard({ item }) {
       <div
         className="
           flex
-          h-[76px]
-          w-[62px]
+          h-[58px]
+          w-[48px]
           shrink-0
           flex-col
-          items-center
 
-          sm:h-[80px]
-          sm:w-[68px]
+          xs:h-[62px]
+          xs:w-[52px]
 
-          md:h-[84px]
-          md:w-[80px]
+          sm:h-[70px]
+          sm:w-[58px]
+
+          md:h-[76px]
+          md:w-[68px]
 
           lg:h-[86px]
           lg:w-[90px]
@@ -1549,13 +2366,17 @@ function NoticeCard({ item }) {
             justify-center
             bg-[#E8E8F4]
             font-['Inter',sans-serif]
-            text-[19px]
+            text-[15px]
             font-bold
             leading-none
             text-[#444444]
 
-            sm:text-[21px]
-            md:text-[23px]
+            xs:text-[16px]
+
+            sm:text-[18px]
+
+            md:text-[21px]
+
             lg:text-[25px]
           "
         >
@@ -1572,14 +2393,20 @@ function NoticeCard({ item }) {
             items-center
             justify-center
             bg-[#018837]
+            px-0.5
+            text-center
             font-['Inter',sans-serif]
-            text-[12px]
+            text-[9px]
             font-semibold
             leading-none
             text-white
 
-            sm:text-[13px]
-            md:text-[16px]
+            xs:text-[10px]
+
+            sm:text-[11px]
+
+            md:text-[13px]
+
             lg:text-[18px]
           "
         >
@@ -1599,10 +2426,13 @@ function NoticeCard({ item }) {
           flex-col
           justify-between
           self-stretch
-          py-0.5
+          py-0
 
-          sm:py-1
-          md:py-1.5
+          sm:py-0.5
+
+          md:py-1
+
+          lg:py-1.5
         "
       >
         {/* TITLE */}
@@ -1613,19 +2443,22 @@ function NoticeCard({ item }) {
             w-full
             overflow-hidden
             font-['Inter',sans-serif]
-            text-[12px]
+            text-[10px]
             font-medium
-            leading-[17px]
+            leading-[14px]
             text-[#444444]
             [display:-webkit-box]
             [-webkit-box-orient:vertical]
             [-webkit-line-clamp:2]
 
-            sm:text-[13px]
-            sm:leading-[18px]
+            xs:text-[11px]
+            xs:leading-[15px]
 
-            md:text-[16px]
-            md:leading-[21px]
+            sm:text-[12px]
+            sm:leading-[17px]
+
+            md:text-[14px]
+            md:leading-[19px]
 
             lg:text-[18px]
             lg:leading-[22px]
@@ -1640,34 +2473,40 @@ function NoticeCard({ item }) {
           className="
             flex
             items-center
-            gap-1.5
+            gap-1
             font-['Inter',sans-serif]
-            text-[11px]
+            text-[9px]
             font-semibold
-            leading-4
+            leading-3
             text-[#444444]
 
-            sm:gap-2
-            sm:text-[12px]
+            xs:text-[10px]
 
-            md:gap-2.5
-            md:text-[14px]
+            sm:gap-1.5
+            sm:text-[11px]
 
-            lg:gap-3.5
+            md:gap-2
+            md:text-[12px]
+
+            lg:gap-3
             lg:text-[15px]
+            lg:leading-4
           "
         >
           <Clock
             className="
-              h-[12px]
-              w-[12px]
+              h-[9px]
+              w-[9px]
               shrink-0
 
-              sm:h-[13px]
-              sm:w-[13px]
+              xs:h-[10px]
+              xs:w-[10px]
 
-              md:h-[14px]
-              md:w-[14px]
+              sm:h-[11px]
+              sm:w-[11px]
+
+              md:h-[13px]
+              md:w-[13px]
 
               lg:h-[15px]
               lg:w-[15px]
@@ -1700,15 +2539,15 @@ function TabbedList({ title, tabs, items, loading, error }) {
         w-full
         max-w-[720px]
         flex-col
-        gap-6
+        gap-4
 
-        sm:gap-7
+        xs:gap-5
 
-        md:gap-8
+        sm:gap-6
+
+        md:gap-7
 
         lg:gap-10
-
-        xl:gap-11
       "
     >
       {/* =================================================
@@ -1718,17 +2557,16 @@ function TabbedList({ title, tabs, items, loading, error }) {
       <div
         className="
           flex
-          min-h-[48px]
           w-full
           items-center
           justify-between
-          gap-3
+          gap-2
 
-          sm:min-h-[55px]
+          sm:gap-3
 
-          md:min-h-[65px]
+          md:gap-4
 
-          lg:min-h-[75px]
+          lg:min-h-[70px]
           lg:items-end
           lg:px-3
 
@@ -1740,20 +2578,26 @@ function TabbedList({ title, tabs, items, loading, error }) {
         <h2
           className="
             m-0
-            whitespace-nowrap
+            min-w-0
             font-['Bitter',serif]
-            text-[29px]
+            text-[23px]
             font-bold
-            leading-tight
+            leading-7
             text-[#018837]
 
-            sm:text-[34px]
+            xs:text-[25px]
 
-            md:text-[40px]
+            sm:text-[30px]
+            sm:leading-9
+
+            md:text-[38px]
+            md:leading-10
 
             lg:text-[46px]
+            lg:leading-[54px]
 
             xl:text-[50px]
+            xl:leading-[60px]
           "
         >
           {title}
@@ -1764,19 +2608,21 @@ function TabbedList({ title, tabs, items, loading, error }) {
         <a
           href="#"
           className="
-            inline-flex
+            flex
             shrink-0
             items-center
-            justify-center
-            gap-1
+            gap-0.5
             font-['Inter',sans-serif]
-            text-[12px]
+            text-[10px]
             font-medium
-            leading-5
+            leading-4
             text-[#018837]
             no-underline
 
-            sm:text-[13px]
+            xs:text-[11px]
+
+            sm:gap-1
+            sm:text-[12px]
 
             md:text-[14px]
 
@@ -1790,14 +2636,17 @@ function TabbedList({ title, tabs, items, loading, error }) {
 
           <ArrowRight
             className="
-              h-[13px]
-              w-[13px]
+              h-[10px]
+              w-[10px]
 
-              sm:h-[14px]
-              sm:w-[14px]
+              xs:h-[11px]
+              xs:w-[11px]
 
-              md:h-[15px]
-              md:w-[15px]
+              sm:h-[12px]
+              sm:w-[12px]
+
+              md:h-[14px]
+              md:w-[14px]
 
               lg:h-4
               lg:w-4
@@ -1819,22 +2668,25 @@ function TabbedList({ title, tabs, items, loading, error }) {
         <div
           className="
             flex
-            min-h-[60px]
+            min-h-[45px]
             w-full
             items-center
             overflow-x-auto
             bg-[#E8E8F4]
-            p-1.5
+            p-1
             [scrollbar-width:none]
             [&::-webkit-scrollbar]:hidden
 
-            sm:min-h-[68px]
-            sm:p-2
+            xs:min-h-[48px]
 
-            md:min-h-[76px]
-            md:p-2.5
+            sm:min-h-[55px]
+            sm:p-1.5
+
+            md:min-h-[68px]
+            md:p-2
 
             lg:min-h-[84px]
+            lg:p-2.5
           "
         >
           {tabs.map((tab, index) => {
@@ -1847,53 +2699,55 @@ function TabbedList({ title, tabs, items, loading, error }) {
                 onClick={() => setActive(index)}
                 className={`
                   flex
-                  h-[48px]
-                  min-w-[125px]
+                  h-[35px]
+                  min-w-[105px]
                   shrink-0
                   items-center
                   justify-center
                   whitespace-nowrap
                   border-0
-                  px-3
+                  px-2
                   font-['Bitter',serif]
-                  text-[12px]
-                  leading-5
+                  text-[9px]
+                  leading-3
                   transition-all
                   duration-200
-                  ease-in-out
                   focus:outline-none
-                  focus-visible:ring-2
-                  focus-visible:ring-[#018837]
-                  focus-visible:ring-offset-1
 
-                  sm:h-[52px]
-                  sm:min-w-[130px]
-                  sm:text-[13px]
+                  xs:h-[38px]
+                  xs:min-w-[110px]
+                  xs:text-[10px]
 
-                  md:h-[58px]
-                  md:min-w-[135px]
-                  md:text-[14px]
+                  sm:h-[44px]
+                  sm:min-w-[120px]
+                  sm:px-2.5
+                  sm:text-[11px]
+
+                  md:h-[52px]
+                  md:min-w-[130px]
+                  md:text-[13px]
 
                   lg:h-[64px]
                   lg:min-w-[150px]
+                  lg:px-3
                   lg:text-[15px]
 
                   ${
                     isActive
                       ? `
+                        border-b-2
+                        border-[#018837]
                         bg-white
                         font-bold
                         text-[#018837]
-                        shadow-[1px_1px_10px_rgba(0,0,0,0.20)]
-                        border-b-2
-                        border-[#018837]
+                        shadow-[1px_1px_7px_rgba(0,0,0,0.15)]
                       `
                       : `
+                        border-b-2
+                        border-transparent
                         bg-transparent
                         font-normal
                         text-black
-                        border-b-2
-                        border-transparent
                         hover:bg-white/50
                       `
                   }
@@ -1912,23 +2766,29 @@ function TabbedList({ title, tabs, items, loading, error }) {
         <div
           className="
             flex
-            h-[430px]
+            h-[285px]
             w-full
             flex-col
-            gap-2
+            gap-1.5
             overflow-x-hidden
             overflow-y-auto
             bg-white
-            p-2
+            p-1.5
             [scrollbar-color:#018837_#E8E8F4]
             [scrollbar-width:thin]
 
-            sm:h-[470px]
-            sm:p-2.5
+            xs:h-[310px]
+            xs:gap-2
 
-            md:h-[520px]
+            sm:h-[380px]
+            sm:p-2
+
+            md:h-[470px]
+            md:p-2.5
 
             lg:h-[610px]
+            lg:gap-2.5
+            lg:p-2.5
           "
         >
           {/* LOADING */}
@@ -1937,21 +2797,18 @@ function TabbedList({ title, tabs, items, loading, error }) {
             <div
               className="
                 flex
-                min-h-[150px]
+                min-h-[100px]
                 flex-1
                 items-center
                 justify-center
-                px-5
                 text-center
                 font-['Inter',sans-serif]
-                text-[12px]
+                text-[10px]
                 text-[#444444]
 
-                sm:text-[13px]
+                sm:text-[12px]
 
                 md:text-[14px]
-
-                lg:text-[15px]
               "
             >
               Loading...
@@ -1964,21 +2821,19 @@ function TabbedList({ title, tabs, items, loading, error }) {
             <div
               className="
                 flex
-                min-h-[150px]
+                min-h-[100px]
                 flex-1
                 items-center
                 justify-center
-                px-5
+                px-3
                 text-center
                 font-['Inter',sans-serif]
-                text-[12px]
+                text-[10px]
                 text-[#D32F2F]
 
-                sm:text-[13px]
+                sm:text-[12px]
 
                 md:text-[14px]
-
-                lg:text-[15px]
               "
             >
               {error}
@@ -1991,21 +2846,19 @@ function TabbedList({ title, tabs, items, loading, error }) {
             <div
               className="
                   flex
-                  min-h-[150px]
+                  min-h-[100px]
                   flex-1
                   items-center
                   justify-center
-                  px-5
+                  px-3
                   text-center
                   font-['Inter',sans-serif]
-                  text-[12px]
+                  text-[10px]
                   text-[#444444]
 
-                  sm:text-[13px]
+                  sm:text-[12px]
 
                   md:text-[14px]
-
-                  lg:text-[15px]
                 "
             >
               No {activeTab.toLowerCase()} available.
@@ -2030,10 +2883,6 @@ function TabbedList({ title, tabs, items, loading, error }) {
 ========================================================= */
 
 export default function NoticeAndPublication() {
-  /* =======================================================
-     API STATES
-  ======================================================= */
-
   const [notices, setNotices] = useState([]);
   const [publications, setPublications] = useState([]);
 
@@ -2077,12 +2926,12 @@ export default function NoticeAndPublication() {
           throw new Error("Invalid notice API response.");
         }
 
-        const formattedNotices = data.map((item) => ({
-          ...normalizeItem(item),
-          type: item.noticeType,
-        }));
-
-        setNotices(formattedNotices);
+        setNotices(
+          data.map((item) => ({
+            ...normalizeItem(item),
+            type: item.noticeType,
+          })),
+        );
       } catch (error) {
         console.error("Notice API error:", error);
 
@@ -2128,12 +2977,12 @@ export default function NoticeAndPublication() {
           throw new Error("Invalid publication API response.");
         }
 
-        const formattedPublications = data.map((item) => ({
-          ...normalizeItem(item),
-          type: item.publicationType,
-        }));
-
-        setPublications(formattedPublications);
+        setPublications(
+          data.map((item) => ({
+            ...normalizeItem(item),
+            type: item.publicationType,
+          })),
+        );
       } catch (error) {
         console.error("Publication API error:", error);
 
@@ -2155,28 +3004,25 @@ export default function NoticeAndPublication() {
       className="
         w-full
         bg-white
-        px-4
-        py-10
+        px-2.5
+        py-7
 
-        sm:px-5
-        sm:py-12
+        xs:px-3
+        xs:py-8
+
+        sm:px-4
+        sm:py-10
 
         md:px-6
         md:py-14
 
         lg:px-8
-        lg:py-16
+        lg:py-20
 
         xl:px-10
-        xl:py-20
-
         2xl:px-12
       "
     >
-      {/* =================================================
-          MAIN CONTAINER
-      ================================================= */}
-
       <div
         className="
           mx-auto
@@ -2184,22 +3030,22 @@ export default function NoticeAndPublication() {
           w-full
           max-w-[1450px]
           grid-cols-1
-          gap-y-12
+          gap-y-10
+
+          xs:gap-y-12
 
           sm:gap-y-14
 
           md:gap-y-16
 
           lg:grid-cols-2
-          lg:gap-x-5
+          lg:gap-x-4
           lg:gap-y-0
 
           xl:gap-x-8
         "
       >
-        {/* =================================================
-            NOTICE BOARD
-        ================================================= */}
+        {/* NOTICE BOARD */}
 
         <TabbedList
           title="Notice Board"
@@ -2214,9 +3060,7 @@ export default function NoticeAndPublication() {
           error={noticeError}
         />
 
-        {/* =================================================
-            PUBLICATION
-        ================================================= */}
+        {/* PUBLICATION */}
 
         <TabbedList
           title="Publication"

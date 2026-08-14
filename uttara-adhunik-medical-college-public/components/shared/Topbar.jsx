@@ -90,26 +90,202 @@
 // }
 
 // Version 2
+// import { MapPin, Mail, Phone } from "lucide-react";
+// import Link from "next/link";
+
+// const contactItems = [
+//   {
+//     icon: MapPin,
+//     text: "House - 34, Road - 4, Sector - 9, Sonargaon Janapath, Uttara Model Town",
+//     className: "min-w-0 flex-1 lg:max-w-[285px]",
+//   },
+//   {
+//     icon: Mail,
+//     text: "info@uamc.com",
+//     className: "shrink-0",
+//   },
+//   {
+//     icon: Phone,
+//     text: "+880 1700-220000",
+//     className: "shrink-0",
+//   },
+// ];
+
+// const portalLinks = [
+//   {
+//     label: "Student Portal",
+//     href: "#",
+//   },
+//   {
+//     label: "Faculty Portal",
+//     href: "/development",
+//   },
+//   {
+//     label: "Notice",
+//     href: "/notice",
+//   },
+//   {
+//     label: "Contact",
+//     href: "/career",
+//   },
+// ];
+
+// export default function TopHeader() {
+//   return (
+//     <header
+//       className="w-full border-b border-dashed"
+//       style={{
+//         backgroundColor: "#FCFBFB",
+//         borderColor: "rgba(0,0,0,0.2)",
+//       }}
+//     >
+//       <div className="mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-10 xl:px-20">
+//         <div
+//           className="
+//             flex
+//             min-h-[58px]
+//             w-full
+//             flex-col
+//             justify-center
+//             gap-2.5
+//             py-2.5
+//             lg:flex-row
+//             lg:items-center
+//             lg:justify-between
+//             lg:gap-6
+//           "
+//         >
+//           {/* ================= CONTACT INFORMATION ================= */}
+//           <div
+//             className="
+//               flex
+//               min-w-0
+//               flex-1
+//               flex-wrap
+//               items-center
+//               justify-center
+//               gap-x-4
+//               gap-y-2
+//               lg:justify-start
+//               xl:gap-x-5
+//             "
+//           >
+//             {/* Location */}
+//             <div
+//               className="
+//                 flex
+//                 min-w-0
+//                 items-center
+//                 gap-2.5
+//                 lg:max-w-[285px]
+//                 xl:max-w-[285px]
+//               "
+//             >
+//               <MapPin
+//                 className="h-5 w-5 shrink-0"
+//                 strokeWidth={1.67}
+//                 style={{ color: "rgba(0,0,0,0.5)" }}
+//               />
+
+//               <span
+//                 className="
+//                   font-body
+//                   text-[11px]
+//                   font-medium
+//                   leading-[15px]
+//                   text-black/50
+//                   sm:text-[12px]
+//                 "
+//               >
+//                 House - 34, Road - 4, Sector - 9, Sonargaon Janapath, Uttara
+//                 Model Town
+//               </span>
+//             </div>
+
+//             {/* Email */}
+//             <div className="flex shrink-0 items-center gap-2.5">
+//               <Mail
+//                 className="h-5 w-5 shrink-0"
+//                 strokeWidth={1.67}
+//                 style={{ color: "rgba(0,0,0,0.5)" }}
+//               />
+
+//               <span className="font-body text-[11px] font-medium leading-[15px] text-black/50 sm:text-[12px]">
+//                 info@uamc.com
+//               </span>
+//             </div>
+
+//             {/* Phone */}
+//             <div className="flex shrink-0 items-center gap-2.5">
+//               <Phone
+//                 className="h-5 w-5 shrink-0"
+//                 strokeWidth={1.67}
+//                 style={{ color: "rgba(0,0,0,0.5)" }}
+//               />
+
+//               <span className="font-body text-[11px] font-medium leading-[15px] text-black/50 sm:text-[12px]">
+//                 +880 1700-220000
+//               </span>
+//             </div>
+//           </div>
+
+//           {/* ================= PORTAL LINKS ================= */}
+//           <nav
+//             className="
+//               flex
+//               w-full
+//               shrink-0
+//               items-center
+//               justify-start
+//               gap-1
+//               overflow-x-auto
+//               pb-0.5
+//               [-ms-overflow-style:none]
+//               [scrollbar-width:none]
+//               [&::-webkit-scrollbar]:hidden
+//               lg:w-auto
+//               lg:justify-end
+//             "
+//           >
+//             {portalLinks.map((link) => (
+//               <Link
+//                 key={link.label}
+//                 href={link.href}
+//                 className="
+//                   flex
+//                   h-[38px]
+//                   shrink-0
+//                   items-center
+//                   justify-center
+//                   rounded-[5px]
+//                   px-3
+//                   font-body
+//                   text-[13px]
+//                   font-medium
+//                   leading-[18px]
+//                   text-[#444444]
+//                   transition-colors
+//                   hover:text-[#018837]
+//                   sm:px-[15px]
+//                   sm:text-[15px]
+//                 "
+//               >
+//                 {link.label}
+//               </Link>
+//             ))}
+//           </nav>
+//         </div>
+//       </div>
+//     </header>
+//   );
+// }
+
+// Dynamic version
+"use client";
+
+import { useEffect, useState } from "react";
 import { MapPin, Mail, Phone } from "lucide-react";
 import Link from "next/link";
-
-const contactItems = [
-  {
-    icon: MapPin,
-    text: "House - 34, Road - 4, Sector - 9, Sonargaon Janapath, Uttara Model Town",
-    className: "min-w-0 flex-1 lg:max-w-[285px]",
-  },
-  {
-    icon: Mail,
-    text: "info@uamc.com",
-    className: "shrink-0",
-  },
-  {
-    icon: Phone,
-    text: "+880 1700-220000",
-    className: "shrink-0",
-  },
-];
 
 const portalLinks = [
   {
@@ -131,6 +307,38 @@ const portalLinks = [
 ];
 
 export default function TopHeader() {
+  const [siteSetting, setSiteSetting] =
+    (useState < SiteSetting) | (null > null);
+
+  useEffect(() => {
+    const fetchSiteSetting = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_ADMIN_API}/api/site-setting`,
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch site settings");
+        }
+
+        const data = await response.json();
+
+        // API returns an array
+        if (Array.isArray(data) && data.length > 0) {
+          setSiteSetting({
+            address: data[0]?.address || "",
+            email: data[0]?.email || "",
+            phone: data[0]?.phone || "",
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching site settings:", error);
+      }
+    };
+
+    fetchSiteSetting();
+  }, []);
+
   return (
     <header
       className="w-full border-b border-dashed"
@@ -175,13 +383,89 @@ export default function TopHeader() {
               className="
                 flex
                 min-w-0
-                items-center
+                max-w-full
+                items-start
                 gap-2.5
                 lg:max-w-[285px]
-                xl:max-w-[285px]
+                xl:max-w-[320px]
               "
             >
               <MapPin
+                className="mt-0.5 h-5 w-5 shrink-0"
+                strokeWidth={1.67}
+                style={{ color: "rgba(0,0,0,0.5)" }}
+              />
+
+              <span
+                className="
+                  min-w-0
+                  break-words
+                  font-body
+                  text-[11px]
+                  font-medium
+                  leading-[15px]
+                  text-black/50
+                  sm:text-[12px]
+                "
+              >
+                {siteSetting?.address || "Loading..."}
+              </span>
+            </div>
+
+            {/* Email */}
+            <a
+              href={
+                siteSetting?.email ? `mailto:${siteSetting.email}` : undefined
+              }
+              className="
+                flex
+                min-w-0
+                max-w-full
+                shrink
+                items-center
+                gap-2.5
+                transition-colors
+                hover:text-[#018837]
+              "
+            >
+              <Mail
+                className="h-5 w-5 shrink-0"
+                strokeWidth={1.67}
+                style={{ color: "rgba(0,0,0,0.5)" }}
+              />
+
+              <span
+                className="
+                  break-all
+                  font-body
+                  text-[11px]
+                  font-medium
+                  leading-[15px]
+                  text-black/50
+                  sm:text-[12px]
+                "
+              >
+                {siteSetting?.email || "Loading..."}
+              </span>
+            </a>
+
+            {/* Phone */}
+            <a
+              href={
+                siteSetting?.phone
+                  ? `tel:${siteSetting.phone.replace(/\s/g, "")}`
+                  : undefined
+              }
+              className="
+                flex
+                shrink-0
+                items-center
+                gap-2.5
+                transition-colors
+                hover:text-[#018837]
+              "
+            >
+              <Phone
                 className="h-5 w-5 shrink-0"
                 strokeWidth={1.67}
                 style={{ color: "rgba(0,0,0,0.5)" }}
@@ -197,36 +481,9 @@ export default function TopHeader() {
                   sm:text-[12px]
                 "
               >
-                House - 34, Road - 4, Sector - 9, Sonargaon Janapath, Uttara
-                Model Town
+                {siteSetting?.phone || "Loading..."}
               </span>
-            </div>
-
-            {/* Email */}
-            <div className="flex shrink-0 items-center gap-2.5">
-              <Mail
-                className="h-5 w-5 shrink-0"
-                strokeWidth={1.67}
-                style={{ color: "rgba(0,0,0,0.5)" }}
-              />
-
-              <span className="font-body text-[11px] font-medium leading-[15px] text-black/50 sm:text-[12px]">
-                info@uamc.com
-              </span>
-            </div>
-
-            {/* Phone */}
-            <div className="flex shrink-0 items-center gap-2.5">
-              <Phone
-                className="h-5 w-5 shrink-0"
-                strokeWidth={1.67}
-                style={{ color: "rgba(0,0,0,0.5)" }}
-              />
-
-              <span className="font-body text-[11px] font-medium leading-[15px] text-black/50 sm:text-[12px]">
-                +880 1700-220000
-              </span>
-            </div>
+            </a>
           </div>
 
           {/* ================= PORTAL LINKS ================= */}

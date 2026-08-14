@@ -1024,7 +1024,7 @@ export default function Footer() {
     },
     {
       label: "Student Life",
-      href: "/",
+      href: "/facility/lab",
     },
   ];
 

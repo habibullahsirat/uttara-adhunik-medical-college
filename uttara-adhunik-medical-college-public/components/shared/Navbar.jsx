@@ -1973,14 +1973,14 @@ function TopHeader() {
           </Link>
 
           <Link
-            href="#"
+            href="/notice"
             className="flex items-center justify-center rounded-[5px] px-[15px] py-[10px] font-body text-[15px] font-medium leading-[18px] text-[#444444] transition-colors hover:text-[#018837]"
           >
             Notice
           </Link>
 
           <Link
-            href="#"
+            href="/career"
             className="flex items-center justify-center rounded-[5px] px-[15px] py-[10px] font-body text-[15px] font-medium leading-[18px] text-[#444444] transition-colors hover:text-[#018837]"
           >
             Contact
@@ -2249,7 +2249,7 @@ function MainNav() {
 
           {/* NOTICE & MEDIA */}
           <Link
-            href="/notice-media"
+            href="/notice"
             onClick={() => setOpenDropdown(null)}
             className={`relative flex h-[44px] items-center px-[10px] font-display text-[15px] font-normal uppercase tracking-[0.02em] transition-colors ${
               isNoticeMediaActive

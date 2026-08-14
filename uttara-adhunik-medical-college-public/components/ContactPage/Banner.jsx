@@ -84,7 +84,7 @@ export default function Banner() {
 
       <div className="absolute inset-0">
         <Image
-          src="/assets/contact-banner.png"
+          src="/bg.png"
           alt="Contact UAMC"
           fill
           priority

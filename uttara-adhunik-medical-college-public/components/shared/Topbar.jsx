@@ -118,7 +118,7 @@ const portalLinks = [
   },
   {
     label: "Faculty Portal",
-    href: "#",
+    href: "development",
   },
   {
     label: "Notice",

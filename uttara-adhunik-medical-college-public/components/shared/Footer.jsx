@@ -1015,8 +1015,8 @@ export default function Footer() {
       href: "/facility/department",
     },
     {
-      label: "Faculty & Staff",
-      href: "/faculty-staff",
+      label: "Founder Members",
+      href: "/about/founder",
     },
     {
       label: "Library",

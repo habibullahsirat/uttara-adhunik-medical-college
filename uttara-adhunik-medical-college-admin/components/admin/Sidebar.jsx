@@ -3309,6 +3309,11 @@ const NAV_ITEMS = [
     href: "/admin/site-setting",
     icon: Phone,
   },
+  {
+    name: "Student Management",
+    href: "/admin/student-profile",
+    icon: Phone,
+  },
 ];
 
 const DISPLAY_FONT =

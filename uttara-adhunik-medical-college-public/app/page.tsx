@@ -1,7 +1,7 @@
 import React from "react";
 
-import Hero from "@/components/Homepage/Hero";
-import StatStrip from "@/components/Homepage/StatStrip";
+import Hero from "@/components/homepage/Hero";
+import StatStrip from "@/components/homepage/StatStrip";
 import AboutUAMC from "@/components/Aboutpage/Overview/AboutSection";
 import NoticeAndPublication from "@/components/homepage/NoticeAndPublication";
 import FindDepartment from "@/components/homepage/FindDepartment";

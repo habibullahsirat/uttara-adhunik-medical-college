@@ -2,7 +2,7 @@ import Banner from "@/components/Aboutpage/Overview/Banner";
 import News from "@/components/NoticeAndMedia/News";
 import Notice from "@/components/NoticeAndMedia/Notice";
 import Publication from "@/components/NoticeAndMedia/Publication";
-import AlumniEvents from "@/components/Homepage/AlumniEvents";
+import AlumniEvents from "@/components/homepage/AlumniEvents";
 import Gallery from "@/components/NoticeAndMedia/Gallery";
 
 export default function NewsSection() {

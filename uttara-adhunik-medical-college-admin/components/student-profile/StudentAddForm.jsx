@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PhotoUpload from "@/components/ui/PhotoUpload";
 
 export default function StudentAddForm({ initialData, onSubmit, onCancel }) {
@@ -34,6 +34,33 @@ export default function StudentAddForm({ initialData, onSubmit, onCancel }) {
 
   const [sameAsPresent, setSameAsPresent] = useState(false);
   const [errors, setErrors] = useState({});
+  const [departments, setDepartments] = useState([]);
+  const [departmentsLoading, setDepartmentsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDepartments = async () => {
+      try {
+        setDepartmentsLoading(true);
+
+        const response = await fetch("/api/facility/department");
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch departments");
+        }
+
+        const data = await response.json();
+
+        setDepartments(data);
+      } catch (error) {
+        console.error("Error fetching departments:", error);
+        setDepartments([]);
+      } finally {
+        setDepartmentsLoading(false);
+      }
+    };
+
+    fetchDepartments();
+  }, []);
 
   // ============================
   // Normal Fields
@@ -307,12 +334,51 @@ export default function StudentAddForm({ initialData, onSubmit, onCancel }) {
         <h2 className="font-semibold mb-4">Academic Information</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Input
+          {/* <Input
             label="Department"
             name="department"
             value={formData.department}
             onChange={handleChange}
             error={errors.department}
+          /> */}
+
+          {/* <Select
+            label="Department"
+            name="department"
+            value={formData.department}
+            onChange={handleChange}
+            error={errors.department}
+            options={[
+              // If need any change must be changed to model
+              { value: "", label: "Select Department" },
+              { value: "EYE", label: "EYE" },
+              { value: "Medicine", label: "Medicine" },
+              { value: "Gastrology", label: "Gastrology" },
+              { value: "ENT", label: "ENT" },
+              { value: "Dermatology", label: "Dermatology" },
+              { value: "Orthopedic", label: "Orthopedic" },
+              { value: "Surgeon", label: "Surgeon" },
+            ]}
+          /> */}
+
+          <Select
+            label="Department"
+            name="department"
+            value={formData.department}
+            onChange={handleChange}
+            error={errors.department}
+            options={[
+              {
+                value: "",
+                label: departmentsLoading
+                  ? "Loading departments..."
+                  : "Select Department",
+              },
+              ...departments.map((department) => ({
+                value: department.title,
+                label: department.title,
+              })),
+            ]}
           />
 
           <Input

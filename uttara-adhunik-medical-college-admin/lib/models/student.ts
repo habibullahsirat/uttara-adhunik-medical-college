@@ -66,15 +66,6 @@ const StudentSchema = new mongoose.Schema(
     department: {
       type: String,
       required: true,
-      enum: [
-        "Eye",
-        "Medicine",
-        "Gastrology",
-        "ENT",
-        "Dermatology",
-        "Orthopedic",
-        "Surgeon",
-      ],
     },
     cgpa: {
       type: Number,

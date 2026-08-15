@@ -202,6 +202,275 @@
 // }
 
 // Version 2
+// "use client";
+
+// export default function Banner() {
+//   return (
+//     <section
+//       className="
+//         w-full
+//         min-h-[400px]
+//         h-[420px]
+
+//         sm:h-[440px]
+//         md:h-[460px]
+//         lg:h-[480px]
+//         xl:h-[500px]
+
+//         flex
+//         flex-col
+//         justify-end
+//         items-start
+
+//         px-4
+//         sm:px-6
+//         md:px-10
+//         lg:px-12
+//         xl:px-20
+
+//         pb-5
+//         sm:pb-6
+//         md:pb-8
+//         lg:pb-10
+//         xl:pb-20
+
+//         gap-2.5
+
+//         box-border
+
+//         bg-[url('/bg.png')]
+//         bg-cover
+//         bg-center
+//         bg-no-repeat
+//       "
+//     >
+//       {/* =========================================
+//           FRAME 1261155625
+//       ========================================== */}
+//       <div
+//         className="
+//           w-full
+
+//           h-[280px]
+//           sm:h-[290px]
+//           md:h-[300px]
+//           lg:h-[315px]
+//           xl:h-[327.29px]
+
+//           flex
+//           flex-row
+//           justify-between
+//           items-end
+
+//           px-4
+//           sm:px-5
+//           md:px-7
+//           lg:px-10
+//           xl:px-[50px]
+
+//           py-4
+//           sm:py-5
+
+//           gap-3
+//           sm:gap-4
+//           lg:gap-5
+
+//           box-border
+
+//           bg-[rgba(1,136,55,0.3)]
+
+//           overflow-hidden
+//         "
+//       >
+//         {/* =========================================
+//             FRAME 1261155626
+//             LEFT CONTENT
+//         ========================================== */}
+//         <div
+//           className="
+//             flex
+//             flex-1
+//             flex-col
+//             justify-end
+//             items-start
+
+//             min-w-0
+//             w-full
+
+//             h-auto
+//             lg:h-[118.67px]
+
+//             gap-2.5
+
+//             overflow-hidden
+//           "
+//         >
+//           {/* =========================================
+//               BREADCRUMB
+//           ========================================== */}
+//           <div
+//             className="
+//               w-full
+//               h-auto
+//               min-h-[24px]
+
+//               flex
+//               items-center
+
+//               font-['Inter',sans-serif]
+//               font-medium
+
+//               text-[11px]
+//               sm:text-xs
+//               md:text-sm
+//               lg:text-base
+//               xl:text-[20px]
+
+//               leading-6
+
+//               text-black
+
+//               whitespace-nowrap
+//               overflow-hidden
+//               text-ellipsis
+//             "
+//           >
+//             <span>HOME</span>
+
+//             <span className="mx-1 sm:mx-1.5">&gt;</span>
+
+//             <span>ABOUT UAMC</span>
+
+//             <span className="mx-1 sm:mx-1.5">&gt;&gt;</span>
+
+//             <span className="text-[#018837]">Aim &amp; Objective</span>
+//           </div>
+
+//           {/* =========================================
+//               FRAME 51
+//           ========================================== */}
+//           <div
+//             className="
+//               w-full
+
+//               h-auto
+//               min-h-[55px]
+//               sm:min-h-[60px]
+//               md:min-h-[65px]
+//               lg:h-[84.67px]
+
+//               flex
+//               flex-row
+//               items-center
+
+//               py-2
+//               lg:py-[10.8332px]
+
+//               gap-2
+//               lg:gap-[10.83px]
+
+//               box-border
+//             "
+//           >
+//             {/* =========================================
+//                 HEADING
+//             ========================================== */}
+//             <h1
+//               className="
+//                 m-0
+//                 p-0
+
+//                 flex
+//                 items-center
+
+//                 font-['Bitter',serif]
+//                 font-light
+
+//                 text-[32px]
+//                 leading-[36px]
+
+//                 sm:text-[38px]
+//                 sm:leading-[42px]
+
+//                 md:text-[46px]
+//                 md:leading-[50px]
+
+//                 lg:text-[58px]
+//                 lg:leading-[56px]
+
+//                 xl:text-[70px]
+//                 xl:leading-[62px]
+
+//                 text-[#262626]
+
+//                 whitespace-nowrap
+//               "
+//             >
+//               ABOUT
+//               <span
+//                 className="
+//                   ml-1.5
+//                   sm:ml-2
+//                   lg:ml-2.5
+
+//                   font-bold
+//                   text-[#018837]
+//                 "
+//               >
+//                 UAMC
+//               </span>
+//             </h1>
+//           </div>
+//         </div>
+
+//         {/* =========================================
+//             RIGHT LOGO
+//         ========================================== */}
+//         <div
+//           className="
+//             flex
+//             items-end
+//             justify-center
+
+//             flex-shrink-0
+
+//             w-[75px]
+//             h-[125px]
+
+//             sm:w-[90px]
+//             sm:h-[145px]
+
+//             md:w-[115px]
+//             md:h-[175px]
+
+//             lg:w-[170px]
+//             lg:h-[225px]
+
+//             xl:w-[250px]
+//             xl:h-[287.29px]
+//           "
+//         >
+//           <img
+//             src="/logo2.png"
+//             alt="Uttara Adhunik Medical College"
+//             className="
+//               block
+
+//               w-full
+//               h-full
+
+//               object-contain
+//               object-center
+//               object-bottom
+//             "
+//           />
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+// Version 3
 "use client";
 
 const GREEN = "#018837";
@@ -210,214 +479,283 @@ export default function Banner() {
   return (
     <section
       className="
+        relative
         w-full
-        h-[420px]
-        sm:h-[450px]
-        md:h-[480px]
-        lg:h-[500px]
-        flex flex-col justify-end items-start
-        px-4 py-6
-        sm:px-6 sm:py-8
-        md:px-10 md:py-12
-        lg:px-16 lg:py-16
-        xl:px-20 xl:py-20
+
+        min-h-[400px]
+
+        flex
+        flex-col
+        justify-end
+
         box-border
-        bg-cover bg-center bg-no-repeat
+        overflow-hidden
+
+        px-3
+        py-4
+
+        sm:min-h-[420px]
+        sm:px-4
+        sm:py-5
+
+        md:min-h-[450px]
+        md:px-6
+        md:py-7
+
+        lg:h-[500px]
+        lg:min-h-0
+        lg:px-[60px]
+        lg:py-[60px]
+
+        xl:px-20
+        xl:py-20
+
+        bg-[url('/bg.png')]
+        bg-cover
+        bg-center
+        bg-no-repeat
       "
-      style={{
-        backgroundImage: 'url("/bg.png")',
-      }}
     >
       {/* =========================================
-          FRAME 1261155625
+          GREEN CONTENT FRAME
       ========================================== */}
       <div
         className="
+          relative
           w-full
-          max-w-[1440px]
-          min-h-[270px]
-          sm:min-h-[285px]
-          md:min-h-[300px]
-          lg:h-[327.29px]
-          mx-auto
-
-          flex flex-col
-          md:flex-row
-          justify-end
-          md:justify-between
-          items-stretch
-          md:items-end
-
-          gap-6
-          md:gap-5
-
-          px-5 py-6
-          sm:px-7 sm:py-6
-          md:px-8
-          lg:px-[50px]
           box-border
+
+          flex
+          flex-col
+          justify-end
+
+          min-h-[290px]
+
+          px-4
+          py-5
+
+          sm:min-h-[300px]
+          sm:px-5
+          sm:py-5
+
+          md:min-h-[315px]
+          md:px-7
+          md:py-6
+
+          lg:h-[327.29px]
+          lg:min-h-0
+          lg:px-10
+          lg:py-5
+
+          xl:px-[50px]
+          xl:py-5
 
           bg-[rgba(1,136,55,0.3)]
         "
       >
         {/* =========================================
-            FRAME 1261155626
-            LEFT CONTENT
+            MAIN CONTENT
         ========================================== */}
         <div
           className="
-            flex-1
             w-full
-            max-w-[1090px]
-            min-h-0
-            md:h-[118.67px]
+            min-w-0
 
-            flex flex-col
-            justify-end
-            items-start
+            flex
+            flex-col
 
-            gap-2.5
-            mx-auto
+            gap-6
+
+            sm:gap-7
+
+            md:gap-8
+
+            lg:flex-row
+            lg:items-end
+            lg:justify-between
+            lg:gap-6
           "
         >
-          {/* Breadcrumb */}
-          <div
-            className="
-              w-full
-              h-auto
-              min-h-[24px]
-
-              flex flex-wrap
-              items-center
-
-              font-['Inter',sans-serif]
-              font-medium
-              text-[12px]
-              leading-[18px]
-              sm:text-sm
-              sm:leading-5
-              md:text-base
-              md:leading-6
-              lg:text-xl
-              lg:leading-6
-
-              text-black
-            "
-          >
-            <span>HOME</span>
-
-            <span className="mx-1 sm:mx-1.5">&gt;</span>
-
-            <span>ABOUT UAMC</span>
-
-            <span className="mx-1 sm:mx-1.5">&gt;&gt;</span>
-
-            <span style={{ color: GREEN }}>Aim &amp; Objective</span>
-          </div>
-
           {/* =========================================
-              FRAME 51
+              LEFT CONTENT
           ========================================== */}
           <div
             className="
               w-full
-              h-auto
-              min-h-[60px]
-              md:h-[84.67px]
+              min-w-0
+              flex-1
 
-              flex flex-row
-              items-center
+              flex
+              flex-col
+              justify-end
+              items-start
 
-              py-2
-              md:py-[10.8332px]
+              gap-2
 
-              gap-2.5
-              box-border
+              sm:gap-3
+
+              lg:gap-[10px]
             "
           >
-            {/* Heading */}
-            <h1
+            {/* =========================================
+                BREADCRUMB
+            ========================================== */}
+            <div
               className="
                 w-full
+                min-w-0
+
+                flex
+                flex-wrap
+                items-center
+
+                gap-x-1
+                gap-y-1
+
+                font-['Inter',sans-serif]
+                font-medium
+
+                text-[10px]
+                leading-4
+
+                sm:text-xs
+                sm:leading-5
+
+                md:text-sm
+                md:leading-5
+
+                lg:text-lg
+                lg:leading-6
+
+                xl:text-xl
+
+                text-black
+              "
+            >
+              <span>HOME</span>
+
+              <span>&gt;</span>
+
+              <span>ABOUT UAMC</span>
+
+              <span>&gt;&gt;</span>
+
+              <span className="text-[#018837]" style={{ color: GREEN }}>
+                Aim &amp; Objective
+              </span>
+            </div>
+
+            {/* =========================================
+                HEADING
+            ========================================== */}
+            <div
+              className="
+                w-full
+                min-w-0
 
                 flex
                 items-center
 
-                p-0 m-0
+                py-1
 
-                font-['Bitter',serif]
-                font-light
-
-                text-[40px]
-                leading-[42px]
-
-                sm:text-[46px]
-                sm:leading-[48px]
-
-                md:text-[56px]
-                md:leading-[55px]
-
-                lg:text-[70px]
-                lg:leading-[62px]
-
-                text-[#262626]
-                whitespace-nowrap
+                sm:py-2
               "
             >
-              ABOUT{" "}
-              <span
+              <h1
                 className="
-                  ml-2
-                  sm:ml-2.5
-                  font-bold
+                  m-0
+                  p-0
+
+                  flex
+                  flex-wrap
+                  items-center
+
+                  font-['Bitter',serif]
+                  font-light
+
+                  text-[34px]
+                  leading-[38px]
+
+                  sm:text-[42px]
+                  sm:leading-[44px]
+
+                  md:text-[52px]
+                  md:leading-[52px]
+
+                  lg:text-[62px]
+                  lg:leading-[60px]
+
+                  xl:text-[70px]
+                  xl:leading-[62px]
+
+                  text-[#262626]
                 "
-                style={{ color: GREEN }}
               >
-                UAMC
-              </span>
-            </h1>
+                <span>ABOUT</span>
+
+                <span
+                  className="
+                    ml-2
+
+                    sm:ml-2.5
+
+                    font-bold
+                    text-[#018837]
+                  "
+                  style={{ color: GREEN }}
+                >
+                  UAMC
+                </span>
+              </h1>
+            </div>
           </div>
-        </div>
 
-        {/* =========================================
-            RIGHT LOGO
-        ========================================== */}
-        <div
-          className="
-            w-full
-            md:w-[190px]
-            lg:w-[220px]
-            xl:w-[250px]
-
-            h-[140px]
-            sm:h-[160px]
-            md:h-[200px]
-            lg:h-[250px]
-            xl:h-[287.29px]
-
-            flex
-            items-end
-            justify-center
-
-            p-0
-            mx-auto
-
-            shrink-0
-          "
-        >
-          <img
-            src="/logo2.png"
-            alt="Uttara Adhunik Medical College"
+          {/* =========================================
+              RIGHT LOGO
+          ========================================== */}
+          <div
             className="
-              w-auto
-              max-w-full
-              h-full
+              flex
+              items-end
+              justify-center
 
-              block
-              object-contain
-              object-center
+              flex-shrink-0
+
+              self-center
+              mx-auto
+
+              w-[75px]
+              h-[86px]
+
+              sm:w-[95px]
+              sm:h-[109px]
+
+              md:w-[120px]
+              md:h-[138px]
+
+              lg:w-[190px]
+              lg:h-[219px]
+
+              xl:w-[250px]
+              xl:h-[287.29px]
+
+              lg:self-auto
+              lg:mx-0
             "
-          />
+          >
+            <img
+              src="/logo2.png"
+              alt="Uttara Adhunik Medical College"
+              className="
+                block
+                w-full
+                h-full
+
+                object-contain
+                object-bottom
+              "
+            />
+          </div>
         </div>
       </div>
     </section>

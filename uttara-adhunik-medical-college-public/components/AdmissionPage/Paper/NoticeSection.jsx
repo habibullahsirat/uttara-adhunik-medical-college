@@ -534,6 +534,545 @@
 // }
 
 // Dynamic Version
+// "use client";
+
+// import React, { useEffect, useState } from "react";
+
+// const GREEN = "#018837";
+
+// function DownloadIcon() {
+//   return (
+//     <svg
+//       width="19"
+//       height="19"
+//       viewBox="0 0 24 24"
+//       fill="none"
+//       xmlns="http://www.w3.org/2000/svg"
+//       aria-hidden="true"
+//     >
+//       <path
+//         d="M12 3V15"
+//         stroke={GREEN}
+//         strokeWidth="1.8"
+//         strokeLinecap="round"
+//       />
+//       <path
+//         d="M7 10L12 15L17 10"
+//         stroke={GREEN}
+//         strokeWidth="1.8"
+//         strokeLinecap="round"
+//         strokeLinejoin="round"
+//       />
+//       <path
+//         d="M5 20H19"
+//         stroke={GREEN}
+//         strokeWidth="1.8"
+//         strokeLinecap="round"
+//       />
+//     </svg>
+//   );
+// }
+
+// function ShareIcon() {
+//   return (
+//     <svg
+//       width="19"
+//       height="19"
+//       viewBox="0 0 24 24"
+//       fill="none"
+//       xmlns="http://www.w3.org/2000/svg"
+//       aria-hidden="true"
+//     >
+//       <circle cx="18" cy="5" r="2.5" stroke={GREEN} strokeWidth="1.8" />
+
+//       <circle cx="6" cy="12" r="2.5" stroke={GREEN} strokeWidth="1.8" />
+
+//       <circle cx="18" cy="19" r="2.5" stroke={GREEN} strokeWidth="1.8" />
+
+//       <path
+//         d="M8.2 10.8L15.8 6.2"
+//         stroke={GREEN}
+//         strokeWidth="1.8"
+//         strokeLinecap="round"
+//       />
+
+//       <path
+//         d="M8.2 13.2L15.8 17.8"
+//         stroke={GREEN}
+//         strokeWidth="1.8"
+//         strokeLinecap="round"
+//       />
+//     </svg>
+//   );
+// }
+
+// function NoticeRow({ no, date, title, pdfUrl, onShare, copiedId, id }) {
+//   const handleDownload = () => {
+//     if (!pdfUrl) return;
+
+//     window.open(pdfUrl, "_blank", "noopener,noreferrer");
+//   };
+
+//   return (
+//     <div
+//       className="
+//         grid min-h-[82px] w-full items-center
+//         grid-cols-[60px_160px_1px_minmax(300px,1fr)_1px_100px]
+//         border-b border-[#444444]/12
+//         px-5 py-[18px]
+//         xl:grid-cols-[70px_352px_1px_minmax(0,1fr)_1px_352px]
+//         xl:px-5
+//         lg:grid-cols-[60px_180px_1px_minmax(0,1fr)_1px_120px]
+//         max-md:min-w-[760px]
+//       "
+//     >
+//       {/* Number */}
+//       <div
+//         className="
+//           font-['Inter',Arial,sans-serif]
+//           text-[15px] leading-[17px] font-normal
+//           text-[#444]
+//         "
+//       >
+//         {no}
+//       </div>
+
+//       {/* Date */}
+//       <div
+//         className="
+//           pr-5
+//           font-['Inter',Arial,sans-serif]
+//           text-[15px] leading-[17px] font-normal
+//           text-[#444]
+//         "
+//       >
+//         {date}
+//       </div>
+
+//       {/* Separator */}
+//       <div className="h-[17px] w-px bg-[#444]/50" />
+
+//       {/* Title */}
+//       <div
+//         className="
+//           px-5
+//           font-['Inter',Arial,sans-serif]
+//           text-[15px] leading-[17px] font-normal
+//           text-[#444]
+//           lg:px-10
+//           xl:pl-[116px]
+//         "
+//       >
+//         {title}
+//       </div>
+
+//       {/* Separator */}
+//       <div className="h-[17px] w-px bg-[#444]/50" />
+
+//       {/* Actions */}
+//       <div
+//         className="
+//           flex items-center justify-end gap-2.5 pl-5
+//         "
+//       >
+//         {/* Download */}
+//         <button
+//           type="button"
+//           aria-label={`Download ${title}`}
+//           onClick={handleDownload}
+//           disabled={!pdfUrl}
+//           className="
+//             flex h-10 w-10 shrink-0 items-center justify-center
+//             rounded-full
+//             bg-[#018837]/10
+//             transition-all duration-200
+//             hover:-translate-y-px hover:bg-[#018837]/18
+//             active:translate-y-0
+//             disabled:cursor-not-allowed disabled:opacity-40
+//           "
+//         >
+//           <DownloadIcon />
+//         </button>
+
+//         {/* Share */}
+//         <div className="relative">
+//           <button
+//             type="button"
+//             aria-label={`Share ${title}`}
+//             onClick={() => onShare(id, pdfUrl)}
+//             disabled={!pdfUrl}
+//             className="
+//               flex h-10 w-10 shrink-0 items-center justify-center
+//               rounded-full
+//               bg-[#018837]/10
+//               transition-all duration-200
+//               hover:-translate-y-px hover:bg-[#018837]/18
+//               active:translate-y-0
+//               disabled:cursor-not-allowed disabled:opacity-40
+//             "
+//           >
+//             <ShareIcon />
+//           </button>
+
+//           {/* Copied message */}
+//           {copiedId === id && (
+//             <div
+//               className="
+//                 absolute right-0 top-12 z-20
+//                 whitespace-nowrap
+//                 rounded-md bg-[#018837]
+//                 px-3 py-2
+//                 text-xs font-medium text-white
+//                 shadow-lg
+//               "
+//             >
+//               Link copied
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default function NoticeSection() {
+//   const [notices, setNotices] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState("");
+//   const [copiedId, setCopiedId] = useState(null);
+
+//   useEffect(() => {
+//     const fetchNotices = async () => {
+//       try {
+//         setLoading(true);
+//         setError("");
+
+//         const response = await fetch(
+//           `${process.env.NEXT_PUBLIC_ADMIN_API}/api/admission/paper`,
+//           {
+//             method: "GET",
+//             cache: "no-store",
+//           },
+//         );
+
+//         if (!response.ok) {
+//           throw new Error("Failed to fetch admission notices.");
+//         }
+
+//         const data = await response.json();
+
+//         if (!Array.isArray(data)) {
+//           throw new Error("Invalid admission notice response.");
+//         }
+
+//         setNotices(data);
+//       } catch (err) {
+//         console.error("Admission notices error:", err);
+//         setError("Unable to load admission notices.");
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchNotices();
+//   }, []);
+
+//   const formatDate = (dateString) => {
+//     if (!dateString) return "—";
+
+//     const date = new Date(dateString);
+
+//     if (Number.isNaN(date.getTime())) {
+//       return "—";
+//     }
+
+//     return new Intl.DateTimeFormat("en-US", {
+//       month: "long",
+//       day: "numeric",
+//       year: "numeric",
+//     }).format(date);
+//   };
+
+//   /**
+//    * Your API response was displayed with markdown:
+//    *
+//    * [https://...pdf](https://...pdf)
+//    *
+//    * If the actual API returns only the URL, this function simply
+//    * returns it unchanged. If it returns markdown, it extracts
+//    * the real URL.
+//    */
+//   const cleanPdfUrl = (url) => {
+//     if (!url || typeof url !== "string") {
+//       return "";
+//     }
+
+//     const markdownMatch = url.match(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/);
+
+//     if (markdownMatch) {
+//       return markdownMatch[2];
+//     }
+
+//     return url.trim();
+//   };
+
+//   const handleShare = async (id, pdfUrl) => {
+//     const url = cleanPdfUrl(pdfUrl);
+
+//     if (!url) return;
+
+//     try {
+//       await navigator.clipboard.writeText(url);
+
+//       setCopiedId(id);
+
+//       setTimeout(() => {
+//         setCopiedId(null);
+//       }, 2000);
+//     } catch (err) {
+//       console.error("Failed to copy link:", err);
+
+//       // Fallback for browsers where Clipboard API isn't available
+//       try {
+//         const textarea = document.createElement("textarea");
+//         textarea.value = url;
+
+//         textarea.style.position = "fixed";
+//         textarea.style.left = "-9999px";
+
+//         document.body.appendChild(textarea);
+//         textarea.select();
+
+//         document.execCommand("copy");
+//         textarea.remove();
+
+//         setCopiedId(id);
+
+//         setTimeout(() => {
+//           setCopiedId(null);
+//         }, 2000);
+//       } catch (fallbackError) {
+//         console.error("Fallback copy failed:", fallbackError);
+//       }
+//     }
+//   };
+
+//   return (
+//     <section
+//       className="
+//         w-full
+//         bg-white
+//         px-5 pb-[60px] pt-[45px]
+//         sm:px-8
+//         md:px-10 md:pb-[70px] md:pt-[60px]
+//         lg:px-[60px]
+//         xl:min-h-[1258px] xl:px-[77px] xl:pb-20 xl:pt-[76px]
+//       "
+//     >
+//       <div className="mx-auto w-full max-w-[1400px]">
+//         {/* =========================
+//             HEADER
+//         ========================= */}
+//         <header className="w-full text-center">
+//           <h2
+//             className="
+//               m-0
+//               font-['Bitter',Georgia,serif]
+//               text-[32px] leading-10 font-bold
+//               tracking-[0.01em]
+//               text-black
+//               sm:text-[38px] sm:leading-[46px]
+//               md:text-[44px] md:leading-[52px]
+//               xl:text-[50px] xl:leading-[60px]
+//             "
+//           >
+//             Admission Papers &amp; Notices
+//           </h2>
+
+//           <p
+//             className="
+//               mt-2
+//               font-['Inter',Arial,sans-serif]
+//               text-[14px] leading-[22px] font-normal
+//               text-black
+//               md:text-[15px]
+//             "
+//           >
+//             MBBS Admission – Session 2024–2025
+//           </p>
+//         </header>
+
+//         {/* =========================
+//             ACCENT + HEADING
+//         ========================= */}
+//         <div
+//           className="
+//             mt-[45px] mb-[19px]
+//             flex h-auto min-h-[45px]
+//             w-full items-center
+//             md:mt-[55px]
+//             xl:mt-[66px]
+//           "
+//         >
+//           <div
+//             className="
+//               mr-3.5 h-[45px] w-1 shrink-0
+//               bg-[#018837]
+//             "
+//           />
+
+//           <h3
+//             className="
+//               m-0
+//               font-['Bitter',Georgia,serif]
+//               text-[25px] leading-[32px] font-bold
+//               text-[#444]
+//               sm:text-[30px] sm:leading-[38px]
+//               md:text-[34px] md:leading-[42px]
+//               xl:text-[40px] xl:leading-[45px]
+//             "
+//           >
+//             Recent Admission Notices &amp; Required Documents
+//           </h3>
+//         </div>
+
+//         {/* =========================
+//             TABLE
+//         ========================= */}
+//         <div className="w-full overflow-x-auto overflow-y-hidden bg-white">
+//           <div
+//             className="
+//               w-full
+//               overflow-hidden
+//               border-t border-[#444]/45
+//               max-md:min-w-[760px]
+//             "
+//           >
+//             {/* Table Header */}
+//             <div
+//               className="
+//                 grid h-[55px] w-full items-center
+//                 grid-cols-[60px_160px_1px_minmax(300px,1fr)_1px_100px]
+//                 border-b border-[#444]/45
+//                 bg-[#14a800]/10
+//                 px-5
+//                 font-['Bitter',Georgia,serif]
+//                 text-[15px] leading-[18px] font-bold
+//                 text-[#444]
+//                 lg:grid-cols-[60px_180px_1px_minmax(0,1fr)_1px_120px]
+//                 xl:grid-cols-[70px_352px_1px_minmax(0,1fr)_1px_352px]
+//               "
+//             >
+//               <div>No.</div>
+
+//               <div>Date</div>
+
+//               <div />
+
+//               <div
+//                 className="
+//                   pl-5
+//                   lg:pl-10
+//                   xl:pl-[116px]
+//                 "
+//               >
+//                 Title
+//               </div>
+
+//               <div />
+
+//               <div className="pl-5 text-right">Action</div>
+//             </div>
+
+//             {/* Loading */}
+//             {loading && (
+//               <div
+//                 className="
+//                   flex min-h-[150px] items-center justify-center
+//                   font-['Inter',Arial,sans-serif]
+//                   text-[15px] text-[#444]
+//                 "
+//               >
+//                 Loading admission notices...
+//               </div>
+//             )}
+
+//             {/* Error */}
+//             {!loading && error && (
+//               <div
+//                 className="
+//                   flex min-h-[150px] items-center justify-center
+//                   px-5 text-center
+//                   font-['Inter',Arial,sans-serif]
+//                   text-[15px] text-red-600
+//                 "
+//               >
+//                 {error}
+//               </div>
+//             )}
+
+//             {/* Empty */}
+//             {!loading && !error && notices.length === 0 && (
+//               <div
+//                 className="
+//                   flex min-h-[150px] items-center justify-center
+//                   font-['Inter',Arial,sans-serif]
+//                   text-[15px] text-[#444]
+//                 "
+//               >
+//                 No admission notices available.
+//               </div>
+//             )}
+
+//             {/* Dynamic Rows */}
+//             {!loading &&
+//               !error &&
+//               notices.map((notice, index) => (
+//                 <NoticeRow
+//                   key={notice._id}
+//                   id={notice._id}
+//                   no={String(index + 1).padStart(2, "0")}
+//                   date={formatDate(notice.createdAt)}
+//                   title={notice.title}
+//                   pdfUrl={cleanPdfUrl(notice.pdfUrl)}
+//                   onShare={handleShare}
+//                   copiedId={copiedId}
+//                 />
+//               ))}
+//           </div>
+//         </div>
+
+//         {/* =========================
+//             NOTE
+//         ========================= */}
+//         <div
+//           className="
+//             mt-7 w-full
+//             border-l-4 border-[#018837]
+//             px-5 py-2.5
+//           "
+//         >
+//           <p
+//             className="
+//               m-0
+//               font-['Inter',Arial,sans-serif]
+//               text-[14px] leading-[22px] font-normal
+//               text-[#444466]
+//               md:text-[15px] md:leading-[25px]
+//             "
+//           >
+//             <strong className="font-bold text-black">Note:</strong> All
+//             applicants are advised to check the latest official notices on the
+//             Directorate General of Medical Education (DGME) website for
+//             up-to-date admission instructions and required documents.
+//           </p>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+// Version 2
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -584,9 +1123,7 @@ function ShareIcon() {
       aria-hidden="true"
     >
       <circle cx="18" cy="5" r="2.5" stroke={GREEN} strokeWidth="1.8" />
-
       <circle cx="6" cy="12" r="2.5" stroke={GREEN} strokeWidth="1.8" />
-
       <circle cx="18" cy="19" r="2.5" stroke={GREEN} strokeWidth="1.8" />
 
       <path
@@ -606,7 +1143,30 @@ function ShareIcon() {
   );
 }
 
-function NoticeRow({ no, date, title, pdfUrl, onShare, copiedId, id }) {
+function ActionButton({ label, onClick, disabled, children }) {
+  return (
+    <button
+      type="button"
+      aria-label={label}
+      onClick={onClick}
+      disabled={disabled}
+      className="
+        flex h-10 w-10 shrink-0 items-center justify-center
+        rounded-full
+        bg-[#018837]/10
+        transition-all duration-200
+        hover:-translate-y-px hover:bg-[#018837]/18
+        active:translate-y-0
+        disabled:cursor-not-allowed disabled:opacity-40
+        touch-manipulation
+      "
+    >
+      {children}
+    </button>
+  );
+}
+
+function NoticeActions({ title, pdfUrl, id, onShare, copiedId }) {
   const handleDownload = () => {
     if (!pdfUrl) return;
 
@@ -614,124 +1174,219 @@ function NoticeRow({ no, date, title, pdfUrl, onShare, copiedId, id }) {
   };
 
   return (
-    <div
-      className="
-        grid min-h-[82px] w-full items-center
-        grid-cols-[60px_160px_1px_minmax(300px,1fr)_1px_100px]
-        border-b border-[#444444]/12
-        px-5 py-[18px]
-        xl:grid-cols-[70px_352px_1px_minmax(0,1fr)_1px_352px]
-        xl:px-5
-        lg:grid-cols-[60px_180px_1px_minmax(0,1fr)_1px_120px]
-        max-md:min-w-[760px]
-      "
-    >
-      {/* Number */}
-      <div
-        className="
-          font-['Inter',Arial,sans-serif]
-          text-[15px] leading-[17px] font-normal
-          text-[#444]
-        "
+    <div className="flex items-center gap-2.5">
+      {/* Download */}
+      <ActionButton
+        label={`Download ${title}`}
+        onClick={handleDownload}
+        disabled={!pdfUrl}
       >
-        {no}
-      </div>
+        <DownloadIcon />
+      </ActionButton>
 
-      {/* Date */}
-      <div
-        className="
-          pr-5
-          font-['Inter',Arial,sans-serif]
-          text-[15px] leading-[17px] font-normal
-          text-[#444]
-        "
-      >
-        {date}
-      </div>
-
-      {/* Separator */}
-      <div className="h-[17px] w-px bg-[#444]/50" />
-
-      {/* Title */}
-      <div
-        className="
-          px-5
-          font-['Inter',Arial,sans-serif]
-          text-[15px] leading-[17px] font-normal
-          text-[#444]
-          lg:px-10
-          xl:pl-[116px]
-        "
-      >
-        {title}
-      </div>
-
-      {/* Separator */}
-      <div className="h-[17px] w-px bg-[#444]/50" />
-
-      {/* Actions */}
-      <div
-        className="
-          flex items-center justify-end gap-2.5 pl-5
-        "
-      >
-        {/* Download */}
-        <button
-          type="button"
-          aria-label={`Download ${title}`}
-          onClick={handleDownload}
+      {/* Share */}
+      <div className="relative">
+        <ActionButton
+          label={`Share ${title}`}
+          onClick={() => onShare(id, pdfUrl)}
           disabled={!pdfUrl}
-          className="
-            flex h-10 w-10 shrink-0 items-center justify-center
-            rounded-full
-            bg-[#018837]/10
-            transition-all duration-200
-            hover:-translate-y-px hover:bg-[#018837]/18
-            active:translate-y-0
-            disabled:cursor-not-allowed disabled:opacity-40
-          "
         >
-          <DownloadIcon />
-        </button>
+          <ShareIcon />
+        </ActionButton>
 
-        {/* Share */}
-        <div className="relative">
-          <button
-            type="button"
-            aria-label={`Share ${title}`}
-            onClick={() => onShare(id, pdfUrl)}
-            disabled={!pdfUrl}
+        {copiedId === id && (
+          <div
             className="
-              flex h-10 w-10 shrink-0 items-center justify-center
-              rounded-full
-              bg-[#018837]/10
-              transition-all duration-200
-              hover:-translate-y-px hover:bg-[#018837]/18
-              active:translate-y-0
-              disabled:cursor-not-allowed disabled:opacity-40
+              absolute right-0 top-12 z-20
+              whitespace-nowrap
+              rounded-md bg-[#018837]
+              px-3 py-2
+              text-xs font-medium text-white
+              shadow-lg
             "
           >
-            <ShareIcon />
-          </button>
-
-          {/* Copied message */}
-          {copiedId === id && (
-            <div
-              className="
-                absolute right-0 top-12 z-20
-                whitespace-nowrap
-                rounded-md bg-[#018837]
-                px-3 py-2
-                text-xs font-medium text-white
-                shadow-lg
-              "
-            >
-              Link copied
-            </div>
-          )}
-        </div>
+            Link copied
+          </div>
+        )}
       </div>
     </div>
+  );
+}
+
+function NoticeRow({ no, date, title, pdfUrl, onShare, copiedId, id }) {
+  return (
+    <>
+      {/* =====================================================
+          DESKTOP / TABLET TABLE ROW
+      ===================================================== */}
+      <div
+        className="
+          hidden
+          min-h-[82px]
+          w-full
+          items-center
+          border-b border-[#444444]/12
+          px-5 py-[18px]
+
+          md:grid
+          md:grid-cols-[55px_145px_1px_minmax(0,1fr)_1px_110px]
+
+          lg:grid-cols-[60px_180px_1px_minmax(0,1fr)_1px_120px]
+
+          xl:grid-cols-[70px_352px_1px_minmax(0,1fr)_1px_352px]
+        "
+      >
+        {/* Number */}
+        <div
+          className="
+            min-w-0
+            font-['Inter',Arial,sans-serif]
+            text-[15px]
+            leading-[17px]
+            font-normal
+            text-[#444]
+          "
+        >
+          {no}
+        </div>
+
+        {/* Date */}
+        <div
+          className="
+            min-w-0
+            pr-3
+            font-['Inter',Arial,sans-serif]
+            text-[15px]
+            leading-[17px]
+            font-normal
+            text-[#444]
+
+            lg:pr-5
+          "
+        >
+          {date}
+        </div>
+
+        {/* Separator */}
+        <div className="h-[17px] w-px bg-[#444]/50" />
+
+        {/* Title */}
+        <div
+          className="
+            min-w-0
+            break-words
+            px-4
+            font-['Inter',Arial,sans-serif]
+            text-[15px]
+            leading-[20px]
+            font-normal
+            text-[#444]
+
+            lg:px-10
+
+            xl:pl-[116px]
+            xl:pr-5
+          "
+        >
+          {title}
+        </div>
+
+        {/* Separator */}
+        <div className="h-[17px] w-px bg-[#444]/50" />
+
+        {/* Actions */}
+        <div className="flex justify-end pl-3 lg:pl-5">
+          <NoticeActions
+            title={title}
+            pdfUrl={pdfUrl}
+            id={id}
+            onShare={onShare}
+            copiedId={copiedId}
+          />
+        </div>
+      </div>
+
+      {/* =====================================================
+          MOBILE CARD
+      ===================================================== */}
+      <article
+        className="
+          relative
+          block
+          border-b border-[#444]/12
+          px-4 py-5
+
+          sm:px-5
+
+          md:hidden
+        "
+      >
+        <div className="flex items-start justify-between gap-4">
+          {/* Content */}
+          <div className="min-w-0 flex-1">
+            {/* Number + Date */}
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span
+                className="
+                  font-['Inter',Arial,sans-serif]
+                  text-[13px]
+                  font-semibold
+                  text-[#018837]
+                "
+              >
+                {no}
+              </span>
+
+              <span
+                className="
+                  h-3.5
+                  w-px
+                  bg-[#444]/30
+                "
+                aria-hidden="true"
+              />
+
+              <span
+                className="
+                  font-['Inter',Arial,sans-serif]
+                  text-[13px]
+                  leading-[18px]
+                  text-[#666]
+                "
+              >
+                {date}
+              </span>
+            </div>
+
+            {/* Title */}
+            <h4
+              className="
+                mt-2.5
+                break-words
+                font-['Inter',Arial,sans-serif]
+                text-[15px]
+                leading-[22px]
+                font-medium
+                text-[#444]
+              "
+            >
+              {title}
+            </h4>
+          </div>
+
+          {/* Actions */}
+          <div className="shrink-0">
+            <NoticeActions
+              title={title}
+              pdfUrl={pdfUrl}
+              id={id}
+              onShare={onShare}
+              copiedId={copiedId}
+            />
+          </div>
+        </div>
+      </article>
+    </>
   );
 }
 
@@ -793,15 +1448,6 @@ export default function NoticeSection() {
     }).format(date);
   };
 
-  /**
-   * Your API response was displayed with markdown:
-   *
-   * [https://...pdf](https://...pdf)
-   *
-   * If the actual API returns only the URL, this function simply
-   * returns it unchanged. If it returns markdown, it extracts
-   * the real URL.
-   */
   const cleanPdfUrl = (url) => {
     if (!url || typeof url !== "string") {
       return "";
@@ -832,18 +1478,19 @@ export default function NoticeSection() {
     } catch (err) {
       console.error("Failed to copy link:", err);
 
-      // Fallback for browsers where Clipboard API isn't available
       try {
         const textarea = document.createElement("textarea");
-        textarea.value = url;
 
+        textarea.value = url;
         textarea.style.position = "fixed";
         textarea.style.left = "-9999px";
 
         document.body.appendChild(textarea);
+
         textarea.select();
 
         document.execCommand("copy");
+
         textarea.remove();
 
         setCopiedId(id);
@@ -862,28 +1509,55 @@ export default function NoticeSection() {
       className="
         w-full
         bg-white
-        px-5 pb-[60px] pt-[45px]
+
+        px-4
+        pb-12
+        pt-10
+
+        xs:px-5
+
         sm:px-8
-        md:px-10 md:pb-[70px] md:pt-[60px]
+        sm:pb-[60px]
+        sm:pt-[45px]
+
+        md:px-10
+        md:pb-[70px]
+        md:pt-[60px]
+
         lg:px-[60px]
-        xl:min-h-[1258px] xl:px-[77px] xl:pb-20 xl:pt-[76px]
+
+        xl:min-h-[1258px]
+        xl:px-[77px]
+        xl:pb-20
+        xl:pt-[76px]
       "
     >
       <div className="mx-auto w-full max-w-[1400px]">
-        {/* =========================
+        {/* =====================================================
             HEADER
-        ========================= */}
+        ===================================================== */}
         <header className="w-full text-center">
           <h2
             className="
               m-0
               font-['Bitter',Georgia,serif]
-              text-[32px] leading-10 font-bold
+              text-[30px]
+              leading-[38px]
+              font-bold
               tracking-[0.01em]
               text-black
-              sm:text-[38px] sm:leading-[46px]
-              md:text-[44px] md:leading-[52px]
-              xl:text-[50px] xl:leading-[60px]
+
+              xs:text-[32px]
+              xs:leading-10
+
+              sm:text-[38px]
+              sm:leading-[46px]
+
+              md:text-[44px]
+              md:leading-[52px]
+
+              xl:text-[50px]
+              xl:leading-[60px]
             "
           >
             Admission Papers &amp; Notices
@@ -893,8 +1567,14 @@ export default function NoticeSection() {
             className="
               mt-2
               font-['Inter',Arial,sans-serif]
-              text-[14px] leading-[22px] font-normal
+              text-[13px]
+              leading-[20px]
+              font-normal
               text-black
+
+              sm:text-[14px]
+              sm:leading-[22px]
+
               md:text-[15px]
             "
           >
@@ -902,163 +1582,246 @@ export default function NoticeSection() {
           </p>
         </header>
 
-        {/* =========================
+        {/* =====================================================
             ACCENT + HEADING
-        ========================= */}
+        ===================================================== */}
         <div
           className="
-            mt-[45px] mb-[19px]
-            flex h-auto min-h-[45px]
-            w-full items-center
+            mt-9
+            mb-[18px]
+            flex
+            min-h-[45px]
+            w-full
+            items-center
+
+            sm:mt-[45px]
+
             md:mt-[55px]
+
             xl:mt-[66px]
+            xl:mb-[19px]
           "
         >
           <div
             className="
-              mr-3.5 h-[45px] w-1 shrink-0
+              mr-3
+              h-[45px]
+              w-1
+              shrink-0
               bg-[#018837]
+
+              sm:mr-3.5
             "
           />
 
           <h3
             className="
               m-0
+              min-w-0
               font-['Bitter',Georgia,serif]
-              text-[25px] leading-[32px] font-bold
+              text-[22px]
+              leading-[29px]
+              font-bold
               text-[#444]
-              sm:text-[30px] sm:leading-[38px]
-              md:text-[34px] md:leading-[42px]
-              xl:text-[40px] xl:leading-[45px]
+
+              xs:text-[24px]
+              xs:leading-[32px]
+
+              sm:text-[30px]
+              sm:leading-[38px]
+
+              md:text-[34px]
+              md:leading-[42px]
+
+              xl:text-[40px]
+              xl:leading-[45px]
             "
           >
             Recent Admission Notices &amp; Required Documents
           </h3>
         </div>
 
-        {/* =========================
-            TABLE
-        ========================= */}
-        <div className="w-full overflow-x-auto overflow-y-hidden bg-white">
-          <div
-            className="
-              w-full
-              overflow-hidden
-              border-t border-[#444]/45
-              max-md:min-w-[760px]
-            "
-          >
-            {/* Table Header */}
-            <div
-              className="
-                grid h-[55px] w-full items-center
-                grid-cols-[60px_160px_1px_minmax(300px,1fr)_1px_100px]
-                border-b border-[#444]/45
-                bg-[#14a800]/10
-                px-5
-                font-['Bitter',Georgia,serif]
-                text-[15px] leading-[18px] font-bold
-                text-[#444]
-                lg:grid-cols-[60px_180px_1px_minmax(0,1fr)_1px_120px]
-                xl:grid-cols-[70px_352px_1px_minmax(0,1fr)_1px_352px]
-              "
-            >
-              <div>No.</div>
-
-              <div>Date</div>
-
-              <div />
-
-              <div
-                className="
-                  pl-5
-                  lg:pl-10
-                  xl:pl-[116px]
-                "
-              >
-                Title
-              </div>
-
-              <div />
-
-              <div className="pl-5 text-right">Action</div>
-            </div>
-
-            {/* Loading */}
-            {loading && (
-              <div
-                className="
-                  flex min-h-[150px] items-center justify-center
-                  font-['Inter',Arial,sans-serif]
-                  text-[15px] text-[#444]
-                "
-              >
-                Loading admission notices...
-              </div>
-            )}
-
-            {/* Error */}
-            {!loading && error && (
-              <div
-                className="
-                  flex min-h-[150px] items-center justify-center
-                  px-5 text-center
-                  font-['Inter',Arial,sans-serif]
-                  text-[15px] text-red-600
-                "
-              >
-                {error}
-              </div>
-            )}
-
-            {/* Empty */}
-            {!loading && !error && notices.length === 0 && (
-              <div
-                className="
-                  flex min-h-[150px] items-center justify-center
-                  font-['Inter',Arial,sans-serif]
-                  text-[15px] text-[#444]
-                "
-              >
-                No admission notices available.
-              </div>
-            )}
-
-            {/* Dynamic Rows */}
-            {!loading &&
-              !error &&
-              notices.map((notice, index) => (
-                <NoticeRow
-                  key={notice._id}
-                  id={notice._id}
-                  no={String(index + 1).padStart(2, "0")}
-                  date={formatDate(notice.createdAt)}
-                  title={notice.title}
-                  pdfUrl={cleanPdfUrl(notice.pdfUrl)}
-                  onShare={handleShare}
-                  copiedId={copiedId}
-                />
-              ))}
-          </div>
-        </div>
-
-        {/* =========================
-            NOTE
-        ========================= */}
+        {/* =====================================================
+            TABLE / NOTICE LIST
+        ===================================================== */}
         <div
           className="
-            mt-7 w-full
-            border-l-4 border-[#018837]
-            px-5 py-2.5
+            w-full
+            overflow-hidden
+            bg-white
+            border-t
+            border-[#444]/45
+          "
+        >
+          {/* =================================================
+              DESKTOP / TABLET HEADER
+          ================================================= */}
+          <div
+            className="
+              hidden
+              h-[55px]
+              w-full
+              items-center
+              border-b
+              border-[#444]/45
+              bg-[#14a800]/10
+              px-5
+
+              font-['Bitter',Georgia,serif]
+              text-[15px]
+              leading-[18px]
+              font-bold
+              text-[#444]
+
+              md:grid
+              md:grid-cols-[55px_145px_1px_minmax(0,1fr)_1px_110px]
+
+              lg:grid-cols-[60px_180px_1px_minmax(0,1fr)_1px_120px]
+
+              xl:grid-cols-[70px_352px_1px_minmax(0,1fr)_1px_352px]
+            "
+          >
+            <div>No.</div>
+
+            <div>Date</div>
+
+            <div />
+
+            <div
+              className="
+                pl-4
+
+                lg:pl-10
+
+                xl:pl-[116px]
+              "
+            >
+              Title
+            </div>
+
+            <div />
+
+            <div className="pl-3 text-right lg:pl-5">Action</div>
+          </div>
+
+          {/* =================================================
+              LOADING
+          ================================================= */}
+          {loading && (
+            <div
+              className="
+                flex
+                min-h-[150px]
+                items-center
+                justify-center
+                px-5
+                text-center
+                font-['Inter',Arial,sans-serif]
+                text-[14px]
+                text-[#444]
+
+                sm:text-[15px]
+              "
+            >
+              Loading admission notices...
+            </div>
+          )}
+
+          {/* =================================================
+              ERROR
+          ================================================= */}
+          {!loading && error && (
+            <div
+              className="
+                flex
+                min-h-[150px]
+                items-center
+                justify-center
+                px-5
+                text-center
+                font-['Inter',Arial,sans-serif]
+                text-[14px]
+                text-red-600
+
+                sm:text-[15px]
+              "
+            >
+              {error}
+            </div>
+          )}
+
+          {/* =================================================
+              EMPTY
+          ================================================= */}
+          {!loading && !error && notices.length === 0 && (
+            <div
+              className="
+                  flex
+                  min-h-[150px]
+                  items-center
+                  justify-center
+                  px-5
+                  text-center
+                  font-['Inter',Arial,sans-serif]
+                  text-[14px]
+                  text-[#444]
+
+                  sm:text-[15px]
+                "
+            >
+              No admission notices available.
+            </div>
+          )}
+
+          {/* =================================================
+              DYNAMIC ROWS
+          ================================================= */}
+          {!loading &&
+            !error &&
+            notices.map((notice, index) => (
+              <NoticeRow
+                key={notice._id}
+                id={notice._id}
+                no={String(index + 1).padStart(2, "0")}
+                date={formatDate(notice.createdAt)}
+                title={notice.title}
+                pdfUrl={cleanPdfUrl(notice.pdfUrl)}
+                onShare={handleShare}
+                copiedId={copiedId}
+              />
+            ))}
+        </div>
+
+        {/* =====================================================
+            NOTE
+        ===================================================== */}
+        <div
+          className="
+            mt-6
+            w-full
+            border-l-4
+            border-[#018837]
+            px-4
+            py-2.5
+
+            sm:mt-7
+            sm:px-5
           "
         >
           <p
             className="
               m-0
               font-['Inter',Arial,sans-serif]
-              text-[14px] leading-[22px] font-normal
+              text-[13px]
+              leading-[21px]
+              font-normal
               text-[#444466]
-              md:text-[15px] md:leading-[25px]
+
+              sm:text-[14px]
+              sm:leading-[22px]
+
+              md:text-[15px]
+              md:leading-[25px]
             "
           >
             <strong className="font-bold text-black">Note:</strong> All

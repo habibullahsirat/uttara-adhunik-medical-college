@@ -160,7 +160,7 @@ export default function AdminDashboardPage() {
     },
     {
       label: "Pictures",
-      value: stats.image,
+      value: stats.Image,
       icon: ImageIcon,
     },
     {

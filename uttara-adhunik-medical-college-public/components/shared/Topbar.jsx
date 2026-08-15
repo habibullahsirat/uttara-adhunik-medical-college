@@ -290,7 +290,7 @@ import Link from "next/link";
 const portalLinks = [
   {
     label: "Student Portal",
-    href: "#",
+    href: `${process.env.NEXT_PUBLIC_ADMIN_API}/student/login`,
   },
   {
     label: "Faculty Portal",

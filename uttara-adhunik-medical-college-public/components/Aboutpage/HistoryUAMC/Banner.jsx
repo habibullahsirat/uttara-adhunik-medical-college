@@ -1,157 +1,398 @@
+// "use client";
+
+// const GREEN = "#018837";
+// const YELLOW = "#FECD2F";
+
+// export default function Banner() {
+//   return (
+//     <section
+//       style={{
+//         width: "100%",
+//         height: "500px",
+
+//         display: "flex",
+//         flexDirection: "column",
+//         justifyContent: "flex-end",
+//         alignItems: "flex-start",
+
+//         padding: "80px",
+//         gap: "10px",
+
+//         boxSizing: "border-box",
+
+//         backgroundImage: `url("/bg.png")`,
+//         backgroundSize: "cover",
+//         backgroundPosition: "center",
+//         backgroundRepeat: "no-repeat",
+//       }}
+//     >
+//       {/* =========================================
+//           FRAME 1261155625
+//           1440px × 327.29px
+//       ========================================== */}
+//       <div
+//         style={{
+//           width: "100%",
+//           height: "327.29px",
+
+//           display: "flex",
+//           flexDirection: "row",
+//           justifyContent: "space-between",
+//           alignItems: "flex-end",
+
+//           padding: "20px 50px",
+//           gap: "20px",
+
+//           boxSizing: "border-box",
+
+//           background: "rgba(1, 136, 55, 0.3)",
+//         }}
+//       >
+//         {/* =========================================
+//             FRAME 1261155626
+//             LEFT CONTENT
+//         ========================================== */}
+//         <div
+//           style={{
+//             flex: "1 1 0%",
+//             width: "1090px",
+//             height: "118.67px",
+
+//             display: "flex",
+//             flexDirection: "column",
+//             justifyContent: "flex-end",
+//             alignItems: "flex-start",
+
+//             padding: 0,
+//             margin: "0 auto",
+
+//             gap: "10px",
+
+//             boxSizing: "border-box",
+//           }}
+//         >
+//           {/* Breadcrumb */}
+//           <div
+//             style={{
+//               width: "396px",
+//               height: "24px",
+
+//               display: "flex",
+//               alignItems: "center",
+
+//               padding: 0,
+//               margin: 0,
+
+//               fontFamily: "'Inter', sans-serif",
+//               fontStyle: "normal",
+//               fontWeight: 500,
+//               fontSize: "20px",
+//               lineHeight: "24px",
+
+//               color: "#000000",
+//               whiteSpace: "nowrap",
+//             }}
+//           >
+//             <span>HOME</span>
+
+//             <span style={{ margin: "0 6px" }}>&gt;</span>
+
+//             <span>ABOUT UAMC</span>
+
+//             <span style={{ margin: "0 6px" }}>&gt;&gt;</span>
+
+//             <span style={{ color: GREEN }}>History of UAMC</span>
+//           </div>
+
+//           {/* =========================================
+//               FRAME 51
+//           ========================================== */}
+//           <div
+//             style={{
+//               width: "1090px",
+//               height: "84.67px",
+
+//               display: "flex",
+//               flexDirection: "row",
+//               alignItems: "center",
+
+//               padding: "10.8332px 0",
+//               gap: "10.83px",
+
+//               boxSizing: "border-box",
+//             }}
+//           >
+//             {/* Heading 2 → Facilities UAMC */}
+//             <h1
+//               style={{
+//                 width: "564px",
+//                 height: "63px",
+
+//                 display: "flex",
+//                 alignItems: "center",
+
+//                 padding: 0,
+//                 margin: 0,
+
+//                 fontFamily: "'Bitter', serif",
+//                 fontStyle: "normal",
+//                 fontWeight: 300,
+//                 fontSize: "70px",
+//                 lineHeight: "62px",
+
+//                 color: "#262626",
+
+//                 whiteSpace: "nowrap",
+//               }}
+//             >
+//               ABOUT{" "}
+//               <span
+//                 style={{
+//                   marginLeft: "10px",
+//                   fontWeight: 700,
+//                   color: GREEN,
+//                 }}
+//               >
+//                 UAMC
+//               </span>
+//             </h1>
+//           </div>
+//         </div>
+
+//         {/* =========================================
+//             RIGHT LOGO
+//             250px × 287.29px
+//         ========================================== */}
+//         <div
+//           style={{
+//             width: "250px",
+//             height: "287.29px",
+
+//             display: "flex",
+//             alignItems: "flex-end",
+//             justifyContent: "center",
+
+//             padding: 0,
+//             margin: "0 auto",
+
+//             flexShrink: 0,
+//           }}
+//         >
+//           <img
+//             src="/logo2.png"
+//             alt="Uttara Adhunik Medical College"
+//             style={{
+//               width: "250px",
+//               height: "287.29px",
+
+//               display: "block",
+
+//               objectFit: "contain",
+//               objectPosition: "center bottom",
+//             }}
+//           />
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+// Version 2
 "use client";
 
 const GREEN = "#018837";
-const YELLOW = "#FECD2F";
 
 export default function Banner() {
   return (
     <section
-      style={{
-        width: "100%",
-        height: "500px",
+      className="
+        w-full
+        h-[420px]
+        sm:h-[450px]
+        md:h-[480px]
+        lg:h-[500px]
 
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-end",
-        alignItems: "flex-start",
+        flex
+        flex-col
+        justify-end
+        items-start
 
-        padding: "80px",
-        gap: "10px",
+        px-4
+        sm:px-6
+        md:px-10
+        lg:px-20
 
-        boxSizing: "border-box",
+        pb-6
+        sm:pb-8
+        md:pb-10
+        lg:pb-20
 
-        backgroundImage: `url("/bg.png")`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+        gap-2.5
+        box-border
+
+        bg-[url('/bg.png')]
+        bg-cover
+        bg-center
+        bg-no-repeat
+      "
     >
       {/* =========================================
           FRAME 1261155625
-          1440px × 327.29px
       ========================================== */}
       <div
-        style={{
-          width: "100%",
-          height: "327.29px",
+        className="
+          w-full
+          h-auto
+          min-h-[260px]
+          sm:min-h-[280px]
+          md:min-h-[300px]
+          lg:h-[327.29px]
 
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "flex-end",
+          flex
+          flex-row
+          justify-between
+          items-end
 
-          padding: "20px 50px",
-          gap: "20px",
+          px-4
+          sm:px-6
+          md:px-8
+          lg:px-[50px]
 
-          boxSizing: "border-box",
+          py-5
 
-          background: "rgba(1, 136, 55, 0.3)",
-        }}
+          gap-4
+          lg:gap-5
+
+          box-border
+
+          bg-[rgba(1,136,55,0.3)]
+        "
       >
         {/* =========================================
-            FRAME 1261155626
             LEFT CONTENT
         ========================================== */}
         <div
-          style={{
-            flex: "1 1 0%",
-            width: "1090px",
-            height: "118.67px",
+          className="
+            flex-1
+            min-w-0
 
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-            alignItems: "flex-start",
+            w-full
+            lg:w-[1090px]
 
-            padding: 0,
-            margin: "0 auto",
+            h-auto
+            lg:h-[118.67px]
 
-            gap: "10px",
+            flex
+            flex-col
+            justify-end
+            items-start
 
-            boxSizing: "border-box",
-          }}
+            gap-2.5
+
+            min-w-0
+          "
         >
           {/* Breadcrumb */}
           <div
-            style={{
-              width: "396px",
-              height: "24px",
+            className="
+              w-full
+              h-auto
+              min-h-6
 
-              display: "flex",
-              alignItems: "center",
+              flex
+              items-center
 
-              padding: 0,
-              margin: 0,
+              font-['Inter',sans-serif]
+              font-medium
 
-              fontFamily: "'Inter', sans-serif",
-              fontStyle: "normal",
-              fontWeight: 500,
-              fontSize: "20px",
-              lineHeight: "24px",
+              text-[11px]
+              xs:text-xs
+              sm:text-sm
+              md:text-base
+              lg:text-[20px]
 
-              color: "#000000",
-              whiteSpace: "nowrap",
-            }}
+              leading-6
+
+              text-black
+
+              whitespace-nowrap
+              overflow-hidden
+              text-ellipsis
+            "
           >
             <span>HOME</span>
 
-            <span style={{ margin: "0 6px" }}>&gt;</span>
+            <span className="mx-1 sm:mx-1.5">&gt;</span>
 
             <span>ABOUT UAMC</span>
 
-            <span style={{ margin: "0 6px" }}>&gt;&gt;</span>
+            <span className="mx-1 sm:mx-1.5">&gt;&gt;</span>
 
-            <span style={{ color: GREEN }}>History of UAMC</span>
+            <span className="text-[#018837]">History of UAMC</span>
           </div>
 
           {/* =========================================
               FRAME 51
           ========================================== */}
           <div
-            style={{
-              width: "1090px",
-              height: "84.67px",
+            className="
+              w-full
+              h-auto
+              min-h-[55px]
+              sm:min-h-[65px]
+              lg:h-[84.67px]
 
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
+              flex
+              flex-row
+              items-center
 
-              padding: "10.8332px 0",
-              gap: "10.83px",
+              py-2
+              lg:py-[10.8332px]
 
-              boxSizing: "border-box",
-            }}
+              gap-2
+              lg:gap-[10.83px]
+
+              box-border
+            "
           >
-            {/* Heading 2 → Facilities UAMC */}
+            {/* Heading */}
             <h1
-              style={{
-                width: "564px",
-                height: "63px",
+              className="
+                m-0
+                p-0
 
-                display: "flex",
-                alignItems: "center",
+                flex
+                items-center
 
-                padding: 0,
-                margin: 0,
+                font-['Bitter',serif]
+                font-light
 
-                fontFamily: "'Bitter', serif",
-                fontStyle: "normal",
-                fontWeight: 300,
-                fontSize: "70px",
-                lineHeight: "62px",
+                text-[36px]
+                leading-[38px]
 
-                color: "#262626",
+                sm:text-[44px]
+                sm:leading-[46px]
 
-                whiteSpace: "nowrap",
-              }}
+                md:text-[52px]
+                md:leading-[54px]
+
+                lg:text-[70px]
+                lg:leading-[62px]
+
+                text-[#262626]
+
+                whitespace-nowrap
+              "
             >
-              ABOUT{" "}
+              ABOUT
               <span
-                style={{
-                  marginLeft: "10px",
-                  fontWeight: 700,
-                  color: GREEN,
-                }}
+                className="
+                  ml-2
+                  sm:ml-2.5
+
+                  font-bold
+                  text-[#018837]
+                "
               >
                 UAMC
               </span>
@@ -161,35 +402,44 @@ export default function Banner() {
 
         {/* =========================================
             RIGHT LOGO
-            250px × 287.29px
         ========================================== */}
         <div
-          style={{
-            width: "250px",
-            height: "287.29px",
+          className="
+            flex
+            items-end
+            justify-center
 
-            display: "flex",
-            alignItems: "flex-end",
-            justifyContent: "center",
+            w-[100px]
+            h-[150px]
 
-            padding: 0,
-            margin: "0 auto",
+            sm:w-[120px]
+            sm:h-[175px]
 
-            flexShrink: 0,
-          }}
+            md:w-[160px]
+            md:h-[220px]
+
+            lg:w-[250px]
+            lg:h-[287.29px]
+
+            p-0
+            m-0
+
+            flex-shrink-0
+          "
         >
           <img
             src="/logo2.png"
             alt="Uttara Adhunik Medical College"
-            style={{
-              width: "250px",
-              height: "287.29px",
+            className="
+              block
 
-              display: "block",
+              w-full
+              h-full
 
-              objectFit: "contain",
-              objectPosition: "center bottom",
-            }}
+              object-contain
+              object-center
+              object-bottom
+            "
           />
         </div>
       </div>

@@ -5099,7 +5099,7 @@ function MainNav({ settings }) {
               {/* NOTICE & MEDIA */}
 
               <Link
-                href="/notice-media"
+                href="/notice"
                 onClick={closeMenu}
                 className={`
                   flex
@@ -5158,7 +5158,7 @@ function MainNav({ settings }) {
                 </Link>
 
                 <Link
-                  href="/notice-media"
+                  href="/notice"
                   onClick={closeMenu}
                   className="rounded-[5px] border border-black/10 px-4 py-3 font-body text-sm text-[#444444] transition-colors hover:border-[#018837] hover:text-[#018837]"
                 >

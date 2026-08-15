@@ -375,6 +375,7 @@
 
 // Dynamic Version 2
 import Image from "next/image";
+import BannerBreadcrumb from "@/components/BannerBreadcrumb";
 
 const GREEN = "#018837";
 
@@ -552,7 +553,7 @@ export default async function Banner() {
             {/* =========================================
                 BREADCRUMB
             ========================================== */}
-            <div
+            {/* <div
               className="
                 w-full
                 min-w-0
@@ -595,7 +596,8 @@ export default async function Banner() {
               <span className="text-[#018837]" style={{ color: GREEN }}>
                 Overview
               </span>
-            </div>
+            </div> */}
+            <BannerBreadcrumb />
 
             {/* =========================================
                 HEADING

@@ -1,4 +1,4 @@
-import Banner from "@/components/Aboutpage/HistoryUAMC/Banner";
+import Banner from "@/components/Aboutpage/Overview/Banner";
 // import TabNav from "@/components/Aboutpage/HistoryUAMC/TabNav";
 import TabNav from "@/components/Aboutpage/shared/TabNav";
 

@@ -1,4 +1,4 @@
-import Banner from "@/components/Aboutpage/Structure/Banner";
+import Banner from "@/components/Aboutpage/Overview/Banner";
 // import TabNav from "@/components/Aboutpage/Structure/TabNav";
 import TabNav from "@/components/Aboutpage/shared/TabNav";
 import Admission from "@/components/Aboutpage/Structure/Admission";

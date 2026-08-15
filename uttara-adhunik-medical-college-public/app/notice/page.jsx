@@ -1,4 +1,4 @@
-import Hero from "@/components/NoticeAndMedia/Hero";
+import Banner from "@/components/Aboutpage/Overview/Banner";
 import News from "@/components/NoticeAndMedia/News";
 import Notice from "@/components/NoticeAndMedia/Notice";
 import Publication from "@/components/NoticeAndMedia/Publication";
@@ -8,7 +8,7 @@ import Gallery from "@/components/NoticeAndMedia/Gallery";
 export default function NewsSection() {
   return (
     <div className="w-full min-h-screen bg-white font-sans">
-      <Hero />
+      <Banner />
       <News />
       <Notice />
       <Publication />

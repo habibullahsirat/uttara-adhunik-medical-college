@@ -5142,7 +5142,7 @@ function MainNav({ settings }) {
 
               <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
                 <Link
-                  href="#"
+                  href={`${process.env.NEXT_PUBLIC_ADMIN_API}/student/login`}
                   onClick={closeMenu}
                   className="rounded-[5px] border border-black/10 px-4 py-3 font-body text-sm text-[#444444] transition-colors hover:border-[#018837] hover:text-[#018837]"
                 >
@@ -5150,7 +5150,7 @@ function MainNav({ settings }) {
                 </Link>
 
                 <Link
-                  href="#"
+                  href="/development"
                   onClick={closeMenu}
                   className="rounded-[5px] border border-black/10 px-4 py-3 font-body text-sm text-[#444444] transition-colors hover:border-[#018837] hover:text-[#018837]"
                 >

@@ -120,7 +120,7 @@ export default function AdminDashboardPage() {
           "api/facility/department",
           "api/student-profile",
           "api/gallery",
-          "api/member",
+          "api/about/member",
           "api/feedback",
         ];
 

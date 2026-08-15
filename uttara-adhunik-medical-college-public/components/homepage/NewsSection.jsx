@@ -187,7 +187,7 @@ import Link from "next/link";
 const GREEN = "#018837";
 const YELLOW = "#FECD2F";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+const API_URL = process.env.NEXT_PUBLIC_ADMIN_API;
 
 async function getNews() {
   try {

@@ -121,7 +121,7 @@ export default function AdminDashboardPage() {
           "api/student-profile",
           "api/gallery",
           "api/about/member",
-          "api/feedback",
+          "api/homepage/feedback",
         ];
 
         const responses = await Promise.all(

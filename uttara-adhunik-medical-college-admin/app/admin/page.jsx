@@ -100,14 +100,10 @@ export default function AdminDashboardPage() {
   const [email, setEmail] = useState("");
 
   const [stats, setStats] = useState({
-    hero: 0,
-    service: 0,
-    album: 0,
-    about: 0,
-    feature: 0,
-    policy: 0,
+    department: 0,
+    student: 0,
+    Image: 0,
     member: 0,
-    portfolio: 0,
     feedback: 0,
   });
 
@@ -121,15 +117,11 @@ export default function AdminDashboardPage() {
     async function fetchDashboardData() {
       try {
         const endpoints = [
-          "hero",
-          "service",
-          "album",
-          "about",
-          "feature",
-          "policy",
-          "member",
-          "portfolio",
-          "feedback",
+          "api/facility/department",
+          "api/student-profile",
+          "api/gallery",
+          "api/member",
+          "api/feedback",
         ];
 
         const responses = await Promise.all(
@@ -139,15 +131,11 @@ export default function AdminDashboardPage() {
         );
 
         setStats({
-          hero: responses[0]?.length || 0,
-          service: responses[1]?.length || 0,
-          album: responses[2]?.length || 0,
-          about: responses[3]?.length || 0,
-          feature: responses[4]?.length || 0,
-          policy: responses[5]?.length || 0,
-          member: responses[6]?.length || 0,
-          portfolio: responses[7]?.length || 0,
-          feedback: responses[8]?.length || 0,
+          department: responses[0]?.length || 0,
+          student: responses[1]?.length || 0,
+          Image: responses[2]?.length || 0,
+          member: responses[3]?.length || 0,
+          feedback: responses[4]?.length || 0,
         });
       } catch (error) {
         console.error("Failed to load dashboard data:", error);
@@ -161,47 +149,27 @@ export default function AdminDashboardPage() {
 
   const cards = [
     {
-      label: "Hero Section",
-      value: stats.hero,
+      label: "Departments",
+      value: stats.department,
       icon: ShoppingCart,
     },
     {
-      label: "Services",
-      value: stats.service,
+      label: "Students",
+      value: stats.student,
       icon: Package,
     },
     {
-      label: "Album",
-      value: stats.album,
+      label: "Pictures",
+      value: stats.image,
       icon: ImageIcon,
-    },
-    {
-      label: "About",
-      value: stats.about,
-      icon: Briefcase,
-    },
-    {
-      label: "Feature",
-      value: stats.feature,
-      icon: Star,
-    },
-    {
-      label: "Policies",
-      value: stats.policy,
-      icon: ShieldCheck,
     },
     {
       label: "Members",
       value: stats.member,
-      icon: Users,
+      icon: Briefcase,
     },
     {
-      label: "Portfolio",
-      value: stats.portfolio,
-      icon: FolderOpen,
-    },
-    {
-      label: "Feedback",
+      label: "Feedbacks",
       value: stats.feedback,
       icon: Star,
     },

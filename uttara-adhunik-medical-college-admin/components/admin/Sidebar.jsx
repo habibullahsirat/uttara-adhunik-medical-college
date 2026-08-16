@@ -3312,7 +3312,13 @@ const NAV_ITEMS = [
   {
     name: "Student Management",
     href: "/admin/student-profile",
-    icon: Phone,
+    icon: Users,
+  },
+
+  {
+    name: "Public Messages",
+    href: "/admin/public-message",
+    icon: UserCheck,
   },
 ];
 

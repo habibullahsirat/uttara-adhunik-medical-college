@@ -2,6 +2,10 @@
 
 A Next.js-based public website and admin panel for Uttara Adhunik Medical College: a React + Next (App Router) client site for visitors and an admin dashboard for site/content management that stores content in MongoDB and handles media via Cloudinary.
 
+# Live demo
+- Admin Panel: https://uamcedubd.vercel.app/
+- Frontend: https://uamc-frontend.vercel.app/
+  
 Stack
 - Language(s): JavaScript (primary), TypeScript (used in config/typing)
 - Framework / runtime: Next.js (App Router) + React
